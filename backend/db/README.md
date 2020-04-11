@@ -20,6 +20,15 @@ npx sequelize-cli model:generate --name goal --attributes question:string,sugges
 
 6. npx sequelize-cli db:migrate
 
+7. Create associations
+   npx sequelize-cli migration:generate --name biodata-user-add-associations
+   
+
+8.  npx sequelize-cli db:migrate
+9. npx sequelize-cli migration:generate --name biodata-user-add-associations
+10. npx sequelize-cli db:migrate
+11. npx sequelize-cli migration:generate --name user_goals-add-associations
+
 
 ## References
 https://sequelize.org/master/manual/migrations.html#undoing-migrations
