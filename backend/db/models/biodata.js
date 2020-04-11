@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   biodata.associate = function(models) {
     // associations can be defined here
+    biodata.belongsTo(models.user);
   };
   return biodata;
 };
