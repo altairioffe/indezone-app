@@ -1,13 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const biodata = sequelize.define('biodata', {
+  const Biodata = sequelize.define('biodata', {
     name: DataTypes.STRING,
     text: DataTypes.STRING,
     user_id: DataTypes.INTEGER
   }, {});
-  biodata.associate = function(models) {
+  Biodata.associate = function(models) {
     // associations can be defined here
-    biodata.belongsTo(models.user);
+    Biodata.belongsTo(models.user);
   };
-  return biodata;
+  return Biodata;
 };
