@@ -1,5 +1,5 @@
-// Sample data for Watson API
-const entries =
+// Sample data for Watson API **Must follow this format**
+const questions =
 {
   "contentItems": [
      {
@@ -6942,4 +6942,4 @@ const entries =
   ]
 }
 
-module.exports = {entries}
+module.exports = {questions}
