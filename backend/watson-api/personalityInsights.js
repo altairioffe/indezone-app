@@ -9,7 +9,7 @@ const v3EnglishTextSummaries = new PersonalityTextSummaries({
 });
 
 
-// Parameters for API call, using imported entries object (from ./sampleData) as content parameter
+// Set parameters for API call, using imported entries object (from ./sampleData) as content parameter
 let params = {
   content: entries,
   content_type: 'text/plain',
@@ -27,7 +27,7 @@ const personalityInsights = new PersonalityInsightsV3({
   url: process.env.PERSONALITY_INSIGHTS_URL,
 });
 
-// Converts raw response data in Paragraph-form summary
+// Convert raw response data in Paragraph-form summary
 const getTextSummary = personalityProfile => {
   let textSummary = v3EnglishTextSummaries.getSummary(personalityProfile);
   if (typeof (textSummary) !== 'string') {
@@ -37,16 +37,21 @@ const getTextSummary = personalityProfile => {
   }
 };
 
-
 // Makes API call, then calls getTextSummary on raw response data *** Logs result to console
 const getInsights = inputData => {
 
-  const personalityTextSummary = personalityInsights.profile(params, function(error, response) {
+  personalityInsights.profile(params, function(error, response) {
     if (error) {
       console.log('Error:', error);
     } else{
+    //Replace console log with return to return string
     console.log(getTextSummary(response.result))
     }
   })
   .catch(err => console.log(err));
 };
+
+// Call getInsight (log result to console)
+getInsights(params)
+
+module.exports = { getInsights }
