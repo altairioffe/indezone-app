@@ -11,7 +11,7 @@ const v3EnglishTextSummaries = new PersonalityTextSummaries({
 
 // Set parameters for API call, using imported sampleData object (from ./sampleData) as content parameter
 let params = {
-  content: sampleData.entries,
+  content: sampleData.questions,
   content_type: 'text/plain',
   raw_scores: true,
   consumption_preferences: true
@@ -47,7 +47,7 @@ const getInsights = inputData => {
     console.log(getTextSummary(response.result))
     }
   })
-  .catch(err => console.log(err));
+  .catch(err => console.log("ERROR: ", err));
 };
 
 // Call getInsight (log result to console)
