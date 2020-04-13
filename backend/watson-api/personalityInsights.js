@@ -1,5 +1,5 @@
 require("dotenv").config();
-const entries = require('./sampleData')
+const sampleData = require('./sampleData')
 const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
 const { IamAuthenticator } = require('ibm-watson/auth');
 const PersonalityTextSummaries = require('personality-text-summary');
@@ -9,14 +9,13 @@ const v3EnglishTextSummaries = new PersonalityTextSummaries({
 });
 
 
-// Set parameters for API call, using imported entries object (from ./sampleData) as content parameter
+// Set parameters for API call, using imported sampleData object (from ./sampleData) as content parameter
 let params = {
-  content: entries,
+  content: sampleData.entries,
   content_type: 'text/plain',
   raw_scores: true,
   consumption_preferences: true
 };
-
 
 // Establish connection with API
 const personalityInsights = new PersonalityInsightsV3({
@@ -40,7 +39,7 @@ const getTextSummary = personalityProfile => {
 // Makes API call, then calls getTextSummary on raw response data *** Logs result to console
 const getInsights = inputData => {
 
-  personalityInsights.profile(params, function(error, response) {
+  personalityInsights.profile(inputData, function(error, response) {
     if (error) {
       console.log('Error:', error);
     } else{
