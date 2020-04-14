@@ -1,14 +1,13 @@
 /* 
 should accept the following props:
 
-  message:String eg. "Delete the appointment?"
+  bio:String
   onConfirm:Function to be called when the user clicks the Confirm button
   onCancel:Function to be called when the user clicks the Cancel button
 */
 
 import React from "react";
 import "./Bio.scss"
-import Button from "./Button";
 
 export default function Bio(props){
   return (

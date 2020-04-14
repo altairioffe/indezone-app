@@ -1,5 +1,4 @@
 /* 
-REFACTORED -----  was InterviewerListItem
 takes in the following props:
 
     id:number - the id of the user

@@ -2,12 +2,12 @@
 The Form component should track the following state:
 
     name:String
-    interviewer:Number
+    user:Number
 
 The Form component should have the following actions:
 
     setName:Function
-    setInterviewer:Function
+    setUser:Function
 
 The Form component should take the following props:
 
@@ -23,10 +23,10 @@ export default function QuestionAnswerForm(props){
 
   // two states defined in Form
   const [name, setName] = useState(props.name || '');
-  const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [user, setUser] = useState(props.user || null);
   const reset = () => {
     setName('');
-    setInterviewer(null);
+    setUser(null);
   } 
   const cancel = () => {
     reset();
@@ -46,8 +46,8 @@ export default function QuestionAnswerForm(props){
         </form>
         <section className="prompt__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onClick={() => props.onSave(name, interviewer)}>Public</Button>
-          <Button warning onClick={() => props.onSave(name, interviewer)}>Private</Button>
+          <Button confirm onClick={() => props.onSave(name, user)}>Public</Button>
+          <Button warning onClick={() => props.onSave(name, user)}>Private</Button>
         </section>
     </main>
   );
