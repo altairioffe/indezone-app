@@ -3,23 +3,35 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors'); //cors issue :(
 
+// use this before routes set up 
+
+// Lucas: require() uses the actual relative path to file
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var UsersRouter = require('./routes/Users');
+var promptsRouter = require('./routes/prompts');
+var datesRouter = require('./routes/dates');
 
 var app = express();
 
 // view engine setup
 
 
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
+// Lucas: make routes here (url format)
+// Lucas: don't forget the starting '/'
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api/users', UsersRouter);
+app.use('/api/prompts', promptsRouter);
+app.use('/api/dates', datesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
