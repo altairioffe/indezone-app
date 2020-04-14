@@ -1,0 +1,196 @@
+@import "styles/variables.scss";
+@import "styles/mixins.scss";
+@import "styles/animations.scss";
+
+$prompt-height: 1rem;
+
+.prompt {
+  &__add {
+    min-height: $prompt-height;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-button {
+      @include button-inactive--opacity;
+
+      &:hover {
+        @include button-active--opacity;
+      }
+    }
+  }
+
+  &__time { //I think I replaced this by accident
+    display: flex;
+  }
+
+  &__separator {
+    border: 0;
+    border-bottom: 1px solid darken($white, 5%);
+    width: 100%;
+    margin-left: 1rem;
+  }
+
+  &__card {
+    min-height: $prompt-height;
+    border-radius: 0.5rem;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    color: $white;
+
+    &--create {
+      background-color: $indezone-navy;
+      display: block;
+    }
+
+    &--show {
+      color: rgba($booked-color, $active-opacity);
+      background: linear-gradient(
+        90deg,
+        rgba($booked-color, $active-opacity),
+        rgba($booked-color, $active-opacity) 8px,
+        rgba($booked-color, $inactive-opacity) 0,
+        rgba($booked-color, $inactive-opacity)
+      );
+
+      &:hover {
+        color: darken($white, 5%);
+        background-color: rgba($booked-color, $active-opacity);
+      }
+    }
+
+    &--status {
+      background-color: $indezone-navy;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &--confirm {
+      @include border-card($danger-color);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &--error {
+      @include border-card($error-color);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &:last-of-type &__add,
+  &:last-of-type &__card {
+    display: flex;
+  }
+
+  &__actions {
+    margin-top: 1rem;
+    text-align: center;
+
+    &-button {
+      @include button-inactive--opacity;
+      margin-right: 0.5rem;
+      display: none;
+
+      &:hover {
+        @include button-active--opacity;
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__card:hover &__actions-button {
+    display: inline;
+  }
+
+  &__create-input {
+    background-color: $indezone-blue;
+    border: 0;
+    border-bottom: 1px solid;
+    color: $white;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+    width: 100%;
+    min-height: 2rem;   
+    height: unset; 
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__status-image {
+    margin-right: 2rem;
+    animation: rotate 1s linear infinite;
+  }
+
+  &__error {
+    &-message {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-close {
+      @include button-inactive--opacity;
+
+      align-self: flex-start;
+      &:hover {
+        @include button-active--opacity;
+      }
+    }
+  }
+
+  &__validation {
+    color: $danger-color;
+    margin-bottom: 1rem;
+  }
+}
+
+#biopic-container{
+  width:50%;
+  height:100%
+}
+
+#biopic{
+  height:100%;
+  border-radius: 50%;
+  border: 10px double $white;
+}
+
+#bio{
+  min-height: 20rem;
+  border-radius: 3em;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  color: #fff;
+  background-color: $indezone-navy;
+  display: inline;
+  border: 10px double $white;
+}
+
+.card_right{
+  height:90%;
+  width: 80%;
+  float: right;
+}
+
+.seperator{
+  width: 100%;
+  margin: 1rem 0;
+  border: solid 1px;
+  color: $indezone-yellow;
+}
