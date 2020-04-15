@@ -10,24 +10,27 @@ export default function useApplicationData() {
     Promise.all([
       Promise.resolve(
         axios
-          .get("http://localhost:8001/api/days")
+        //example route
+          .get("http://localhost:8001/api/user")
+          .then(request => {
+            // check if data is being passed
+            console.log(request.data)
+            return request.data;
+          })
+      ),
+      Promise.resolve(
+        axios
+          .get("route to get request for table 2")
           .then(request => {
             return request.data;
           })
       ),
       Promise.resolve(
         axios
-          .get("http://localhost:8001/api/appointments")
+          .get("route to get request for table and so on")
           .then(request => {
             return request.data;
-          })
-      ),
-      Promise.resolve(
-        axios
-          .get("http://localhost:8001/api/interviewers")
-          .then(request => {
-            return request.data;
-          })
+          })3
       )
     ]).then( (all) => {
       // uncomment console.log() for testing 
