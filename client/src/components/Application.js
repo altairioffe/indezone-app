@@ -3,7 +3,7 @@ import Bio from "./Bio";
 import QuestionFeed from "./QuestionFeed/index";
 import Question from "./Question";
 import "./Application.scss";
-// import useApplicationData from "../hooks/useApplicationData";
+import useApplicationData from "./hooks/useApplicationData";
 
 const questionsArr = [
   "Someone who needs me on my A-game today is...",
@@ -47,6 +47,7 @@ export default function Application(props) {
         />
         <hr />
       </section>
+
     </main>
   );
 }

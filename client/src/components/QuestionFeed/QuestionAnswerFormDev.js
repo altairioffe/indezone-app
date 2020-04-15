@@ -16,13 +16,15 @@ The Form component should take the following props:
 
 // */
 
-// import React, { useState } from "react";
-// import Button from "../Button";
+import React, { useState } from "react";
+import Button from "../Button";
 
-// export default function QuestionAnswerForm(props){
+export default function QuestionAnswerForm(props){
 
-//   // const [name, setName] = useState(props.name || '');
- 
+// below we update state
+// const [ans, setAns] = useState(props.name || '') 
+
+//  cancel the form so prompt goes away
 //   const cancel = () => {
 //     reset();
 //     props.onCancel();
@@ -31,21 +33,21 @@ The Form component should take the following props:
 
 //   }
   
-//   return (
-//     <main className="prompt__card prompt__card--create">
-//         <form autoComplete="off" onSubmit={event => event.preventDefault()}>
-//           <textarea
-//             className="prompt__create-input text--semi-bold"
-//             placeholder="Answer Question Here ✍"
-//             rows={5}
-//             // value={ans? ans : ''}
-//             // onChange={ (e) => setAns}
-//           />
-//         <section className="prompt__actions">
-//           <Button danger onClick={cancel}>Cancel</Button>
-//           <Button confirm onClick={() => props.onSave(name, user)}>Public</Button>
-//           <Button warning onClick={() => props.onSave(name, user)}>Private</Button>
-//         </section>
-//         </form>     </main>
-//   );
-// }
+  return (
+    <main className="prompt__card prompt__card--create">
+        <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+          <textarea
+            className="prompt__create-input text--semi-bold"
+            placeholder="Answer Question Here ✍"
+            rows={5}
+            onChange={ (e) => setAns(e.target.value)}
+          />
+        <section className="prompt__actions">
+          <Button danger onClick={cancel}>Cancel</Button>
+          <Button confirm onClick={/* () => save ans from form and display answer publicly */}>Public</Button>
+          <Button warning onClick={/* () =>  save ans from form and display answer but only privately */}>Private</Button>
+        </section>
+         <h4>{'render entered data here'}</h4>
+        </form>     </main>
+  );
+}
