@@ -18,7 +18,12 @@ class App extends Component {
         <h1>Users</h1>
        
         <div>
-          <Bio />
+          <Bio 
+            username={"BOB"}
+            level={1}
+            onClick={()=>alert(("clicked!"))}
+            bio={"Hi I love this app"}
+            />
         </div>
 
         {this.state.users.map(user =>

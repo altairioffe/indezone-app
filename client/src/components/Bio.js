@@ -11,19 +11,19 @@ import "./Bio.scss"
 export default function Bio(props){
   return (
     <main className="" id="">
-      <div id="">
-        <img id="" src={""} />
+      <div id="biopic-container">
+        <img id="biopic" src={"https://files.slack.com/files-pri/T2G8TE2E5-F012J2N13NC/image.png"} />
       </div>
       <hr className=""/>
       <section className="">
           <h4 className="">{props.username}</h4>
-          <h4 className="">{props.level}</h4>
+          <h4 className="">Level: {props.level}</h4>
           <button 
-            className="" o
-            nClick={props.onClick}
+            className=""
+            onClick={props.onClick}
             disabled={props.disabled}>
               GET INSIGHTS
-            </button>
+          </button>
       </section>
       <article className="">
         <p>{props.bio}</p>
