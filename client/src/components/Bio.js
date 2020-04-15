@@ -12,7 +12,7 @@ export default function Bio(props){
   return (
     <main className="" id="">
       <div id="biopic-container">
-        <img id="biopic" src={"https://files.slack.com/files-pri/T2G8TE2E5-F012J2N13NC/image.png"} />
+        <img id="biopic" src={"https://image.freepik.com/free-photo/woman-smiling-face-with-curly-hair_1139-582.jpg"} alt="profile pic"/>
       </div>
       <hr className=""/>
       <section className="">

@@ -15,11 +15,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Users</h1>
+        <h1>Navbar</h1>
        
         <div>
           <Bio 
-            username={"BOB"}
+            username={"Linda"}
             level={1}
             onClick={()=>alert(("clicked!"))}
             bio={"Hi I love this app"}
