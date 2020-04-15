@@ -24,11 +24,12 @@ router.get("/:id", (req, res) => {
 });
 
 // Post specific goal
-/* router.post("/", (req, res) => {
+router.post("/", (req, res) => {
   db.user_goal.create({
-    answer: req.body.answer,
+    
     user_id: req.body.user_id,
     goal_id: req.body.goal_id,
+    answer: req.body.answer,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   })
@@ -38,6 +39,6 @@ router.get("/:id", (req, res) => {
     .catch(err => {
       res.status(500).json({ error: err.message });
     });
-}); */
+});
 
 module.exports = router;
