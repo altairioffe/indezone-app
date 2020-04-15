@@ -3,7 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
-
+  // here is where we set the state of the app using useState
+  // state is a object created from the Prommise.all routes
+  const [state, setState] = useState({
+    users: {},
+    table1: {},
+    table2: {}
+  })
 
   //  Promise all would wait for every request to fulfill this is where the state the initially updated (update these with routes to every table  in database)
   useEffect(() => {
@@ -35,8 +41,8 @@ export default function useApplicationData() {
     ]).then( (all) => {
       // uncomment console.log() for testing 
       // please change table1, table2 etc... 
-      // console.log(all[0],all[1], all[2]);
-      // setState(prev => ({ ...prev, table1: all[0], table2:all[1], table3: all[2] }));
+      console.log({...all});
+      setState(prev => ({ ...prev, table1: all[0], table2:all[1], table3: all[2] }));
     }).catch(e => console.log("there was a error"));
   }, []);
 
