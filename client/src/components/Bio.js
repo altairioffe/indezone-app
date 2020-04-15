@@ -10,7 +10,7 @@ import "./Bio.scss"
 
 export default function Bio(props){
   return (
-    <main className="" id="">
+    <main className="" id="bio">
       <div id="biopic-container">
         <img id="biopic" src={"https://image.freepik.com/free-photo/woman-smiling-face-with-curly-hair_1139-582.jpg"} alt="profile pic"/>
       </div>
