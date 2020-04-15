@@ -1,0 +1,43 @@
+@import "../styles/variables.scss";
+@import "../styles/mixins.scss";
+@import "../styles/animations.scss";
+
+$prompt-height: 1rem;
+
+
+#biopic-container{
+  width:50%;
+  height:100%
+}
+
+#biopic{
+  height:100%;
+  border-radius: 50%;
+  border: 10px double $white;
+}
+
+#bio{
+  min-height: 20rem;
+  border-radius: 3em;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  color: #fff;
+  background-color: $indezone-navy;
+  display: inline;
+  border: 10px double $white;
+}
+
+.card_right{
+  height:90%;
+  width: 80%;
+  float: right;
+}
+
+.seperator{
+  width: 100%;
+  margin: 1rem 0;
+  border: solid 1px;
+  color: $indezone-yellow;
+}
