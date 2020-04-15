@@ -17,33 +17,45 @@ export default function useApplicationData() {
     Promise.all([
       Promise.resolve(
         axios
-        //example route
-          .get("http://localhost:8001/api/user")
+          .get("http://localhost:8001/api/users")
           .then(request => {
-            // check if data is being passed
+            console.log("check if data is being passed")
             console.log(request.data)
             return request.data;
           })
       ),
       Promise.resolve(
         axios
-          .get("route to get request for table 2")
+          .get("http://localhost:8001/api/goals")
           .then(request => {
             return request.data;
           })
       ),
       Promise.resolve(
         axios
-          .get("route to get request for table and so on")
+          .get("http://localhost:8001/api/biodatas")
+          .then(request => {
+            return request.data;
+          })
+      ),
+      Promise.resolve(
+        axios
+          .get("http://localhost:8001/api/userGoals")
           .then(request => {
             return request.data;
           })
       )
     ]).then( (all) => {
       // uncomment console.log() for testing 
-      // please change table1, table2 etc... 
+      // once requests are done we have all the data in state
       console.log({...all});
-      setState(prev => ({ ...prev, table1: all[0], table2:all[1], table3: all[2] }));
+      setState(prev => ({ 
+        ...prev, 
+        users: all[0], 
+        goals:all[1], 
+        biodatas: all[2], 
+        userGoals: all[3]  
+      }));
     }).catch(e => console.log("there was a error"));
   }, []);
 
