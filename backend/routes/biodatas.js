@@ -24,8 +24,9 @@ router.get("/:id", (req, res) => {
 });
 
 
-/* //Create  biodata
+//Create  biodata
 router.post("/", (req, res) => {
+  console.log(db.biodata);
   db.biodata.create({
     name:req.body.name, text:req.body.text,
     user_id: req.body.user_id,
@@ -38,6 +39,6 @@ router.post("/", (req, res) => {
     .catch(err => {
       res.status(500).json({ error: err.message });
     });
-}); */
+});
 
 module.exports = router;
