@@ -1,29 +1,33 @@
  /* 
-should accept the following props:
-
-  bio:String
-  username:String
-  Level:Integer
-
+  props:
+   bio:String
+   username:String
+   Level:Integer
 */
 
 import React from "react";
-//import "./Bio.scss"
+import "./Bio.scss"
 
 export default function Bio(props){
   return (
     <main className="" id="">
-      <div id="biopic-container">
-      <img src={"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"} id="" />
+      <div id="">
+        <img id="" src={""} />
       </div>
       <hr className=""/>
       <section className="">
           <h4 className="">{props.username}</h4>
           <h4 className="">{props.level}</h4>
+          <button 
+            className="" o
+            nClick={props.onClick}
+            disabled={props.disabled}>
+              GET INSIGHTS
+            </button>
       </section>
-      <section>
+      <article className="">
         <p>{props.bio}</p>
-      </section>
+      </article>
     </main>
   );
 }
