@@ -5,6 +5,8 @@ import React from "react";
 import Question from "../Question";
 import QuestionAnswerForm from "./QuestionAnswerForm";
 
+// dev QuestionAnswerFormDev
+import QuestionAnswerFormDev from "./QuestionAnswerFormDev";
 
 export default function QuestionFeed(props) {
   const questionsList = 
@@ -35,6 +37,7 @@ export default function QuestionFeed(props) {
         onDelete={()=>{}}
       />
       <QuestionAnswerForm />
+      <QuestionAnswerFormDev />
       <br />
       <Question 
         question={"Someone who needs me on my A-game today is..."}

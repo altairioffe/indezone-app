@@ -5,6 +5,7 @@ import axios from "axios";
 export default function useApplicationData() {
   // here is where we set the state of the app using useState
   // state is a object created from the Prommise.all routes
+  // use State comes from React (see line 1)
   const [state, setState] = useState({
     users: {},
     table1: {},

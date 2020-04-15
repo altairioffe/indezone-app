@@ -45,6 +45,7 @@ export default function Application(props) {
         <QuestionFeed 
           questions={questionsArr}
         />
+        
         <hr />
       </section>
 
