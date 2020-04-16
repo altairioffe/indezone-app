@@ -41,4 +41,21 @@ router.post("/", (req, res) => {
     });
 });
 
+// Delete specific goal
+router.delete("/", (req, res) => {
+  db.user_goal.destroy({
+    where:{
+      createdAt:req.body.createdAt,
+      user_id: req.body.user_id
+    }
+   
+  })
+    .then(userGoal => {
+      res.json(userGoal);
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;
