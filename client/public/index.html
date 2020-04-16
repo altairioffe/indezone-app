@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <link rel='icon' href='favicon.ico' type='image/x-icon'/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/90d60d73c6.js" crossorigin="anonymous"></script><link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all" rel="stylesheet"><link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all" rel="stylesheet"><link href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all" rel="stylesheet">
     <!-- Material UI assets -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
@@ -24,46 +23,11 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>INDEZONE|Journaling</title>
+    <title>INDEZONE | Journaling</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <header class="text-white">
-      <nav class="navbar navbar-expand-md navbar-dark">
-        <a class="navbar-brand" href="/">
-          <img src="" class=indezone-img alt="INDEZONE">
-          <i class="fas fa-globe" aria-hidden="true"></i>Journaling</a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse">
-          <div class="navbar-nav">
-            <a id="usermaps" class="nav-item nav-link">Find Journey</a>
-            <a class="nav-item nav-link">Find Others</a><a class="nav-item nav-link">View Badges</a>
-          </div>
-        </div>
-
-        <!-- input form -->
-        <div>
-          <b><span id="form-msg" class="text-light">Enter Email:</span></b>
-          <form class="form-control form-control-lg form-inline" method="post" action="/login" id="input-form" style="display:contents !important" name="usernameform">
-            <input class="form-control" name="email" required="" type="email" placeholder="example@email.com">
-            <button class="btn btn-warning" id="login-button">Login</button>
-          </form>
-  
-          <!-- register -->
-          <form class="form-control form-control-lg form-inline" action="/register" method="post" style="display:contents !important" name="usernameform">
-            <button class="btn btn-warning" id="register-button">Register</button>
-          </form>
-  
-          <!-- logout -->
-          <button class="btn btn-dark" id="logout-button">
-            Logout
-          </button>
-        </div>
-      </nav>
-    </header>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -75,10 +39,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </script>
-  <!-- Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   </body>
 </html>

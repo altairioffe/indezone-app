@@ -17,7 +17,7 @@ body {
 
 .layout {
   display: flex;
-  min-height: 90h;
+  min-height: 100h;
 }
 
 @media only screen and (max-width: 960px) {
@@ -42,4 +42,12 @@ indezone-img{
 
 header > nav{
   background-color: $indezone-navy;
+}
+
+body{
+  background-color: $indezone-navy;
+  .feed{
+    background-color: $indezone-blue;
+    border-left: 1pc groove $indezone-yellow;
+  }
 }
