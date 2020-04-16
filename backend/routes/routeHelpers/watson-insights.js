@@ -32,17 +32,18 @@ const getTextSummary = personalityProfile => {
 
 // Makes API call, then calls getTextSummary on raw response data *** Logs result to console
 const getInsights = inputData => {
-
-  personalityInsights.profile(inputData, function(error, response) {
+  return new Promise(resolve => {
+    personalityInsights.profile(inputData, function(error, response) {
     if (error) {
-      console.log('Error:', error);
-    } else{
-    //Replace console log with return to return string
-    console.log(getTextSummary(response.result))
-    }
+       console.log('Error:', error);
+    } else {
+       resolve(getTextSummary(response.result))
+      }
+    })
   })
-  .catch(err => console.log("ERROR: ", err));
-};
+  //.then(x => console.log(getTextSummary(x.result)))
+  .catch(err => console.log(err));
+}
 
 // Call getInsight (log result to console)
 //getInsights(params)
