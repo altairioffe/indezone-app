@@ -1,5 +1,4 @@
 require("dotenv").config();
-const sampleData = require('./sampleData')
 const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
 const { IamAuthenticator } = require('ibm-watson/auth');
 const PersonalityTextSummaries = require('personality-text-summary');
@@ -10,7 +9,6 @@ const v3EnglishTextSummaries = new PersonalityTextSummaries({
 
 // Run npm install to include all dependencies
 // Add credentials to .env file in backend directory
-
 
 
 // Establish connection with API
