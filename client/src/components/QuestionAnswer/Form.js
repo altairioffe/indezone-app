@@ -6,26 +6,20 @@ import TextField from '@material-ui/core/TextField';
 export default function Form(props){
 
     // below we update state
-    // const [ans, setAns] = useState(props.name || '') 
+    const [ans, setAns] = useState() 
 
     //  cancel the form so form goes away
     const reset = () => {
-        setAns('');
-        // setAnsForQuestion=null
+        setAns(null);
     } 
     const cancel = () => {
         reset();
         // props.onCancel();
     }
 
-    let ans = ""
     const getAns = () => {
         console.log("getAns", ans)
         return ans;
-    }
-    const setAns = (input) => {
-        console.log("event", input)
-        ans = input
     }
   
   return (
@@ -42,7 +36,7 @@ export default function Form(props){
         />
         <section className="prompt__actions" size="large">
           <ButtonGroup color="primary" fullwidth>
-            <Button variant="outlined" color="primary" onClick={"cancel"}>
+            <Button variant="outlined" color="primary" onClick={cancel}>
               Cancel
             </Button>
             <Button
@@ -56,7 +50,7 @@ export default function Form(props){
               variant="outlined" //text contained
               color="primary" // default primary secondary disabled link
               size="large"
-              onClick={() => console.log(getAns())}
+              onClick={() => console.log(ans)}
             >
               Private
             </Button>
