@@ -62,11 +62,36 @@ export default function useApplicationData() {
 
   //  ------- SET STATE and UPDATE DB FUNCTIONS (for export) ----
 
-   // setToday is going to be exported to Application.js with it we can set the state of today property of the state object
-  // const setToday = todayStr => setState({...state, today:todayStr})
+  const ansQuestion = (ans) => {
+
+    // const gotAnswer = getAns(state, ans);
+    let answer = (
+      {
+        user_id:1,
+        goal_id:1,
+        answer:"test passed"
+      }
+    )
+    
+
+    return axios
+      .put(`/api/userGoals`, answer)
+      .then( () => {
+        setState({
+          ...state
+        });
+        return;
+      })
+      .catch( () => {
+        console.log('ERROR')
+        return 'error'
+      })
+  }
+
 
   // object to return 
   return {
+    ansQuestion,
     state
   }
 

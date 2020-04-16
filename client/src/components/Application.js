@@ -8,11 +8,12 @@ import useApplicationData from "./hooks/useApplicationData";
 
 export default function Application(props) {
   const {
-    state,
+    ansQuestion,
+    state
   } = useApplicationData();
-  console.log("Today State",state.today.str)
-  console.log("Today State",state.today.obj)
+  console.log("State", state.userGoals)
   
+  ansQuestion()
   const questionsArr = [
     "Someone who needs me on my A-game today is...",
     "A situation that might stress me out or trip me up today could be...",
