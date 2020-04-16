@@ -16,21 +16,21 @@ arr.forEach(goalObj => {
     "content": goalObj.answer,
     "contenttype": "text/plain",
     "created": goalObj.createdAt,
-    "id": "666073008692314113",
     "language": "en"
   };
   goals.push(formattedParam)
 })
 
-  // Set parameters for API call, using imported sampleData object (from ./sampleData) as content parameter
-  let params = {
-    content: goals,
-    content_type: 'text/plain',
-    raw_scores: true,
-    consumption_preferences: true
-  };
+// Set parameters for API call, using imported sampleData object (from ./sampleData) as content parameter
+let params = {
+  content: goals,
+  content_type: 'text/plain',
+  raw_scores: true,
+  consumption_preferences: true
+};
 
-
-
-
+// Execute API call using formatted user goal parameters, return paragraph response
+getInsights(params)
+  .then(insight => res.send(insight))
+  .catch(err => console.log("ERROR: ", err))
 });
