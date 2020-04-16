@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import "components/Application.scss"; //dont know what this line does
 import axios from "axios";
 
 export default function useApplicationData() {
@@ -7,10 +6,17 @@ export default function useApplicationData() {
   // state is a object created from the Prommise.all routes
   // use State comes from React (see line 1)
   const [state, setState] = useState({
+    today: "", 
     users: {},
-    table1: {},
-    table2: {}
-  })
+    goals: {},
+    biodatas: {},
+    userGoals: {}
+  });
+
+  const dateObj = new Date();
+  const todayStr = dateObj.toDateString()
+  const setToday = todayStr => setState({...state, today:todayStr})
+  console.log("Test setState", state)
 
   //  Promise all would wait for every request to fulfill this is where the state the initially updated (update these with routes to every table  in database)
   useEffect(() => {
@@ -58,5 +64,12 @@ export default function useApplicationData() {
       }));
     }).catch(e => console.log("there was a error"));
   }, []);
+
+
+  // object to return 
+  return {
+    setToday,
+    state
+  }
 
 }
