@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import useApplicationData from '../hooks/useApplicationData';
 import {getPreviousUserGoals} from '../helpers/selectors';
-
+import Wall from './Wall';
 
 export default function Application() {
     const {
