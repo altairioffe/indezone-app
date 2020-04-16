@@ -13,7 +13,6 @@ export default function Application(props) {
   } = useApplicationData();
   console.log("State", state.userGoals)
   
-  ansQuestion()
   const questionsArr = [
     "Someone who needs me on my A-game today is...",
     "A situation that might stress me out or trip me up today could be...",
