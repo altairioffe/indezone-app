@@ -3,19 +3,18 @@ let router = express.Router();
 let db = require('../db/models/index');
 const { getInsights } = require('./routeHelpers/watson-insights')
 
-//Get user insights
+//Get user insights 
 router.get("/", (req, res) => {
 
-let arr = req.body
+let requestedGoalsArray = req.body
 
 let goals = [];
 
-arr.forEach(goalObj => {
-
+// Format request body into API-friendly parameter
+requestedGoalsArray.forEach(goalObj => {
   let formattedParam = {
     "content": goalObj.answer,
     "contenttype": "text/plain",
-    "created": goalObj.createdAt,
     "language": "en"
   };
   goals.push(formattedParam)
