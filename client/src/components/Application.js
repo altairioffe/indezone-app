@@ -1,7 +1,7 @@
 import React from "react";
 import Bio from "./Bio";
-import QuestionFeed from "./QuestionFeed/index";
-import Question from "./Question";
+import QuestionList from "./QuestionList";
+import Question from "./QuestionAnswer/Question";
 import "./Application.scss";
 import useApplicationData from "./hooks/useApplicationData";
 
@@ -31,7 +31,7 @@ const questionsList =
 
 export default function Application(props) {
   // const {
-  //   state,
+  //   state
   // } = useApplicationData();
 
   return (
@@ -42,7 +42,7 @@ export default function Application(props) {
           bio={bio}
         />
         <hr/>
-        <QuestionFeed 
+        <QuestionList 
           questions={questionsArr}
         />
         

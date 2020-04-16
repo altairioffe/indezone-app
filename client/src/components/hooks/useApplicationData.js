@@ -17,7 +17,7 @@ export default function useApplicationData() {
     Promise.all([
       Promise.resolve(
         axios
-          .get("http://localhost:8001/api/users")
+          .get("/api/users")
           .then(request => {
             console.log("check if data is being passed")
             console.log(request.data)
@@ -26,21 +26,21 @@ export default function useApplicationData() {
       ),
       Promise.resolve(
         axios
-          .get("http://localhost:8001/api/goals")
+          .get("/api/goals")
           .then(request => {
             return request.data;
           })
       ),
       Promise.resolve(
         axios
-          .get("http://localhost:8001/api/biodatas")
+          .get("/api/biodatas")
           .then(request => {
             return request.data;
           })
       ),
       Promise.resolve(
         axios
-          .get("http://localhost:8001/api/userGoals")
+          .get("/api/userGoals")
           .then(request => {
             return request.data;
           })

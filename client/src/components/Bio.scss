@@ -21,17 +21,6 @@ $prompt-height: 1rem;
     }
   }
 
-  &__time { //I think I replaced this by accident
-    display: flex;
-  }
-
-  &__separator {
-    border: 0;
-    border-bottom: 1px solid darken($white, 5%);
-    width: 100%;
-    margin-left: 1rem;
-  }
-
   &__card {
     min-height: $prompt-height;
     border-radius: 0.5rem;
