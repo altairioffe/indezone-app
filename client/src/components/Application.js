@@ -9,9 +9,9 @@ import useApplicationData from "./hooks/useApplicationData";
 export default function Application(props) {
   const {
     state,
-    setToday
   } = useApplicationData();
-  console.log("Application State",state)
+  console.log("Today State",state.today.str)
+  console.log("Today State",state.today.obj)
   
   const questionsArr = [
     "Someone who needs me on my A-game today is...",

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {getTodayDate} from "../../helpers/selectors"
 import axios from "axios";
 
 export default function useApplicationData() {
@@ -6,17 +7,12 @@ export default function useApplicationData() {
   // state is a object created from the Prommise.all routes
   // use State comes from React (see line 1)
   const [state, setState] = useState({
-    today: "", 
+    today: {}, 
     users: {},
     goals: {},
     biodatas: {},
     userGoals: {}
   });
-
-  const dateObj = new Date();
-  const todayStr = dateObj.toDateString()
-  const setToday = todayStr => setState({...state, today:todayStr})
-  console.log("Test setState", state)
 
   //  Promise all would wait for every request to fulfill this is where the state the initially updated (update these with routes to every table  in database)
   useEffect(() => {
@@ -25,8 +21,6 @@ export default function useApplicationData() {
         axios
           .get("/api/users")
           .then(request => {
-            console.log("check if data is being passed")
-            console.log(request.data)
             return request.data;
           })
       ),
@@ -60,15 +54,19 @@ export default function useApplicationData() {
         users: all[0], 
         goals:all[1], 
         biodatas: all[2], 
-        userGoals: all[3]  
+        userGoals: all[3], 
+        today: getTodayDate()
       }));
     }).catch(e => console.log("there was a error"));
   }, []);
 
+  //  ------- SET STATE and UPDATE DB FUNCTIONS (for export) ----
+
+   // setToday is going to be exported to Application.js with it we can set the state of today property of the state object
+  // const setToday = todayStr => setState({...state, today:todayStr})
 
   // object to return 
   return {
-    setToday,
     state
   }
 
