@@ -65,17 +65,14 @@ export default function useApplicationData() {
   const ansQuestion = (ans) => {
 
     // const gotAnswer = getAns(state, ans);
-    let answer = (
-      {
-        user_id:1,
+    let answer =  {
+        user_id:8,
         goal_id:1,
         answer:"test passed"
-      }
-    )
+    }
     
-
     return axios
-      .put(`/api/userGoals`, answer)
+      .post(`/api/userGoals`, answer)
       .then( () => {
         setState({
           ...state
