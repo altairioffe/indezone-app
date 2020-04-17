@@ -12,11 +12,26 @@ import React from 'react';
   export default function Bio(props) {
   
     return(
+
+    <main>
+    <section>
       <Profile 
       username={"Linda"}
       level={level}
       onClick={()=>alert(("clicked!"))}
       bio={"Hi I love this app"}
       />
+    </section>
+
+    <section>
+
+    {mode === USERBIO && }
+    
+    </section>
+
+
+
+
+    </main>
     )
   }
