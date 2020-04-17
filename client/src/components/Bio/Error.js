@@ -9,11 +9,11 @@ export default function Error(props) {
         alt="Keep it up!"
       />
       <h4 className="">{props.message}</h4>
-      <img
-        className=""
-        src="images/close.png"
-        alt="Close"
-        onClick={props.onCancel}
+      <button 
+       className=""
+       onClick={props.onCancel}>
+         BACK
+     </button>
       />
     </main>
   );
