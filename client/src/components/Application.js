@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
 import Question from "./QuestionAnswer/Question";
 import "./Application.scss";
-import useApplicationData from "./hooks/useApplicationData";
+import useApplicationData from "../hooks/useApplicationData";
 
 export default function Application() {
 
