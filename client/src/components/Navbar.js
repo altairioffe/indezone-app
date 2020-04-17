@@ -1,11 +1,12 @@
 import "./QuestionAnswer/styles.scss";
 
 import React, { useState } from "react";
-import {Button, TextField, ButtonGroup} from '@material-ui/core';
+import {Button, TextField} from '@material-ui/core';
 
 export default function Navbar(props) {
   console.log("Navbar",{...props.users});
-  const [loginState, SetLoginState] = useState(0);
+  const [loginState, setLoginState] = useState(0);
+  const [loginEmail, setLoginEmail] = useState(0);
   /* 
     State 0: Initial Login
       Login, Register, Email Field 
@@ -15,8 +16,11 @@ export default function Navbar(props) {
       Logout, Welcome User
   */
 
-  let password = "";
-  const login = [{...props.users}].find( (user) => {
+  const inputLoginEmail = (email) => {
+    console.log(email)
+    return email;
+  }
+  const login = (loginEmail) => [{...props.users}].find( (user) => {
     // return user.email === submittedEmail ? true : false;
   })
   console.log("Loging in", [{...props.users}], login)
@@ -36,13 +40,15 @@ export default function Navbar(props) {
       </div>
 
       <TextField 
-        id="outlined-basic" 
+        id="outlined-basic"
+        name="emailInput"
         label="Enter Email" 
         variant="outlined"
         color='primary'
         autoFocus='true'
         placeholder='example@email.com'
         type='email'
+        onChange={(e) => setLoginEmail(e.target.value)}
       />
       <Button variant="fob">logout</Button>
       
@@ -63,7 +69,7 @@ export default function Navbar(props) {
         Register
       </Button>
       <Button 
-        onClick={() => console.log()}
+        onClick={() => console.log(loginEmail)}
         variant="outlined"
         color="primary"
         size="large"
