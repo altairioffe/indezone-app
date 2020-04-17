@@ -6,14 +6,14 @@ export default function Error(props) {
       <img
         className=""
         src="images/status.png"
-        alt="Loading"
+        alt="Keep it up!"
       />
-      <h4> className="">{props.message}</h4>
+      <h4 className="">{props.message}</h4>
       <img
         className=""
         src="images/close.png"
         alt="Close"
-        onClick={props.onClose}
+        onClick={props.onCancel}
       />
     </main>
   );

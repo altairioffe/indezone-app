@@ -19,7 +19,7 @@ import useVisualMode from "../../hooks/useVisualMode";
     const EDIT = "EDIT";
     const DENIED = "DENIED";
   
-    const level = 1
+    const level = 10
     const { mode, transition, back } = useVisualMode(USERBIO);
 
 
@@ -40,7 +40,7 @@ import useVisualMode from "../../hooks/useVisualMode";
     {mode === USERBIO && (
       <UserBio 
         bio={"Hi I love this app"}
-        onClick={()=> transition(INSIGHTS)}
+        onClick={()=> level > 9 ? transition(INSIGHTS) : transition(DENIED)}
 
       />
     )}
