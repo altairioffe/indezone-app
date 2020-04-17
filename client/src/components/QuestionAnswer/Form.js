@@ -47,8 +47,8 @@ export default function Form(props){
               Public
             </Button>
             <Button
-              variant="outlined" //text contained
-              color="primary" // default primary secondary disabled link
+              variant="outlined"
+              color="primary"
               size="large"
               onClick={() => console.log(ans)}
             >
