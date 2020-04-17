@@ -1,10 +1,26 @@
 import "./QuestionAnswer/styles.scss";
 
-import React from "react"
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import React, { useState } from "react";
+import {Button, TextField, ButtonGroup} from '@material-ui/core';
 
 export default function Navbar(props) {
+  console.log("Navbar",{...props.users});
+  const [loginState, SetLoginState] = useState(0);
+  /* 
+    State 0: Initial Login
+      Login, Register, Email Field 
+    State 1: Enter Password for Login
+      Login, Back, Password Field
+    State 2: Welcome Logged in User
+      Logout, Welcome User
+  */
+
+  let password = "";
+  const login = [{...props.users}].find( (user) => {
+    // return user.email === submittedEmail ? true : false;
+  })
+  console.log("Loging in", [{...props.users}], login)
+
 
   return (
     <header>
@@ -19,13 +35,50 @@ export default function Navbar(props) {
         <a>View Badges</a>
       </div>
 
-      <b>Enter Email:</b>
+      <TextField 
+        id="outlined-basic" 
+        label="Enter Email" 
+        variant="outlined"
+        color='primary'
+        autoFocus='true'
+        placeholder='example@email.com'
+        type='email'
+      />
       <Button variant="fob">logout</Button>
-      <ButtonGroup color="primary" variant="mini" size="large">
-        <Button onClick={"cancel"}>register</Button>
-        <Button onClick={() => console.log()}>login</Button>
-        <Button onClick={() => console.log()}>logout</Button>
-      </ButtonGroup>
+      
+      <Button 
+        onClick={"cancel"}
+        variant="outlined"
+        color="primary"
+        size="large"
+      >
+        Back
+      </Button>
+      <Button 
+        onClick={"cancel"}
+        variant="outlined"
+        color="primary"
+        size="large"
+      >
+        Register
+      </Button>
+      <Button 
+        onClick={() => console.log()}
+        variant="outlined"
+        color="primary"
+        size="large"
+      >
+        Login
+      </Button>
+      <Button 
+        onClick={() => console.log()}
+        variant="outlined"
+        color="primary"
+        size="large"
+      >
+        Logout
+      </Button>
+    
     </header>
   );
 }

@@ -25,7 +25,9 @@ export default function Application(props) {
 
   return (
     <main className="layout">
-      <Navbar />
+      <Navbar 
+        users={ state.users }
+      />
       <section className="feed">
         <hr/>
         <Bio 
