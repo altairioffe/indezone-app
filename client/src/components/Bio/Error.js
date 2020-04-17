@@ -10,7 +10,7 @@ export default function Error(props) {
       />
       <h4> className="">{props.message}</h4>
       <img
-        className="appointment__error-close"
+        className=""
         src="images/close.png"
         alt="Close"
         onClick={props.onClose}

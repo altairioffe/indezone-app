@@ -6,7 +6,7 @@
 */
 
 import React from "react";
-import "./UserBio.scss"
+import "./Profile.scss"
 
 export default function UserBio(props){
 
@@ -20,12 +20,6 @@ export default function UserBio(props){
       <section className="prompt__actions card_right">
           <h4 className="">{props.username}</h4>
           <h4 className="">Level: {props.level}</h4>
-          <button 
-            className=""
-            onClick={props.onClick}
-            disabled={props.disabled}>
-              GET INSIGHTS
-          </button>
       </section>
     </aside>
   );

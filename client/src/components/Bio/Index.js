@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
 import Profile from './Profile';
-import UserBio from './UserBio';
 import UserBio from './UserBio';
 import Error from './Error';
 import Insights from './Insights';
 
+import useVisualMode from "../../hooks/useVisualMode";
 
-  const USERBIO = "USERBIO";
-  const INSIGHT = "INSIGHT";
-  const LOADING = "LOADING";
-  const EDIT = "EDIT";
-  const DENIED = "DENIED";
 
-  const { mode, transition, back } = useVisualMode(USERBIO);
+
 
   export default function Bio(props) {
   
+
+    const USERBIO = "USERBIO";
+    const INSIGHTS = "INSIGHTS";
+    const LOADING = "LOADING";
+    const EDIT = "EDIT";
+    const DENIED = "DENIED";
+  
+    const level = 1
+    const { mode, transition, back } = useVisualMode(USERBIO);
+
+
+
     return(
 
     <main>
@@ -33,7 +40,7 @@ import Insights from './Insights';
     {mode === USERBIO && (
       <UserBio 
         bio={"Hi I love this app"}
-        onClick={()=> level > 9 ? transition(INSIGHT) : transition(DENIED)}
+        onClick={()=> transition(INSIGHTS)}
 
       />
     )}
@@ -45,9 +52,9 @@ import Insights from './Insights';
       />
     )}
 
-    {mode === INSIGHT && (
+    {mode === INSIGHTS && (
       <Insights 
-        insight={state.insight}
+        insights={"HERE ARE SOME INSIGHTS"}
         onCancel={back}
       />
     )}
