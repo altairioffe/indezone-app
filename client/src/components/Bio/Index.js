@@ -6,6 +6,7 @@ import React from 'react';
   const INSIGHT = "INSIGHT";
   const LOADING = "LOADING";
   const EDIT = "EDIT";
+  const DENIED = "DENIED";
 
   const { mode, transition, back } = useVisualMode(USERBIO);
 
@@ -18,14 +19,26 @@ import React from 'react';
       <Profile 
       username={"Linda"}
       level={level}
-      onClick={()=>alert(("clicked!"))}
-      bio={"Hi I love this app"}
+      
       />
     </section>
 
     <section>
 
-    {mode === USERBIO && }
+    {mode === USERBIO && (
+      <UserBio 
+        bio={"Hi I love this app"}
+        onClick={()=> level > 9 ? transition(INSIGHT) : transition(DENIED)}
+
+      />
+    )}
+
+    {mode === DENIED && (
+      <Error 
+        message={"Reach level 10 to access your insights!"}
+        onCancel={back}
+      />
+    )}
     
     </section>
 
