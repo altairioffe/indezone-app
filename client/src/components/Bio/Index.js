@@ -4,14 +4,9 @@ import Profile from './Profile';
 import UserBio from './UserBio';
 import Error from './Error';
 import Insights from './Insights';
-
 import useVisualMode from "../../hooks/useVisualMode";
 
-
-
-
   export default function Bio(props) {
-  
 
     const USERBIO = "USERBIO";
     const INSIGHTS = "INSIGHTS";
@@ -23,7 +18,6 @@ import useVisualMode from "../../hooks/useVisualMode";
     const { mode, transition, back } = useVisualMode(USERBIO);
 
 
-
     return(
 
     <main>
@@ -31,7 +25,6 @@ import useVisualMode from "../../hooks/useVisualMode";
       <Profile 
       username={"Linda"}
       level={level}
-      
       />
     </section>
 
