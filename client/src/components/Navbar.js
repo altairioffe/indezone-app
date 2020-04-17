@@ -4,9 +4,12 @@ import React, { useState } from "react";
 import {Button, TextField} from '@material-ui/core';
 
 export default function Navbar(props) {
-  console.log("Navbar",{...props.users});
+
+  // Here are the states to keep track of login process
   const [loginState, setLoginState] = useState(0);
-  const [loginEmail, setLoginEmail] = useState(0);
+  const [loginEmail, setLoginEmail] = useState(null);
+  const [loginPassword, setLoginPassword] = useState(null);
+  
   /* 
     State 0: Initial Login
       Login, Register, Email Field 
@@ -17,13 +20,13 @@ export default function Navbar(props) {
   */
 
   const inputLoginEmail = (email) => {
-    console.log(email)
     return email;
   }
-  const login = (loginEmail) => [{...props.users}].find( (user) => {
-    // return user.email === submittedEmail ? true : false;
+  const login = (loginEmail) => [...props.users].find( (user) => {
+    console.log(loginEmail, user.email, user)
+    return user.email === inputLoginEmail(loginEmail).trim() ? 
+      true : false;
   })
-  console.log("Loging in", [{...props.users}], login)
 
 
   return (
@@ -69,7 +72,7 @@ export default function Navbar(props) {
         Register
       </Button>
       <Button 
-        onClick={() => console.log(loginEmail)}
+        onClick={() => console.log(login(loginEmail))}
         variant="outlined"
         color="primary"
         size="large"
