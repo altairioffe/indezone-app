@@ -1,5 +1,10 @@
 import React from 'react';
 
+import Profile from './Profile';
+import UserBio from './UserBio';
+import UserBio from './UserBio';
+import Error from './Error';
+import Insights from './Insights';
 
 
   const USERBIO = "USERBIO";
@@ -39,11 +44,15 @@ import React from 'react';
         onCancel={back}
       />
     )}
+
+    {mode === INSIGHT && (
+      <Insights 
+        insight={state.insight}
+        onCancel={back}
+      />
+    )}
     
     </section>
-
-
-
 
     </main>
     )
