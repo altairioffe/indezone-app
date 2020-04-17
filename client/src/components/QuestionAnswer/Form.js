@@ -34,7 +34,7 @@ export default function Form(props){
   }
 
   return (
-    <main className="prompt__card prompt__card--create">
+    <main >
       <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
         <TextField
           id="filled-textarea"
@@ -45,28 +45,14 @@ export default function Form(props){
           variant="filled"
           onChange={(e) => setAns(e.target.value)}
         />
-        <section className="prompt__actions hide" size="large">
-          <ButtonGroup color="primary" fullwidth>
-            <Button variant="outlined" color="primary" onClick={cancel}>
-              Cancel
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => console.log(getAns())}
-            >
-              Public
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              size="large"
-              onClick={() => submitSave(ans)}
-            >
-              Private
-            </Button>
-          </ButtonGroup>
-        </section>
+      <Button
+        variant="outlined"
+        color="primary"
+        size="large"
+        onClick={() => submitSave(ans)}
+      >
+      Answer
+      </Button>
       </form>
     </main>
   );

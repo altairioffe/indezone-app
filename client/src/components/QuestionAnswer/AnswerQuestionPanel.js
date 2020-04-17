@@ -30,10 +30,12 @@ export default function SimpleExpansionPanel(props) {
         >
           <Typography className={classes.heading}>{props.question}</Typography>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Form 
-            giveAnswer={props.giveAnswer}
-          />
+        <ExpansionPanelDetails >
+          <Typography> 
+            <Form 
+              giveAnswer={props.giveAnswer}
+            />
+          </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
