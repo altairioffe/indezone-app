@@ -1,11 +1,21 @@
 import React from 'react';
-export default function WallItem(props){
+import { TimelineEvent } from 'react-event-timeline'
+export default function WallItem(props) {
   return (
-      <div>
-      <p>{props.createdAt}</p>
-      <p>{props.question}</p>
-      <p>{props.answer}</p>
-      </div>
-    );
-    
+
+    <TimelineEvent key={props.createdAt} title={props.question}
+      createdAt={props.createdAt}
+      icon={<i className="material-icons md-18"></i>}
+    >
+      {props.answer}
+    </TimelineEvent>
+
+
+    /*  <div>
+     <p>{props.createdAt}</p>
+     <p>{props.question}</p>
+     <p>{props.answer}</p>
+     </div> */
+  );
+
 }
