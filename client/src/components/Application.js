@@ -15,7 +15,7 @@ export default function Application() {
   
   return (
   <div>
-   <Wall key={currentUser} userGoals={previousUserGoals} userId = {currentUser}/>
+   <Wall userGoals={previousUserGoals} userId = {currentUser}/>
    
    </div>
   );
