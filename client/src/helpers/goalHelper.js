@@ -15,10 +15,11 @@ export function getPreviousUserGoals(userGoals, goals, currentDate, userId) {
   );
   
   let expandedPreviousGoals = previousGoals.map((previousGoal) => {
-    let expandedGoal = {};
+    const expandedGoal = {};
     expandedGoal.createdAt = moment(previousGoal.createdAt).format('LLLL');  // Formatted date 
     expandedGoal.question = goals[previousGoal.goal_id].question;
     expandedGoal.answer = previousGoal.answer;
+    expandedGoal.id = previousGoal.id;
     return expandedGoal;
 
   });
