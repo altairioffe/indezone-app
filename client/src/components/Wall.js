@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import WallItem from './WallItem';
 export default function Wall(props) {
