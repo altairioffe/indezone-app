@@ -48,6 +48,7 @@ export default function Application(props) {
         />
         <hr/>
         <QuestionList 
+          giveAnswer={ansQuestion}
           questions={questionsArr}
         />
         

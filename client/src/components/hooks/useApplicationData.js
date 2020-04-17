@@ -64,16 +64,16 @@ export default function useApplicationData() {
 
   const ansQuestion = (ans) => {
 
-    // const gotAnswer = getAns(state, ans);
     let answer =  {
         user_id:8,
         goal_id:1,
-        answer:"test passed"
+        answer: ans
     }
     
     return axios
       .post(`/api/userGoals`, answer)
       .then( () => {
+        console.log("useApplicationData")
         setState({
           ...state
         });

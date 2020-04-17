@@ -18,6 +18,9 @@ export default function QuestionFeed(props) {
             onEdit={()=>{}}
             onDelete={()=>{}}
           />
+          <Form 
+            giveAnswer={props.giveAnswer}
+          />
         </div>
       )
     })
@@ -26,20 +29,6 @@ export default function QuestionFeed(props) {
       <h1>Question feed</h1>
       <hr/>
       {questionsList}
-      <hr/>
-      <Question 
-        question={"One thing I can get excited about today is..."}
-        type={''}
-        onEdit={()=>{}}
-        onDelete={()=>{}}
-      />
-      <Form />
-      <br />
-      <Question 
-        question={"Someone who needs me on my A-game today is..."}
-        onEdit={()=>{}}
-        onDelete={()=>{}}
-      />
       <hr/>
     </section>
   )

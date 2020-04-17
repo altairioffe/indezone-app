@@ -1,27 +1,40 @@
 import React, { useState } from "react";
+import {ansQuestion} from "../hooks/useApplicationData"
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import TextField from '@material-ui/core/TextField';
 
 export default function Form(props){
-
-    // below we update state
-    const [ans, setAns] = useState() 
-
-    //  cancel the form so form goes away
-    const reset = () => {
-        setAns(null);
-    } 
-    const cancel = () => {
-        reset();
-        // props.onCancel();
-    }
-
-    const getAns = () => {
-        console.log("getAns", ans)
-        return ans;
-    }
   
+  
+  // below we update state
+  const [ans, setAns] = useState() 
+  
+  //  cancel the form so form goes away
+  const reset = () => {
+    setAns(null);
+  } 
+  const cancel = () => {
+    reset();
+    // props.onCancel();
+  }
+  
+  const getAns = () => {
+    console.log("getAns", ans)
+    return ans;
+  }
+  
+  const submitSave = (ans) => {
+    if(ans.trim().length === 0) {
+      return; //validation
+    }
+    props.giveAnswer(ans)
+      .then( (res) => {
+        console.log("Something is happening", res)
+        return;
+      })
+  }
+
   return (
     <main className="prompt__card prompt__card--create">
       <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
@@ -50,7 +63,7 @@ export default function Form(props){
               variant="outlined"
               color="primary"
               size="large"
-              onClick={() => console.log(ans)}
+              onClick={() => submitSave(ans)}
             >
               Private
             </Button>
