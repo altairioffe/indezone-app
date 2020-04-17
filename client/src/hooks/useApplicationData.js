@@ -8,11 +8,12 @@ export default function useApplicationData(){
 
  useEffect(() => {
      Promise.all([
-           Promise.resolve(axios.get('/api/userGoals')),
-           Promise.resolve(axios.get('/api/goals'))
+           axios.get('/api/userGoals'),
+           axios.get('/api/goals')
      ]).then((all) => {
            setState((state) => ({...state,userGoals: all[0].data,goals:all[1].data}))
      })
+     .catch(err => err.message);
    },[]); 
 
    return { state };
