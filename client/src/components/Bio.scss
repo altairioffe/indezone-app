@@ -1,0 +1,35 @@
+@import "../styles/variables.scss";
+@import "../styles/mixins.scss";
+@import "../styles/animations.scss";
+
+$prompt-height: 1rem;
+
+#biopic-container{
+  width:50%;
+  height:100%
+}
+
+#biopic{
+  height: 100%;
+  max-height: 35vh;
+  border-radius: 50%;
+  float: left;
+  margin: 1em;
+  border: 10px double $white;
+}
+
+#bio{
+  padding: 1.2rem 1.5rem;
+  text-align: justify;
+  flex-flow: row wrap;
+  color: #fff;
+  background-color: $indezone-navy;
+  display: inline;
+  border: 10px double $white;
+}
+
+.seperator{
+  margin: 1rem 0;
+  border: solid 1px;
+  color: $indezone-yellow;
+}
