@@ -1,21 +1,18 @@
 import React from 'react';
-import { TimelineEvent } from 'react-event-timeline'
+import { TimelineEvent } from 'react-event-timeline';
+import  {styles}  from './WallStyles';
+
 export default function WallItem(props) {
+ 
   return (
 
-    <TimelineEvent key={props.createdAt} title={props.question}
+    <TimelineEvent contentStyle={styles.contentStyle} container="card" bubbleStyle={styles.bubbleStyle} key={props.createdAt} title={props.question}
       createdAt={props.createdAt}
       icon={<i className="material-icons md-18"></i>}
     >
-      {props.answer}
+      <p>{props.answer}</p>
     </TimelineEvent>
 
-
-    /*  <div>
-     <p>{props.createdAt}</p>
-     <p>{props.question}</p>
-     <p>{props.answer}</p>
-     </div> */
   );
 
 }
