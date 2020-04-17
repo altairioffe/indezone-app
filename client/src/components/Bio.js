@@ -3,12 +3,25 @@
    bio:String
    username:String
    Level:Integer
+
 */
 
 import React from "react";
 import "./Bio.scss"
 
 export default function Bio(props){
+
+
+  const BIO = "BIO";
+  const INSIGHT = "INSIGHT";
+  const LOADING = "LOADING";
+  const EDIT = "EDIT";
+
+
+
+
+
+
   return (
     <main className="" id="">
       <div id="">
