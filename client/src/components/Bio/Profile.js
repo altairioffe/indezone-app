@@ -7,23 +7,13 @@
 */
 
 import React from "react";
-import "./Bio.scss"
+import "./UserBio.scss"
 
-export default function Bio(props){
-
-
-  const BIO = "BIO";
-  const INSIGHT = "INSIGHT";
-  const LOADING = "LOADING";
-  const EDIT = "EDIT";
-
-
-
-
+export default function UserBio(props){
 
 
   return (
-    <main className="" id="">
+    <aside className="" id="">
       <div id="">
         <img id="" src={"https://image.freepik.com/free-photo/woman-smiling-face-with-curly-hair_1139-582.jpg"} alt="profile pic"/>
       </div>
@@ -41,6 +31,6 @@ export default function Bio(props){
       <article className="">
         <p>{props.bio}</p>
       </article>
-    </main>
+    </aside>
   );
 }
