@@ -4,16 +4,20 @@ import React from "react";
 
 import AnswerQuestionPanel from "./QuestionAnswer/AnswerQuestionPanel"
 
+import Slide from '@material-ui/core/Slide';
+
 export default function QuestionFeed(props) {
   const questionsList = 
     props.questions.map( (question, i) => {
       return(
         <div>
-          <AnswerQuestionPanel 
-            key={i}
-            question={question}
-            giveAnswer={props.giveAnswer}
-          />
+          <Slide direction="up" in={false} >
+            <AnswerQuestionPanel 
+              key={i}
+              question={question}
+              giveAnswer={props.giveAnswer}
+            />
+          </Slide>
           <br />
         </div>
       )

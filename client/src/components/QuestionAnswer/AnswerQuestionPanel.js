@@ -21,23 +21,21 @@ export default function SimpleExpansionPanel(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>{props.question}</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails >
-          <Typography> 
-            <Form 
-              giveAnswer={props.giveAnswer}
-            />
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-    </div>
+    <ExpansionPanel smUp="hide">
+      <ExpansionPanelSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Typography className={classes.heading}>{props.question}</Typography>
+      </ExpansionPanelSummary>
+      <ExpansionPanelDetails >
+        <Typography> 
+          <Form 
+            giveAnswer={props.giveAnswer}
+          />
+        </Typography>
+      </ExpansionPanelDetails>
+    </ExpansionPanel>
   );
 }

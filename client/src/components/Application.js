@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
 import "./Application.scss";
 import useApplicationData from "./hooks/useApplicationData";
-import AnswerQuestionPanel from "./QuestionAnswer/AnswerQuestionPanel"
 
 export default function Application(props) {
   const {
