@@ -18,7 +18,7 @@ export default function Application() {
   } = useApplicationData();
   console.log("State", state.userGoals)
   
- const currentUser = "6"; //temporary change 
+ const currentUser = "4"; //temporary change 
   
   const previousUserGoals = getPreviousUserGoals(state.userGoals,state.goals,new Date(),currentUser);
 
