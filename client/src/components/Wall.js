@@ -1,21 +1,21 @@
 import React from 'react';
-
 import WallItem from './WallItem';
-import {Timeline, TimelineEvent} from 'react-event-timeline'
+import { Timeline, TimelineEvent } from 'react-event-timeline'
+import  {styles}  from './WallStyles';
 export default function Wall(props) {
   const userGoals = props.userGoals;
   const userGoalsView = userGoals.map(userGoal => {
     return (
-      <Timeline key={userGoal.user_id}>
       <WallItem key={userGoal.id} createdAt={userGoal.createdAt} question={userGoal.question} answer={userGoal.answer} />
-      </Timeline>
     );
   }
   );
 
   return (
     <div>
-      {userGoalsView}
+      <Timeline lineStyle={styles.lineStyle}>
+        {userGoalsView}
+      </Timeline>
     </div>
   );
 }
