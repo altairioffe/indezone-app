@@ -1,6 +1,5 @@
  /* 
   props:
-   bio:String
    username:String
    Level:Integer
 
@@ -28,9 +27,6 @@ export default function UserBio(props){
               GET INSIGHTS
           </button>
       </section>
-      <article className="">
-        <p>{props.bio}</p>
-      </article>
     </aside>
   );
 }
