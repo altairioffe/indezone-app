@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import {ansQuestion} from "../hooks/useApplicationData"
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import TextField from '@material-ui/core/TextField';
 
 export default function Form(props){
-  
   
   // below we update state
   const [ans, setAns] = useState() 
@@ -47,7 +45,7 @@ export default function Form(props){
           variant="filled"
           onChange={(e) => setAns(e.target.value)}
         />
-        <section className="prompt__actions" size="large">
+        <section className="prompt__actions hide" size="large">
           <ButtonGroup color="primary" fullwidth>
             <Button variant="outlined" color="primary" onClick={cancel}>
               Cancel

@@ -2,25 +2,19 @@ import "./QuestionAnswer/styles.scss";
 
 import React from "react";
 
-import Question from "./QuestionAnswer/Question";
-import Form from "./QuestionAnswer/Form";
+import AnswerQuestionPanel from "./QuestionAnswer/AnswerQuestionPanel"
 
 export default function QuestionFeed(props) {
   const questionsList = 
     props.questions.map( (question, i) => {
       return(
         <div>
-          <br />
-          <Question
-            key={i} 
+          <AnswerQuestionPanel 
+            key={i}
             question={question}
-            type={''}
-            onEdit={()=>{}}
-            onDelete={()=>{}}
-          />
-          <Form 
             giveAnswer={props.giveAnswer}
           />
+          <br />
         </div>
       )
     })
