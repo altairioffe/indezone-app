@@ -14,7 +14,7 @@ import useVisualMode from "../../hooks/useVisualMode";
     const EDIT = "EDIT";
     const DENIED = "DENIED";
   
-    const level = 10
+    const level = 1
     const { mode, transition, back } = useVisualMode(USERBIO);
 
 

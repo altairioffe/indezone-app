@@ -14,7 +14,6 @@ export default function Error(props) {
        onClick={props.onCancel}>
          BACK
      </button>
-      />
     </main>
   );
 }
