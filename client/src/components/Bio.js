@@ -12,7 +12,7 @@ export default function Bio(props){
   return (
     <main className="" id="">
       <div id="">
-        <img id="" src={"https://image.freepik.com/free-photo/woman-smiling-face-with-curly-hair_1139-582.jpg"} alt="profile pic"/>
+        <img id="biopic" src={"https://image.freepik.com/free-photo/woman-smiling-face-with-curly-hair_1139-582.jpg"} alt="profile pic"/>
       </div>
       <hr className="seperator"/>
       <section className="prompt__actions card_right">
