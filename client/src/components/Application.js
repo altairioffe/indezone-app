@@ -27,6 +27,7 @@ export default function Application(props) {
   const questionsList = 
     questionsArr.map( (question, i) => {
       return(
+        <>
         <div>
         <Bio />
       </div>
@@ -37,6 +38,7 @@ export default function Application(props) {
           onEdit={()=>{}}
           onDelete={()=>{}}
         />
+        </>
       )
     })
 
