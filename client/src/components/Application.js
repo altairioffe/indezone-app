@@ -2,7 +2,7 @@ import React from 'react';
 //import useApplicationData from '../hooks/useApplicationData'; //temporary comment to resolve merge conflicts
 import {getPreviousUserGoals} from '../helpers/goalHelper';
 import Wall from './Wall';
-import Bio from "./Bio";
+import Bio from "./Bio/Index";
 import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
 import "./Application.scss";
@@ -17,7 +17,7 @@ export default function Application() {
   } = useApplicationData();
   console.log("State", state.userGoals)
   
- const currentUser = "6"; //temporary change 
+  const currentUser = "6"; //temporary change 
   
   const previousUserGoals = getPreviousUserGoals(state.userGoals,state.goals,new Date(),currentUser);
 
