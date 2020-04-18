@@ -22,5 +22,31 @@ export default function useApplicationData(){
      .catch(err => err.message);
    },[]); 
 
-   return { state };
+  const ansQuestion = (ans) => {
+
+    let answer =  {
+        user_id:8,
+        goal_id:1,
+        answer: ans
+    }
+    
+    return axios
+      .post(`/api/userGoals`, answer)
+      .then( () => {
+        console.log("useApplicationData")
+        setState({
+          ...state
+        });
+        return;
+      })
+      .catch( () => {
+        console.log('ERROR')
+        return 'error'
+      })
+  }
+
+   return { 
+    ansQuestion,
+    state
+  };
 }
