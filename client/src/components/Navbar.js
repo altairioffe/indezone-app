@@ -21,16 +21,23 @@ export default function Navbar(props) {
   const inputLoginEmail = (email) => {
     return email;
   };
+  const inputLoginPassword = (password) => {
+    return password;
+  };
+
+  // Validate password or email and adjust state accordingly
   const login = (formInput) => {
-    if(loginState === 0){
-      [...props.users].find((user) => {
+      // const currentLoginState = loginState  
+      ([...props.users]).find((user) => {
         console.log(formInput, user.email, user);
-        return user.email === inputLoginEmail(formInput).trim() ? true : false;
+        if(loginState === 0){
+          return user.email === inputLoginEmail(formInput).trim() ? true : false;
+        } else {
+          return user.email === inputLoginPassword(formInput).trim() ? true : false;
+        }
       })
-        ? setLoginState(1)
-        : console.log("error");
-      console.log(loginState);
-    }
+        ? setLoginState(loginState + 1) : console.log("error");
+    
   };
 
   return (
@@ -45,6 +52,10 @@ export default function Navbar(props) {
         <a>Find Others</a>
         <a>View Badges</a>
       </div>
+            
+      <Slide direction="left" in={ loginState === 2} timeout={300}>
+        <h2>Welcome {"loggedinUser"}</h2>
+      </Slide>
       <Slide direction="left" in={loginState === 0} timeout={300}>
         <TextField
           id="outlined-basic"
@@ -58,10 +69,24 @@ export default function Navbar(props) {
           onChange={(e) => setLoginEmail(e.target.value)}
         />
       </Slide>
+
+      <Slide direction="left" in={loginState === 1} timeout={300}>
+        <TextField
+          id="outlined-basic"
+          name="passwordInput"
+          label="Enter Password"
+          variant="outlined"
+          color="primary"
+          autoFocus="true"
+          placeholder=""
+          type="password"
+          onChange={(e) => setLoginPassword(e.target.value)}
+        />
+      </Slide>
       {/* <Button variant="fob">logout</Button> */}
-      <Slide direction="left" in={loginState === 0} timeout={300}>
+      <Slide direction="left" in={loginState === 1} timeout={300}>
         <Button
-          onClick={"cancel"}
+          onClick={() => setLoginState(loginState - 1)}
           variant="outlined"
           color="primary"
           size="large"
@@ -79,7 +104,7 @@ export default function Navbar(props) {
           Register
         </Button>
       </Slide>
-      <Slide direction="left" in={loginState === 0} timeout={300}>
+      <Slide direction="left" in={loginState === 0 || loginState === 1} timeout={300}>
         <Button
           onClick={() => console.log(login(loginEmail))}
           variant="outlined"
@@ -89,9 +114,9 @@ export default function Navbar(props) {
           Login
         </Button>
       </Slide>
-      <Slide direction="left" in={loginState === 0} timeout={300}>
+      <Slide direction="left" in={loginState === 2} timeout={300}>
         <Button
-          onClick={() => console.log()}
+          onClick={() => setLoginState(0)}
           variant="outlined"
           color="primary"
           size="large"
