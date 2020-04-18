@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var goalsRouter = require('./routes/goals');
 var biodatasRouter = require('./routes/biodatas');
 var userGoalsRouter = require('./routes/userGoals');
+var userInsightRouter = require('./routes/userInsight');
 
 var app = express();
 
