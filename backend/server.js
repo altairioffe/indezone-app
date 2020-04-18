@@ -26,6 +26,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/goals', goalsRouter);
 app.use('/api/biodatas', biodatasRouter);
 app.use('/api/userGoals', userGoalsRouter);
+app.use('/api/userInsight', userInsightRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

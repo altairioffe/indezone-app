@@ -4,8 +4,9 @@ let db = require('../db/models/index');
 const { getInsights } = require('./routeHelpers/watson-insights')
 
 //Get user insights 
-router.get("/", (req, res) => {
+router.post("/", (req, res) => {
 
+console.log("REQUEST HIT BACKEND ROUTE: ", req.body)
 let requestedGoalsArray = req.body
 
 let goals = [];
@@ -30,6 +31,13 @@ let params = {
 
 // Execute API call using formatted user goal parameters, return paragraph response
 getInsights(params)
-  .then(insight => res.send(insight))
+  .then(insight => {
+    console.log("Response From backend POST ROUTE: ", insight)
+    res.send(insight)
+  })
   .catch(err => console.log("ERROR: ", err))
 });
+
+
+
+module.exports = router;
