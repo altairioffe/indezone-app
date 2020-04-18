@@ -18,7 +18,7 @@ export default function Application() {
   } = useApplicationData();
   console.log("State", state.userGoals)
   
- const currentUser = "6"; //temporary change 
+  const currentUser = "6"; //temporary change 
   
   const previousUserGoals = getPreviousUserGoals(state.userGoals,state.goals,new Date(),currentUser);
 
@@ -33,24 +33,7 @@ export default function Application() {
   ];
   
   const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-  
-  const questionsList = 
-    questionsArr.map( (question, i) => {
-      return(
-        <>
-        <div>
-        <Bio />
-      </div>
-        <Question
-          key={i} 
-          question={question}
-          type={''}
-          onEdit={()=>{}}
-          onDelete={()=>{}}
-        />
-        </>
-      )
-    })
+
 
 
   return (
