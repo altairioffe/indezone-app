@@ -28,6 +28,18 @@ let sampleGoals = [
   
     const level = 10
     const { mode, transition, back } = useVisualMode(USERBIO);
+
+
+    //Work in progress
+    function getUserInsights(userGoalsArray) {
+      return new Promise(resolve => { 
+      requestInsight(userGoalsArray)
+      .then((response) => {
+        console.log("RESPONSE BEFORE TRANSITION: ", response)
+        transition(INSIGHTS)
+      })
+      })
+    }
     
     return(
 
@@ -48,7 +60,10 @@ let sampleGoals = [
          if (level > 9) { 
           // console.log("Clicked, before API call")
            requestInsight(sampleGoals)
-           transition(INSIGHTS)
+           .then((response) => {
+             console.log("RESPONSE BEFORE TRANSITION: ", response)
+             transition(INSIGHTS)
+           })
           } else {
             transition(DENIED)
           }
@@ -61,6 +76,13 @@ let sampleGoals = [
     {mode === DENIED && (
       <Error 
         message={"Reach level 10 to access your insights!"}
+        onCancel={back}
+      />
+    )}
+
+    {mode === LOADING && (
+      <LOADING 
+        message={"Loading insights!"}
         onCancel={back}
       />
     )}

@@ -22,6 +22,7 @@ return Promise.resolve(
     .then(response => {
   //  DEBUGGING :  
   //console.log("API CALL RESPONSE: ", response) 
+    return response
     })
     .catch(err => console.log(err))
   )
