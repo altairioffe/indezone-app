@@ -20,8 +20,12 @@ requestedGoalsArray.forEach(goalObj => {
   };
   goals.push(formattedParam)
 })
+console.log("FORMATED GOALS ARRAY: ", goals)
+
 
 // Set parameters for API call, using imported sampleData object (from ./sampleData) as content parameter
+
+
 let params = {
   content: goals,
   content_type: 'text/plain',
