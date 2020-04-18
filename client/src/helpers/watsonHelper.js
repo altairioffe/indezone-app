@@ -6,27 +6,22 @@ import axios from 'axios';
   
 //const previousUserGoals = getPreviousUserGoals(state.userGoals,state.goals,new Date(),currentUser);
 
-let sampleGoals = [{answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}];
 
-// DEBUGGING :console.log(sampleGoals)
+// DEBUGGING :
+//console.log(sampleGoals)
 
 
 export function requestInsight(userGoalsArray) {
- // DEBUGGING : console.log("FROM WATSON HELPER IN FRONT END BEFORE API CALL: ", userGoalsArray) 
+ // DEBUGGING : 
+ //console.log("FROM WATSON HELPER IN FRONT END BEFORE API CALL: ", userGoalsArray) 
 return Promise.resolve(
   axios
     .post("/api/userInsight", {
       body: userGoalsArray
     })
     .then(response => {
-  //  DEBUGGING :  console.log("API CALL RESPONSE: ", response) 
+  //  DEBUGGING :  
+  //console.log("API CALL RESPONSE: ", response) 
     })
     .catch(err => console.log(err))
   )

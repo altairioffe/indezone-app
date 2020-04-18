@@ -5,8 +5,8 @@ const { getInsights } = require('./routeHelpers/watson-insights')
 
 //Get user insights 
 router.post("/", (req, res) => {
-
-console.log("REQUEST HIT BACKEND ROUTE: ", req.body)
+// DEBUGGING :
+// console.log("REQUEST HIT BACKEND ROUTE: ", req.body)
 let requestedGoalsArray = req.body.body
 
 let goalsArray = [];
@@ -20,8 +20,9 @@ requestedGoalsArray.forEach(goalObj => {
   };
   goalsArray.push(formattedParam)
 })
-console.log("after backend hit")
-console.log("FORMATED goalsArray ARRAY: ", goalsArray)
+// DEBUGGING :
+//console.log("after backend hit")
+//console.log("FORMATED goalsArray ARRAY: ", goalsArray)
 let goalParams= {};
 goalParams.contentItems = goalsArray
 
