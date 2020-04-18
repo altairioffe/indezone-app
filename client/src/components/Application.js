@@ -16,7 +16,6 @@ export default function Application() {
     ansQuestion,
     state
   } = useApplicationData();
-  console.log("State", state)
   
   const currentUser = "6"; //temporary change 
   
