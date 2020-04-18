@@ -2,25 +2,23 @@ import "./QuestionAnswer/styles.scss";
 
 import React from "react";
 
-import Question from "./QuestionAnswer/Question";
-import Form from "./QuestionAnswer/Form";
+import AnswerQuestionPanel from "./QuestionAnswer/AnswerQuestionPanel"
+
+import Slide from '@material-ui/core/Slide';
 
 export default function QuestionFeed(props) {
   const questionsList = 
     props.questions.map( (question, i) => {
       return(
         <div>
+          <Slide direction="up" in={false} >
+            <AnswerQuestionPanel 
+              key={i}
+              question={question}
+              giveAnswer={props.giveAnswer}
+            />
+          </Slide>
           <br />
-          <Question
-            key={i} 
-            question={question}
-            type={''}
-            onEdit={()=>{}}
-            onDelete={()=>{}}
-          />
-          <Form 
-            giveAnswer={props.giveAnswer}
-          />
         </div>
       )
     })
