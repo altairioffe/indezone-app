@@ -2,7 +2,7 @@ import React from 'react';
 //import useApplicationData from '../hooks/useApplicationData'; //temporary comment to resolve merge conflicts
 import {getPreviousUserGoals} from '../helpers/goalHelper';
 import Wall from './Wall';
-import Bio from "./Bio";
+import Bio from "./Bio/Index";
 import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
 import Question from "./QuestionAnswer/Question";
