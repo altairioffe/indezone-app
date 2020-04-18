@@ -58,7 +58,6 @@ let sampleGoals = [
         bio={"(Form for bio: Describe the person you want to be; i.e. I am friendly, confident, etc.)"}
         onClick={()=> {
          if (level > 9) { 
-          // console.log("Clicked, before API call")
            requestInsight(sampleGoals)
            .then((response) => {
              console.log("RESPONSE BEFORE TRANSITION: ", response)
