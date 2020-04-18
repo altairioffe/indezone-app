@@ -8,7 +8,7 @@ export default function Navbar(props) {
   const [loginState, setLoginState] = useState(0);
   const [loginEmail, setLoginEmail] = useState(null);
   const [loginPassword, setLoginPassword] = useState(null);
-
+  const [user, setUSer] = useState(props.user);
   /* 
     State 0: Initial Login
       Login, Register, Email Field 
@@ -27,16 +27,22 @@ export default function Navbar(props) {
 
   // Validate password or email and adjust state accordingly
   const login = (formInput) => {
-      // const currentLoginState = loginState  
       ([...props.users]).find((user) => {
-        console.log(formInput, user.email, user);
         if(loginState === 0){
           return user.email === inputLoginEmail(formInput).trim() ? true : false;
-        } else {
-          return user.email === inputLoginPassword(formInput).trim() ? true : false;
+        } 
+        else {
+          if(user.password === inputLoginPassword(formInput).trim()){
+            props.logUser(user);
+            setUSer(user);
+            return true;
+          }
+          else {
+            return false;
+          }
         }
       })
-        ? setLoginState(loginState + 1) : console.log("error");
+        ? setLoginState(loginState + 1) : setLoginState(loginState);
     
   };
 
@@ -54,7 +60,7 @@ export default function Navbar(props) {
       </div>
             
       <Slide direction="left" in={ loginState === 2} timeout={300}>
-        <h2>Welcome {"loggedinUser"}</h2>
+        <h2>Welcome {user ? user.handle.slice(1) : "error"}</h2>
       </Slide>
       <Slide direction="left" in={loginState === 0} timeout={300}>
         <TextField
@@ -106,7 +112,10 @@ export default function Navbar(props) {
       </Slide>
       <Slide direction="left" in={loginState === 0 || loginState === 1} timeout={300}>
         <Button
-          onClick={() => console.log(login(loginEmail))}
+          onClick={() => { loginState === 0 ? 
+            login(loginEmail) : login(loginPassword)
+          }
+        }
           variant="outlined"
           color="primary"
           size="large"

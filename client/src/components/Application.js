@@ -12,10 +12,11 @@ export default function Application() {
 
     
   const {
+    loggedInUser,
     ansQuestion,
     state
   } = useApplicationData();
-  console.log("State", state.userGoals)
+  console.log("State", state)
   
  const currentUser = "6"; //temporary change 
   
@@ -37,6 +38,8 @@ export default function Application() {
     <main className="layout">
       <Navbar 
         users={ state.users }
+        logUser={ loggedInUser }
+        user={ state.loggedUser }
       />
       <section className="feed">
         <hr/>

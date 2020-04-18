@@ -2,6 +2,7 @@ import axios from 'axios';
 import {useState, useEffect } from "react";
 export default function useApplicationData(){
    const [state,setState] = useState({
+       loggedUser:null,
        userGoals:[],
        goals:[],
        biodatas:[],
@@ -45,7 +46,29 @@ export default function useApplicationData(){
       })
   }
 
-   return { 
+  const loggedInUser = (user) => {
+    //here we set state, I have set up route if you want to set session storage or whatever, just uncomment   
+
+
+    // return axios
+      // .post(`/login`, answer)
+      // .then( () => {
+        // console.log("useApplicationData")
+        setState({
+          loggedUser:{...user},
+          ...state
+        });
+        console.log("loggedInUSer", state, {...user})
+        return state.loggedUser;
+      // })
+      // .catch( () => {
+        // console.log('ERROR')
+        // return 'error'
+      // })
+  }
+
+   return {
+    loggedInUser,
     ansQuestion,
     state
   };
