@@ -1,10 +1,44 @@
 import "./QuestionAnswer/styles.scss";
 
-import React from "react"
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import React, { useState } from "react";
+import { Button, TextField, Slide } from "@material-ui/core";
 
 export default function Navbar(props) {
+  // Here are the states to keep track of login process
+  const [loginState, setLoginState] = useState(0);
+  const [loginEmail, setLoginEmail] = useState(null);
+  const [loginPassword, setLoginPassword] = useState(null);
+
+  /* 
+    State 0: Initial Login
+      Login, Register, Email Field 
+    State 1: Enter Password for Login
+      Login, Back, Password Field
+    State 2: Welcome Logged in User
+      Logout, Welcome User
+  */
+
+  const inputLoginEmail = (email) => {
+    return email;
+  };
+  const inputLoginPassword = (password) => {
+    return password;
+  };
+
+  // Validate password or email and adjust state accordingly
+  const login = (formInput) => {
+      // const currentLoginState = loginState  
+      ([...props.users]).find((user) => {
+        console.log(formInput, user.email, user);
+        if(loginState === 0){
+          return user.email === inputLoginEmail(formInput).trim() ? true : false;
+        } else {
+          return user.email === inputLoginPassword(formInput).trim() ? true : false;
+        }
+      })
+        ? setLoginState(loginState + 1) : console.log("error");
+    
+  };
 
   return (
     <header>
@@ -18,14 +52,78 @@ export default function Navbar(props) {
         <a>Find Others</a>
         <a>View Badges</a>
       </div>
+            
+      <Slide direction="left" in={ loginState === 2} timeout={300}>
+        <h2>Welcome {"loggedinUser"}</h2>
+      </Slide>
+      <Slide direction="left" in={loginState === 0} timeout={300}>
+        <TextField
+          id="outlined-basic"
+          name="emailInput"
+          label="Enter Email"
+          variant="outlined"
+          color="primary"
+          autoFocus="true"
+          placeholder="example@email.com"
+          type="email"
+          onChange={(e) => setLoginEmail(e.target.value)}
+        />
+      </Slide>
 
-      <b>Enter Email:</b>
-      <Button variant="fob">logout</Button>
-      <ButtonGroup color="primary" variant="mini" size="large">
-        <Button onClick={"cancel"}>register</Button>
-        <Button onClick={() => console.log()}>login</Button>
-        <Button onClick={() => console.log()}>logout</Button>
-      </ButtonGroup>
+      <Slide direction="left" in={loginState === 1} timeout={300}>
+        <TextField
+          id="outlined-basic"
+          name="passwordInput"
+          label="Enter Password"
+          variant="outlined"
+          color="primary"
+          autoFocus="true"
+          placeholder=""
+          type="password"
+          onChange={(e) => setLoginPassword(e.target.value)}
+        />
+      </Slide>
+      {/* <Button variant="fob">logout</Button> */}
+      <Slide direction="left" in={loginState === 1} timeout={300}>
+        <Button
+          onClick={() => setLoginState(loginState - 1)}
+          variant="outlined"
+          color="primary"
+          size="large"
+        >
+          Back
+        </Button>
+      </Slide>
+      <Slide direction="left" in={loginState === 0} timeout={300}>
+        <Button
+          onClick={"cancel"}
+          variant="outlined"
+          color="primary"
+          size="large"
+        >
+          Register
+        </Button>
+      </Slide>
+      <Slide direction="left" in={loginState === 0 || loginState === 1} timeout={300}>
+        <Button
+          onClick={() => console.log(login(loginEmail))}
+          variant="outlined"
+          color="primary"
+          size="large"
+        >
+          Login
+        </Button>
+      </Slide>
+      <Slide direction="left" in={loginState === 2} timeout={300}>
+        <Button
+          onClick={() => setLoginState(0)}
+          variant="outlined"
+          color="primary"
+          size="large"
+        >
+          Logout
+        </Button>
+      </Slide>
     </header>
   );
 }
