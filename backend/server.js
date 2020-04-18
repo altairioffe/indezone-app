@@ -3,18 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var cors = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var goalsRouter = require('./routes/goals');
 var biodatasRouter = require('./routes/biodatas');
 var userGoalsRouter = require('./routes/userGoals');
+var userInsightRouter = require('./routes/userInsight');
 
 var app = express();
 
 // view engine setup
 
-
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,6 +27,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/goals', goalsRouter);
 app.use('/api/biodatas', biodatasRouter);
 app.use('/api/userGoals', userGoalsRouter);
+app.use('/api/userInsight', userInsightRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
