@@ -5,7 +5,6 @@ import Wall from './Wall';
 import Bio from "./Bio";
 import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
-import Question from "./QuestionAnswer/Question";
 import "./Application.scss";
 import useApplicationData from "../hooks/useApplicationData";
 
@@ -33,24 +32,12 @@ export default function Application() {
   ];
   
   const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-  
-  const questionsList = 
-    questionsArr.map( (question, i) => {
-      return(
-        <Question
-          key={i} 
-          question={question}
-          type={''}
-          onEdit={()=>{}}
-          onDelete={()=>{}}
-        />
-      )
-    })
-
 
   return (
     <main className="layout">
-      <Navbar />
+      <Navbar 
+        users={ state.users }
+      />
       <section className="feed">
         <hr/>
         <Bio 
