@@ -5,11 +5,11 @@ const { getInsights } = require('./routeHelpers/watson-insights')
 
 //Get user insights 
 router.post("/", (req, res) => {
+// DEBUGGING :
+// console.log("REQUEST HIT BACKEND ROUTE: ", req.body)
+let requestedGoalsArray = req.body.body
 
-console.log("REQUEST HIT BACKEND ROUTE: ", req.body)
-let requestedGoalsArray = req.body
-
-let goals = [];
+let goalsArray = [];
 
 // Format request body into API-friendly parameter
 requestedGoalsArray.forEach(goalObj => {
@@ -18,12 +18,21 @@ requestedGoalsArray.forEach(goalObj => {
     "contenttype": "text/plain",
     "language": "en"
   };
-  goals.push(formattedParam)
+  goalsArray.push(formattedParam)
 })
+// DEBUGGING :
+//console.log("after backend hit")
+//console.log("FORMATED goalsArray ARRAY: ", goalsArray)
+let goalParams= {};
+goalParams.contentItems = goalsArray
+
+
 
 // Set parameters for API call, using imported sampleData object (from ./sampleData) as content parameter
+
+
 let params = {
-  content: goals,
+  content: goalParams,
   content_type: 'text/plain',
   raw_scores: true,
   consumption_preferences: true
