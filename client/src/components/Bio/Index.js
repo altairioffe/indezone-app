@@ -49,7 +49,7 @@ let sampleGoals = [{answer: "Everybody has the power to remodel their behaviour,
         bio={"(Form for bio: Describe the person you want to be; i.e. I am friendly, confident, etc.)"}
         onClick={()=> {
          if (level > 9) { 
-           console.log("Clicked, before API call")
+          // console.log("Clicked, before API call")
            requestInsight(sampleGoals)
            transition(INSIGHTS)
           } else {
