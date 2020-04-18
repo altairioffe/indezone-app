@@ -5,6 +5,11 @@ import UserBio from './UserBio';
 import Error from './Error';
 import Insights from './Insights';
 import useVisualMode from "../../hooks/useVisualMode";
+import { requestInsight}  from "../../helpers/watsonHelper";
+
+
+let sampleGoals = [{answer: "Be healthy"}, {answer: "Eat vegetables"}, {answer: "Read some books"}];
+
 
   export default function Bio(props) {
 
@@ -14,10 +19,13 @@ import useVisualMode from "../../hooks/useVisualMode";
     const EDIT = "EDIT";
     const DENIED = "DENIED";
   
-    const level = 1
+    const level = 10
     const { mode, transition, back } = useVisualMode(USERBIO);
 
 
+
+
+    
     return(
 
     <main>
@@ -32,8 +40,17 @@ import useVisualMode from "../../hooks/useVisualMode";
 
     {mode === USERBIO && (
       <UserBio 
-        bio={"Hi I love this app"}
-        onClick={()=> level > 9 ? transition(INSIGHTS) : transition(DENIED)}
+        bio={"(Form for bio: Describe the person you want to be; i.e. I am friendly, confident, etc.)"}
+        onClick={()=> {
+         if (level > 9) { 
+           console.log("Clicked, before API call")
+           requestInsight(sampleGoals)
+           transition(INSIGHTS)
+          } else {
+            transition(DENIED)
+          }
+        
+        }}
 
       />
     )}
