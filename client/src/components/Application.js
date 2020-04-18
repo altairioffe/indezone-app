@@ -1,17 +1,27 @@
-import React from "react";
-import Bio from "./Bio/Index";
+import React from 'react';
+//import useApplicationData from '../hooks/useApplicationData'; //temporary comment to resolve merge conflicts
+import {getPreviousUserGoals} from '../helpers/goalHelper';
+import Wall from './Wall';
+import Bio from "./Bio";
 import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
 import Question from "./QuestionAnswer/Question";
 import "./Application.scss";
-import useApplicationData from "./hooks/useApplicationData";
+import useApplicationData from "../hooks/useApplicationData";
 
-export default function Application(props) {
+export default function Application() {
+
+    
   const {
     ansQuestion,
     state
   } = useApplicationData();
   console.log("State", state.userGoals)
+  
+ const currentUser = "6"; //temporary change 
+  
+  const previousUserGoals = getPreviousUserGoals(state.userGoals,state.goals,new Date(),currentUser);
+
   
   const questionsArr = [
     "Someone who needs me on my A-game today is...",
@@ -58,7 +68,12 @@ export default function Application(props) {
         />
         
         <hr />
+        <div>
+      <Wall userGoals={previousUserGoals} userId = {currentUser}/>
+      </div>
       </section>
+   
+    
 
     </main>
   );
