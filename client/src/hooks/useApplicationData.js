@@ -9,8 +9,11 @@ export default function useApplicationData(){
        biodatas:[],
        users:[],
        currentUserGoals:[],
-       currentUser:6
+       currentUser:8,
+       currentUserInsight: ""
    });
+
+   const setInsight = insight => setState({ ...state, insight });
 
  useEffect(() => {
      Promise.all([
@@ -56,8 +59,32 @@ export default function useApplicationData(){
       })
   }
 
+  const requestInsight = () => {
+   // const setInsight = insight => setState({...state, insight})
+    console.log("FROM WATSON HELPER IN FRONT END BEFORE API CALL: ", state.currentUserGoals) 
+   return Promise.resolve(
+     axios
+       .post("/api/userInsight", {
+         body: state.currentUserGoals
+       })
+       .then(response => {
+     console.log("API CALL RESPONSE: ", response) 
+        // setState(prevState => ({
+        //   userInsight: {...prevState.userInsight, response}
+        // }))
+      // setInsight(response)
+      //console.log("TYPE OF :", typeof response)
+      //let words = "RESPONSE"
+        setInsight("HELLO")
+       })
+       .catch(err => console.log(err))
+     )
+   }
+
+
    return { 
     ansQuestion,
-    state
+    state,
+    requestInsight
   };
 }

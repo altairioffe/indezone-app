@@ -10,7 +10,8 @@ export default function Application() {
     
   const {
     ansQuestion,
-    state
+    state,
+    requestInsight
   } = useApplicationData();
     
   const questionsArr = [
@@ -33,6 +34,7 @@ export default function Application() {
         <hr/>
         <Bio 
           bio={bio}
+          requestInsight={requestInsight}
         />
         <hr/>
         <QuestionList 

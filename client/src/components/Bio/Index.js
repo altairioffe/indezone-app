@@ -5,7 +5,7 @@ import UserBio from './UserBio';
 import Error from './Error';
 import Insights from './Insights';
 import useVisualMode from "../../hooks/useVisualMode";
-import { requestInsight}  from "../../helpers/watsonHelper";
+//import { requestInsight}  from "../../helpers/watsonHelper";
 
 
 let sampleGoals = [
@@ -31,15 +31,15 @@ let sampleGoals = [
 
 
     //Work in progress
-    function getUserInsights(userGoalsArray) {
-      return new Promise(resolve => { 
-      requestInsight(userGoalsArray)
-      .then((response) => {
-        console.log("RESPONSE BEFORE TRANSITION: ", response)
-        transition(INSIGHTS)
-      })
-      })
-    }
+    // function getUserInsights(userGoalsArray) {
+    //   return new Promise(resolve => { 
+    //   requestInsight(userGoalsArray)
+    //   .then((response) => {
+    //     console.log("RESPONSE BEFORE TRANSITION: ", response)
+    //     transition(INSIGHTS)
+    //   })
+    //   })
+    // }
     
     return(
 
@@ -56,18 +56,19 @@ let sampleGoals = [
     {mode === USERBIO && (
       <UserBio 
         bio={"(Form for bio: Describe the person you want to be; i.e. I am friendly, confident, etc.)"}
-        onClick={()=> {
-         if (level > 9) { 
-           requestInsight(sampleGoals)
-           .then((response) => {
-             console.log("RESPONSE BEFORE TRANSITION: ", response)
-             transition(INSIGHTS)
-           })
-          } else {
-            transition(DENIED)
-          }
+        onClick={()=>  {
+          console.log("CLICKED!")
+          props.requestInsight() }}
+          
+          //  .then((response) => {
+          //    console.log("RESPONSE BEFORE TRANSITION: ", response)
+          //    transition(INSIGHTS)
+          //  })
+        //   } else {
+        //     transition(DENIED)
+        //   }
         
-        }}
+        // }}
 
       />
     )}
