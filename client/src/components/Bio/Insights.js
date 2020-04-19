@@ -4,7 +4,7 @@ export default function Insights(props) {
 
   return(
     <article>
-      <h3> Based on your entries, our analysis suggests that:  </h3>
+      <h1>SOME INSIGHTS: </h1>
       <p>{props.insights}</p>
       <button 
        className=""

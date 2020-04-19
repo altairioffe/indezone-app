@@ -4,9 +4,19 @@ import Profile from './Profile';
 import UserBio from './UserBio';
 import Error from './Error';
 import Insights from './Insights';
-import Status from './Loading';
 import useVisualMode from "../../hooks/useVisualMode";
+import { requestInsight}  from "../../helpers/watsonHelper";
 
+
+let sampleGoals = [
+{answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
+}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
+}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
+}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
+}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
+}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
+}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
+}];
 
   export default function Bio(props) {
 
@@ -15,22 +25,21 @@ import useVisualMode from "../../hooks/useVisualMode";
     const LOADING = "LOADING";
     const EDIT = "EDIT";
     const DENIED = "DENIED";
-    const ERROR = "ERROR";
   
     const level = 10
     const { mode, transition, back } = useVisualMode(USERBIO);
 
 
-    const loadInsight = () => {
-    //  console.log("CLICKED: "props.current, )
-        props.requestInsight(props.currentUserGoals)
-        .then(()=> {
-          transition(INSIGHTS)
-        })
-        .catch(error => transition(ERROR))
-
+    //Work in progress
+    function getUserInsights(userGoalsArray) {
+      return new Promise(resolve => { 
+      requestInsight(userGoalsArray)
+      .then((response) => {
+        console.log("RESPONSE BEFORE TRANSITION: ", response)
+        transition(INSIGHTS)
+      })
+      })
     }
-
     
     return(
 
@@ -46,15 +55,19 @@ import useVisualMode from "../../hooks/useVisualMode";
 
     {mode === USERBIO && (
       <UserBio 
-        bio={props.bio}
-        onClick={()=>  {
-          if (level > 9) {
-          loadInsight()
-          transition(LOADING)
-        } else {
-          transition(DENIED)
-        }
-        }} 
+        bio={"(Form for bio: Describe the person you want to be; i.e. I am friendly, confident, etc.)"}
+        onClick={()=> {
+         if (level > 9) { 
+           requestInsight(sampleGoals)
+           .then((response) => {
+             console.log("RESPONSE BEFORE TRANSITION: ", response)
+             transition(INSIGHTS)
+           })
+          } else {
+            transition(DENIED)
+          }
+        
+        }}
 
       />
     )}
@@ -66,15 +79,8 @@ import useVisualMode from "../../hooks/useVisualMode";
       />
     )}
 
-    {mode === ERROR && (
-      <Error 
-        message={"Unable to load insights! Make sure you are providing enough data for an analysis by writing complete sentences!"}
-        onCancel={back}
-      />
-    )}
-
     {mode === LOADING && (
-      <Status 
+      <LOADING 
         message={"Loading insights!"}
         onCancel={back}
       />
@@ -82,7 +88,7 @@ import useVisualMode from "../../hooks/useVisualMode";
 
     {mode === INSIGHTS && (
       <Insights 
-        insights={props.userInsight}
+        insights={"HERE ARE SOME INSIGHTS"}
         onCancel={back}
       />
     )}
