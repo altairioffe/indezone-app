@@ -5,18 +5,7 @@ import UserBio from './UserBio';
 import Error from './Error';
 import Insights from './Insights';
 import useVisualMode from "../../hooks/useVisualMode";
-//import { requestInsight}  from "../../helpers/watsonHelper";
 
-
-let sampleGoals = [
-{answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}, {answer: "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-}];
 
   export default function Bio(props) {
 
@@ -45,16 +34,7 @@ let sampleGoals = [
       }
 
     }
-    //Work in progress
-    // function getUserInsights(userGoalsArray) {
-    //   return new Promise(resolve => { 
-    //   requestInsight(userGoalsArray)
-    //   .then((response) => {
-    //     console.log("RESPONSE BEFORE TRANSITION: ", response)
-    //     transition(INSIGHTS)
-    //   })
-    //   })
-    // }
+
     
     return(
 
@@ -75,15 +55,6 @@ let sampleGoals = [
           loadInsight()
           transition(LOADING)
         }}
-          //  .then((response) => {
-          //    console.log("RESPONSE BEFORE TRANSITION: ", response)
-          //    transition(INSIGHTS)
-          //  })
-        //   } else {
-        //     transition(DENIED)
-        //   }
-        
-        // }}
 
       />
     )}
