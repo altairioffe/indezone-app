@@ -1,6 +1,6 @@
 import React from 'react';
 import Wall from './Wall';
-import Bio from "./Bio";
+import Bio from "./Bio/Index";
 import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
 import "./Application.scss";
