@@ -14,7 +14,7 @@ export default function Application() {
     ansQuestion,
     state
   } = useApplicationData();
-  console.log("State", state)
+  console.log("------ state.currentUser ------\n", state.currentUser)
 
 let questionsArr = state.goals.map( (goal) => {
   return {
@@ -32,7 +32,7 @@ let questionsArr = state.goals.map( (goal) => {
         users={ state.users }
         logUser={ loggedInUser }
         logoutUser={ loggedOutUser }
-        user={ state.loggedUser }
+        user={ state.currentUser }
       />
       <section className="feed">
         <hr/>

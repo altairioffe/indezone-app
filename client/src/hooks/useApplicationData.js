@@ -4,7 +4,7 @@ import {getCurrentUserGoals} from '../helpers/goalHelper';
 
 export default function useApplicationData(){
    const [state,setState] = useState({
-       loggedUser:null,
+       currentUser:null,
        userGoals:[],
        goals:[],
        biodatas:[],
@@ -56,20 +56,20 @@ export default function useApplicationData(){
       })
   }
 
-  const loggedInUser = (user) => {
+  const loggedInUser = (user_id) => {
         setState({
           ...state,
-          loggedUser:{...user}
+          currentUser:user_id
         });
-        return state.loggedUser;
+        return state.currentUser;
   }
 
     const loggedOutUser = () => {
         setState({
           ...state,
-          loggedUser:null
+          currentUser:null
         });
-        return state.loggedUser;
+        return state.currentUser;
   }
 
    return {

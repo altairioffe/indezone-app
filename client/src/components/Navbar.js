@@ -40,7 +40,8 @@ export default function Navbar(props) {
     }
     else {
       if(user.password === formInput.trim()){
-        props.logUser(user);
+        console.log(user)
+        props.logUser(user.id);
         setUser(user);
         return setLoginState(loginState + 1);
       }
@@ -70,7 +71,7 @@ export default function Navbar(props) {
       </div>
             
       <Slide direction="left" in={ loginState === 2} timeout={300}>
-        <h2>Welcome {user ? user.handle.slice(1) : "error"}</h2>
+        <h2>Welcome {user && user.handle ? user.handle.slice(1) : "error"}</h2>
       </Slide>
       <Slide direction="left" in={loginState === 0} timeout={300}>
         <TextField
