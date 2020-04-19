@@ -1,6 +1,4 @@
 import React from 'react';
-//import useApplicationData from '../hooks/useApplicationData'; //temporary comment to resolve merge conflicts
-import {getPreviousUserGoals} from '../helpers/goalHelper';
 import Wall from './Wall';
 import Bio from "./Bio/Index";
 import Navbar from "./Navbar";
@@ -9,19 +7,13 @@ import "./Application.scss";
 import useApplicationData from "../hooks/useApplicationData";
 
 export default function Application() {
-
     
   const {
     loggedInUser,
     ansQuestion,
     state
   } = useApplicationData();
-  console.log(state.loggedUser)
-  const currentUser = "6"; //temporary change 
-  
-  const previousUserGoals = getPreviousUserGoals(state.userGoals,state.goals,new Date(),currentUser);
-
-  
+    
   const questionsArr = [
     "Someone who needs me on my A-game today is...",
     "A situation that might stress me out or trip me up today could be...",
@@ -50,15 +42,11 @@ export default function Application() {
           giveAnswer={ansQuestion}
           questions={questionsArr}
         />
-        
         <hr />
         <div>
-      <Wall userGoals={previousUserGoals} userId = {currentUser}/>
+      <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>
       </div>
       </section>
-   
-    
-
-    </main>
+     </main>
   );
 }

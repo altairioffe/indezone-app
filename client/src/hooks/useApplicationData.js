@@ -1,12 +1,16 @@
 import axios from 'axios'; 
 import {useState, useEffect } from "react";
+import {getCurrentUserGoals} from '../helpers/goalHelper';
+
 export default function useApplicationData(){
    const [state,setState] = useState({
        loggedUser:null,
        userGoals:[],
        goals:[],
        biodatas:[],
-       users:[]
+       users:[],
+       currentUserGoals:[],
+       currentUser:6
    });
 
  useEffect(() => {
@@ -22,6 +26,13 @@ export default function useApplicationData(){
      })
      .catch(err => err.message);
    },[]); 
+
+  useEffect(() =>{
+    setState((state) => ({
+      ...state,
+      currentUserGoals: getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
+    }))
+  },[state.currentUser, state.userGoals]);
 
   const ansQuestion = (ans) => {
 
