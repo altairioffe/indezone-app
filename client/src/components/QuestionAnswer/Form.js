@@ -43,13 +43,13 @@ export default function Form(props){
           multiline
           fullWidth
           variant="filled"
-          onChange={(e) => setAns(e.target.value)}
+          onChange={(e) => props.setAnswer(e.target.value)}
         />
       <Button
         variant="outlined"
         color="primary"
         size="large"
-        onClick={() => submitSave(ans)}
+        onClick={() => props.addUserGoal({goal_id:props.goal_id})}
       >
       Answer
       </Button>
