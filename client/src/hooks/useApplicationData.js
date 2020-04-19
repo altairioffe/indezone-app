@@ -13,7 +13,7 @@ export default function useApplicationData(){
        currentUserInsight: ""
    });
 
-   const setInsight = insight => setState({ ...state, insight });
+   const setInsight = currentUserInsight => setState({ ...state, currentUserInsight });
 
  useEffect(() => {
      Promise.all([

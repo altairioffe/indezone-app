@@ -37,7 +37,8 @@ let sampleGoals = [
         .then(()=> {
           console.log("TRANSITIONING INSIGHTS: ", props.currentUserInsight)
           transition(INSIGHTS)
-        }) 
+        })
+        .catch(error => transition(DENIED))
         
       } else {
         transition(DENIED)
@@ -71,8 +72,8 @@ let sampleGoals = [
       <UserBio 
         bio={"(Form for bio: Describe the person you want to be; i.e. I am friendly, confident, etc.)"}
         onClick={()=>  {
-          transition(LOADING)
           loadInsight()
+          transition(LOADING)
         }}
           //  .then((response) => {
           //    console.log("RESPONSE BEFORE TRANSITION: ", response)
