@@ -8,14 +8,18 @@ import Slide from '@material-ui/core/Slide';
 
 export default function QuestionFeed(props) {
   const questionsList = 
-    props.questions.map( (question, i) => {
+    props.goals.map( (goal, i) => {
       return(
         <div>
           <Slide direction="up" in={false} >
             <AnswerQuestionPanel 
               key={i}
-              question={question}
+              question={goal.question}
               giveAnswer={props.giveAnswer}
+              setAnswer = {props.setAnswer}
+              goal_id = {goal.id}
+              addUserGoal = {props.addUserGoal}
+              
             />
           </Slide>
           <br />
