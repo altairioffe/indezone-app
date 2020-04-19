@@ -54,6 +54,7 @@ let questionsArr = state.goals.map( (goal) => {
         <QuestionList 
           giveAnswer={ansQuestion}
           questions={questionsArr}
+          currentUserId={state.currentUser}
         />
         <hr />
         <div>

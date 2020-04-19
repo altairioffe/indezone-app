@@ -17,6 +17,7 @@ export default function QuestionFeed(props) {
               question={question.question}
               suggestion={question.suggestion}
               giveAnswer={props.giveAnswer}
+              currentUserId={props.currentUserId}
             />
           </Slide>
           <br />

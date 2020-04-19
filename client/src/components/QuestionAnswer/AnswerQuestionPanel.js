@@ -35,6 +35,7 @@ export default function SimpleExpansionPanel(props) {
             giveAnswer={props.giveAnswer}
             suggestion={props.suggestion}
             id={props.key}
+            currentUserId={props.currentUserId}
           />
         </Typography>
       </ExpansionPanelDetails>

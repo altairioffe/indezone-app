@@ -27,16 +27,16 @@ export default function useApplicationData(){
      .catch(err => err.message);
    },[]); 
 
-  const ansQuestion = (ans) => {
+  const ansQuestion = (answer, user_id, goal_id) => {
 
-    let answer =  {
-        user_id:8,
-        goal_id:1,
-        answer: ans
+    let data =  {
+        user_id,
+        goal_id,
+        answer
     }
     
     return axios
-      .post(`/api/userGoals`, answer)
+      .post(`/api/userGoals`, data)
       .then( () => {
         setState({
           ...state
