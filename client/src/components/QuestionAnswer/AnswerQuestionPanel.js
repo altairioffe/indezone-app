@@ -33,6 +33,8 @@ export default function SimpleExpansionPanel(props) {
         <Typography> 
           <Form 
             giveAnswer={props.giveAnswer}
+            suggestion={props.suggestion}
+            id={props.key}
           />
         </Typography>
       </ExpansionPanelDetails>

@@ -38,8 +38,8 @@ export default function Form(props){
       <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
         <TextField
           id="filled-textarea"
-          label="Write your Answer Here"
-          placeholder="You can do it!!!"
+          label={props.suggestion}
+          placeholder={props.suggestion}
           multiline
           fullWidth
           variant="filled"
