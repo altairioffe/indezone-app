@@ -26,7 +26,8 @@ export default function Form(props){
     if(ans.trim().length === 0) {
       return; //validation
     }
-    props.giveAnswer(ans)
+    console.log(props.goalId, props.userId)
+    props.giveAnswer(ans, props.goalId, props.currentUserId)
       .then( (res) => {
         console.log("Something is happening", res)
         return;

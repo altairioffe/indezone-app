@@ -34,7 +34,7 @@ export default function SimpleExpansionPanel(props) {
           <Form 
             giveAnswer={props.giveAnswer}
             suggestion={props.suggestion}
-            id={props.key}
+            goalId={props.goalId}
             currentUserId={props.currentUserId}
           />
         </Typography>

@@ -1,45 +1,50 @@
-import axios from 'axios'; 
-import {useState, useEffect } from "react";
-import {getCurrentUserGoals} from '../helpers/goalHelper';
+import axios from 'axios';
+import { useState, useEffect } from "react";
+import { getCurrentUserGoals } from '../helpers/goalHelper';
 
-export default function useApplicationData(){
-   const [state,setState] = useState({
-       userGoals:[],
-       goals:[],
-       biodatas:[],
-       users:[],
-       currentUserGoals:[],
-       currentUser:null
-   });
+export default function useApplicationData() {
+  const [state, setState] = useState({
+    userGoals: [],
+    goals: [],
+    biodatas: [],
+    users: [],
+    currentUserGoals: [],
+    currentUser: null
+  });
 
- useEffect(() => {
-     Promise.all([
-           axios.get('/api/userGoals'),
-           axios.get('/api/goals'),
-           axios.get('/api/biodatas'),
-           axios.get('/api/users')
+  useEffect(() => {
+    Promise.all([
+      axios.get('/api/userGoals'),
+      axios.get('/api/goals'),
+      axios.get('/api/biodatas'),
+      axios.get('/api/users')
 
-     ]).then((all) => {
-           setState((state) => ({...state,userGoals: all[0].data,goals:all[1].data,biodatas:all[2].data,
-      users:all[3].data}))
-     })
-     .catch(err => err.message);
-   },[]); 
-
-   useEffect(() =>{
-     setState((state) => ({
-       ...state,
-       currentUserGoals: getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
+    ]).then((all) => {
+      setState((state) => ({
+        ...state, userGoals: all[0].data, goals: all[1].data, biodatas: all[2].data,
+        users: all[3].data
       }))
-    },[state.currentUser, state.userGoals]);
-    
-  const ansQuestion = (answer, user_id, goal_id) => {
-    let data =  {
-        user_id,
-        goal_id,
-        answer
+    })
+      .catch(err => err.message);
+  }, []);
+
+  useEffect(() => {
+    if (state.currentUser != null && state.userGoals != null) {
+      setState((state) => ({
+        ...state,
+        currentUserGoals: getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
+      }))
     }
-    
+  }, [state.currentUser, state.userGoals]);
+
+  const ansQuestion = (answer, goal_id, user_id) => {
+
+    let data = {
+      user_id,
+      goal_id,
+      answer
+    }
+
     return axios
       .post(`/api/userGoals`, data)
       .then( () => {
@@ -48,7 +53,7 @@ export default function useApplicationData(){
         });
         return;
       })
-      .catch( () => {
+      .catch(() => {
         console.log('ERROR')
         return 'error'
       })

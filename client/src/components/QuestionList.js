@@ -13,11 +13,12 @@ export default function QuestionFeed(props) {
         <div>
           <Slide direction="up" in={false} >
             <AnswerQuestionPanel 
-              key={question.id}
+              key={i}
               question={question.question}
               suggestion={question.suggestion}
               giveAnswer={props.giveAnswer}
               currentUserId={props.currentUserId}
+              goalId={question.id}
             />
           </Slide>
           <br />
