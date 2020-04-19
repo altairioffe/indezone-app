@@ -15,24 +15,19 @@ import useVisualMode from "../../hooks/useVisualMode";
     const LOADING = "LOADING";
     const EDIT = "EDIT";
     const DENIED = "DENIED";
+    const ERROR = "ERROR";
   
     const level = 10
     const { mode, transition, back } = useVisualMode(USERBIO);
 
 
     const loadInsight = () => {
-      console.log("CLICKED!")
-      if (level > 9) {
+      
         props.requestInsight()
         .then(()=> {
-          console.log("TRANSITIONING INSIGHTS: ", props.currentUserInsight)
           transition(INSIGHTS)
         })
-        .catch(error => transition(DENIED))
-        
-      } else {
-        transition(DENIED)
-      }
+        .catch(error => transition(ERROR))
 
     }
 
@@ -53,9 +48,13 @@ import useVisualMode from "../../hooks/useVisualMode";
       <UserBio 
         bio={"(Form for bio: Describe the person you want to be; i.e. I am friendly, confident, etc.)"}
         onClick={()=>  {
+          if (level > 9) {
           loadInsight()
           transition(LOADING)
-        }}
+        } else {
+          transition(DENIED)
+        }
+        }} 
 
       />
     )}
@@ -63,6 +62,13 @@ import useVisualMode from "../../hooks/useVisualMode";
     {mode === DENIED && (
       <Error 
         message={"Reach level 10 to access your insights!"}
+        onCancel={back}
+      />
+    )}
+
+    {mode === ERROR && (
+      <Error 
+        message={"Unable to load insights! Make sure you are providing enough data for an analysis by writing complete sentences!"}
         onCancel={back}
       />
     )}
