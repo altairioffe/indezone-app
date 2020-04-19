@@ -8,7 +8,7 @@ export default function Navbar(props) {
   const [loginState, setLoginState] = useState(0);
   const [loginEmail, setLoginEmail] = useState(null);
   const [loginPassword, setLoginPassword] = useState(null);
-  const [user, setUSer] = useState(props.user);
+  const [user, setUser] = useState(props.user);
   /* 
     State 0: Initial Login
       Login, Register, Email Field 
@@ -27,24 +27,37 @@ export default function Navbar(props) {
 
   // Validate password or email and adjust state accordingly
   const login = (formInput) => {
-      ([...props.users]).find((user) => {
-        if(loginState === 0){
-          return user.email === inputLoginEmail(formInput).trim() ? true : false;
-        } 
-        else {
-          if(user.password === inputLoginPassword(formInput).trim()){
-            props.logUser(user);
-            setUSer(user);
-            return true;
-          }
-          else {
-            return false;
-          }
-        }
+    console.log("Login", formInput)
+    if(loginState === 0){
+      const validate = ([...props.users]).find((user) => {
+        return user.email === formInput.trim() 
       })
-        ? setLoginState(loginState + 1) : setLoginState(loginState);
-    
-  };
+
+      if(validate){
+        setUser(validate);
+        setLoginState(loginState + 1)
+        return;       
+      } else return
+    }
+    else {
+      if(user.password === formInput.trim()){
+        console.log(formInput, user)
+        props.logUser(user);
+        setUser(user);
+        return setLoginState(loginState + 1);
+      }
+      else {
+        return setLoginState(loginState);
+      }
+    }
+  }
+  
+  const logout = () => {
+    console.log('current logged in user', user)
+    setUser(null);
+    setLoginState(0);
+    console.log('current logged in user', user)
+  }
 
   return (
     <header>
@@ -125,7 +138,7 @@ export default function Navbar(props) {
       </Slide>
       <Slide direction="left" in={loginState === 2} timeout={300}>
         <Button
-          onClick={() => setLoginState(0)}
+          onClick={() => logout()}
           variant="outlined"
           color="primary"
           size="large"

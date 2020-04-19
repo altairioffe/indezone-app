@@ -49,16 +49,35 @@ export default function useApplicationData(){
   const loggedInUser = (user) => {
     //here we set state, I have set up route if you want to set session storage or whatever, just uncomment   
 
-
     // return axios
       // .post(`/login`, answer)
       // .then( () => {
         // console.log("useApplicationData")
         setState({
-          loggedUser:{...user},
+          loggedUser:{...user}
+        });
+        console.log("loggedInUSer", state.loggedUser)
+        return state.loggedUser;
+      // })
+      // .catch( () => {
+        // console.log('ERROR')
+        // return 'error'
+      // })
+  }
+
+    const loggedOutUser = () => {
+    //here we set state, I have set up route if you want to set session storage or whatever, just uncomment   
+
+
+    // return axios
+      // .post(`/logout`, answer)
+      // .then( () => {
+        // console.log("useApplicationData")
+        setState({
+          loggedUser:null,
           ...state
         });
-        console.log("loggedInUSer", state, {...user})
+        console.log("loggedInUSer", state.loggedUser)
         return state.loggedUser;
       // })
       // .catch( () => {
@@ -69,6 +88,7 @@ export default function useApplicationData(){
 
    return {
     loggedInUser,
+    loggedOutUser,
     ansQuestion,
     state
   };
