@@ -15,9 +15,13 @@ export default function Application() {
     ansQuestion,
     state
   } = useApplicationData();
-  console.log("------ state.currentUser ------\n", state.currentUser)
+  console.log("------ state ------\n", state)
 
-let questionsArr = state.goals.map( (goal) => {
+const questions = [...state.goals]
+const shuffledQuestions = questions.sort(() => 0.5 - Math.random());
+const selectedQuestions = shuffledQuestions.slice(0, 3);
+
+let questionsArr = selectedQuestions.map( (goal) => {
   return {
     id:goal.id,
     question:goal.question,
