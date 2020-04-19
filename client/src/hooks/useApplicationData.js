@@ -45,7 +45,6 @@ export default function useApplicationData(){
     return axios
       .post(`/api/userGoals`, answer)
       .then( () => {
-        console.log("useApplicationData")
         setState({
           ...state
         });
@@ -61,14 +60,13 @@ export default function useApplicationData(){
     //here we set state, I have set up route if you want to set session storage or whatever, just uncomment   
 
     // return axios
-      // .post(`/login`, answer)
+      // .post(`/login`, user)
       // .then( () => {
         // console.log("useApplicationData")
         setState({
           ...state,
           loggedUser:{...user}
         });
-        console.log("loggedInUSer", state.loggedUser, user)
         return state.loggedUser;
       // })
       // .catch( () => {
@@ -82,7 +80,7 @@ export default function useApplicationData(){
 
 
     // return axios
-      // .post(`/logout`, answer)
+      // .post(`/logout`)
       // .then( () => {
         // console.log("useApplicationData")
         setState({

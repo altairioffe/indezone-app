@@ -10,6 +10,7 @@ export default function Application() {
     
   const {
     loggedInUser,
+    loggedOutUser,
     ansQuestion,
     state
   } = useApplicationData();
@@ -30,6 +31,7 @@ export default function Application() {
       <Navbar 
         users={ state.users }
         logUser={ loggedInUser }
+        logoutUser={ loggedOutUser }
         user={ state.loggedUser }
       />
       <section className="feed">
