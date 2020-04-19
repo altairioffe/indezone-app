@@ -10,8 +10,11 @@ export default function useApplicationData(){
        biodatas:[],
        users:[],
        currentUserGoals:[],
-       currentUser:6
+       currentUser: 8,
+       currentUserInsight: ""
    });
+
+   const setInsight = currentUserInsight => setState({ ...state, currentUserInsight });
 
  useEffect(() => {
      Promise.all([
@@ -64,7 +67,7 @@ export default function useApplicationData(){
         return state.currentUser;
   }
 
-    const loggedOutUser = () => {
+  const loggedOutUser = () => {
         setState({
           ...state,
           currentUser:null
@@ -72,10 +75,24 @@ export default function useApplicationData(){
         return state.currentUser;
   }
 
+  const requestInsight = () => {
+   return Promise.resolve(
+     axios
+       .post("/api/userInsight", {
+         body: state.currentUserGoals
+       })
+       .then(response => {
+        setInsight(response.data)
+       })
+       .catch(err => console.log(err))
+     )
+   }
+
    return {
     loggedInUser,
     loggedOutUser,
     ansQuestion,
+    requestInsight,
     state
   };
 }

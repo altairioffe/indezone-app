@@ -12,7 +12,8 @@ export default function Application() {
     loggedInUser,
     loggedOutUser,
     ansQuestion,
-    state
+    state,
+    requestInsight
   } = useApplicationData();
   console.log("------ state.currentUser ------\n", state.currentUser)
 
@@ -38,6 +39,8 @@ let questionsArr = state.goals.map( (goal) => {
         <hr/>
         <Bio 
           bio={bio}
+          requestInsight={requestInsight}
+          userInsight={state.currentUserInsight}
         />
         <hr/>
         <QuestionList 
