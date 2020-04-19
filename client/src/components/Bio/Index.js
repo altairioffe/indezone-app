@@ -4,6 +4,7 @@ import Profile from './Profile';
 import UserBio from './UserBio';
 import Error from './Error';
 import Insights from './Insights';
+import Status from './Loading';
 import useVisualMode from "../../hooks/useVisualMode";
 
 
@@ -67,7 +68,7 @@ import useVisualMode from "../../hooks/useVisualMode";
     )}
 
     {mode === LOADING && (
-      <LOADING 
+      <Status 
         message={"Loading insights!"}
         onCancel={back}
       />
