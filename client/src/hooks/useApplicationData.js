@@ -9,7 +9,7 @@ export default function useApplicationData(){
        biodatas:[],
        users:[],
        currentUserGoals:[],
-       currentUser:8,
+       currentUser: 8,
        currentUserInsight: ""
    });
 
@@ -60,14 +60,12 @@ export default function useApplicationData(){
   }
 
   const requestInsight = () => {
-    // console.log("FROM WATSON HELPER IN FRONT END BEFORE API CALL: ", state.currentUserGoals) 
    return Promise.resolve(
      axios
        .post("/api/userInsight", {
          body: state.currentUserGoals
        })
        .then(response => {
-     console.log("API CALL RESPONSE: ", response) 
         setInsight(response.data)
        })
        .catch(err => console.log(err))
