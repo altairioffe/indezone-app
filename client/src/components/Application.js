@@ -5,12 +5,15 @@ import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
 import "./Application.scss";
 import useApplicationData from "../hooks/useApplicationData";
+import {getCurrentUserGoals} from '../helpers/goalHelper';
+
 
 export default function Application() {
     
   const {
     ansQuestion,
-    state
+    state,
+    requestInsight
   } = useApplicationData();
     
   const questionsArr = [
@@ -21,9 +24,11 @@ export default function Application() {
     "The big projects I have to keep in mind that I want to take on, even if I can't act toward them today, are...",
     "I would know that today was a great success if at the end of the day I did, or felt this..."
   ];
-  
-  const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
+  //const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
 
+
+  let currentUserGoals = getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
+  console.log("USERGOALS: ", currentUserGoals)
   return (
     <main className="layout">
       <Navbar 
@@ -32,7 +37,11 @@ export default function Application() {
       <section className="feed">
         <hr/>
         <Bio 
-          bio={bio}
+          bio={"[YOUR BIO]: describe the person you want to be"}
+          level={10}
+          requestInsight={requestInsight}
+          currentUserGoals={currentUserGoals}
+          userInsight={state.currentUserInsight}
         />
         <hr/>
         <QuestionList 
@@ -41,7 +50,7 @@ export default function Application() {
         />
         <hr />
         <div>
-      <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>
+      <Wall userGoals={currentUserGoals} userId = {state.currentUser}/>
       </div>
       </section>
      </main>
