@@ -57,43 +57,19 @@ export default function useApplicationData(){
   }
 
   const loggedInUser = (user) => {
-    //here we set state, I have set up route if you want to set session storage or whatever, just uncomment   
-
-    // return axios
-      // .post(`/login`, user)
-      // .then( () => {
-        // console.log("useApplicationData")
         setState({
           ...state,
           loggedUser:{...user}
         });
         return state.loggedUser;
-      // })
-      // .catch( () => {
-        // console.log('ERROR')
-        // return 'error'
-      // })
   }
 
     const loggedOutUser = () => {
-    //here we set state, I have set up route if you want to set session storage or whatever, just uncomment   
-
-
-    // return axios
-      // .post(`/logout`)
-      // .then( () => {
-        // console.log("useApplicationData")
         setState({
           ...state,
           loggedUser:null
         });
-        console.log("loggedInUSer", state.loggedUser)
         return state.loggedUser;
-      // })
-      // .catch( () => {
-        // console.log('ERROR')
-        // return 'error'
-      // })
   }
 
    return {
