@@ -22,8 +22,8 @@ import useVisualMode from "../../hooks/useVisualMode";
 
 
     const loadInsight = () => {
-      
-        props.requestInsight()
+    //  console.log("CLICKED: "props.current, )
+        props.requestInsight(props.currentUserGoals)
         .then(()=> {
           transition(INSIGHTS)
         })
@@ -46,7 +46,7 @@ import useVisualMode from "../../hooks/useVisualMode";
 
     {mode === USERBIO && (
       <UserBio 
-        bio={"[YOUR BIO]: describe the person you want to be"}
+        bio={props.bio}
         onClick={()=>  {
           if (level > 9) {
           loadInsight()
