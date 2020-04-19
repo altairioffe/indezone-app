@@ -5,12 +5,13 @@ import  {styles}  from './WallStyles';
 import '../styles/Wall.scss';
 export default function Wall(props) {
   const userGoals = props.userGoals;
-  const userGoalsView = userGoals.map(userGoal => {
+  if (userGoals) { const userGoalsView = userGoals.map(userGoal => {
     return (
       <WallItem key={userGoal.id} createdAt={userGoal.createdAt} question={userGoal.question} answer={userGoal.answer} />
     );
   }
   );
+
 
   return (
     <div class ="timeline">
@@ -19,4 +20,9 @@ export default function Wall(props) {
       </Timeline>
     </div>
   );
+}
+else 
+return (
+<WallItem question={"you need to log in"} />
+)
 }
