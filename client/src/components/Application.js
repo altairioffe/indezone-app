@@ -1,9 +1,10 @@
 import React from 'react';
 import Wall from './Wall';
 import Bio from "./Bio/Index";
+import LogoutPrompt from "./LogoutPrompt";
 import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
-import "./Application.scss";
+import "./LogoutPrompt.scss";
 import useApplicationData from "../hooks/useApplicationData";
 import {getCurrentUserGoals} from '../helpers/goalHelper';
 
@@ -60,6 +61,12 @@ let questionsArr = state.goals.map( (goal) => {
       </div>
       </section>
       )} 
+      { state.currentUser === null && ( 
+        <div>
+          <LogoutPrompt />
+        </div> 
+      )}
+
      </main>
   );
 }
