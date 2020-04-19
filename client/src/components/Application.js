@@ -13,7 +13,7 @@ export default function Application() {
     ansQuestion,
     state
   } = useApplicationData();
-    
+  console.log(state.loggedUser)
   const questionsArr = [
     "Someone who needs me on my A-game today is...",
     "A situation that might stress me out or trip me up today could be...",

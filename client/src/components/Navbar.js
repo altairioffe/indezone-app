@@ -35,13 +35,12 @@ export default function Navbar(props) {
 
       if(validate){
         setUser(validate);
-        setLoginState(loginState + 1)
+        setLoginState(loginState + 1);
         return;       
       } else return
     }
     else {
       if(user.password === formInput.trim()){
-        console.log(formInput, user)
         props.logUser(user);
         setUser(user);
         return setLoginState(loginState + 1);

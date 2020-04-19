@@ -65,9 +65,10 @@ export default function useApplicationData(){
       // .then( () => {
         // console.log("useApplicationData")
         setState({
+          ...state,
           loggedUser:{...user}
         });
-        console.log("loggedInUSer", state.loggedUser)
+        console.log("loggedInUSer", state.loggedUser, user)
         return state.loggedUser;
       // })
       // .catch( () => {
@@ -85,8 +86,8 @@ export default function useApplicationData(){
       // .then( () => {
         // console.log("useApplicationData")
         setState({
-          loggedUser:null,
-          ...state
+          ...state,
+          loggedUser:null
         });
         console.log("loggedInUSer", state.loggedUser)
         return state.loggedUser;
