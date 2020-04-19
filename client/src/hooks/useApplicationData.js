@@ -1,6 +1,5 @@
 import axios from 'axios'; 
 import {useState, useEffect } from "react";
-import {getCurrentUserGoals} from '../helpers/goalHelper';
 
 export default function useApplicationData(){
    const [state,setState] = useState({
@@ -8,9 +7,11 @@ export default function useApplicationData(){
        goals:[],
        biodatas:[],
        users:[],
-       currentUserGoals:[],
-       currentUser:null
+       currentUser: null,
+       currentUserInsight: ""
    });
+
+   const setInsight = currentUserInsight => setState({ ...state, currentUserInsight });
 
  useEffect(() => {
      Promise.all([
@@ -25,13 +26,6 @@ export default function useApplicationData(){
      })
      .catch(err => err.message);
    },[]); 
-
-  useEffect(() =>{
-    setState((state) => ({
-      ...state,
-      currentUserGoals: getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
-    }))
-  },[state.currentUser, state.userGoals]);
 
   const ansQuestion = (ans) => {
 
@@ -71,10 +65,23 @@ export default function useApplicationData(){
         return state.currentUser;
   }
 
+  const requestInsight = (currentUserGoals) => {
+   return Promise.resolve(
+     axios
+       .post("/api/userInsight", {
+         body: currentUserGoals
+       })
+       .then(response => {
+        setInsight(response.data)
+       })
+       .catch(err => console.log(err))
+     )
+   }
    return {
     loggedInUser,
     loggedOutUser,
     ansQuestion,
+    requestInsight,
     state
   };
 }

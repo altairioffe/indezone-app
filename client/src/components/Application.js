@@ -5,6 +5,8 @@ import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
 import "./Application.scss";
 import useApplicationData from "../hooks/useApplicationData";
+import {getCurrentUserGoals} from '../helpers/goalHelper';
+
 
 export default function Application() {
     
@@ -12,7 +14,8 @@ export default function Application() {
     loggedInUser,
     loggedOutUser,
     ansQuestion,
-    state
+    state,
+    requestInsight
   } = useApplicationData();
   console.log("------ state.currentUser ------\n", state.currentUser)
 
@@ -26,6 +29,8 @@ let questionsArr = state.goals.map( (goal) => {
   
   const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
 
+  let currentUserGoals = getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
+  console.log("USERGOALS: ", currentUserGoals)
   return (
     <main className="layout">
       <Navbar 
@@ -38,7 +43,11 @@ let questionsArr = state.goals.map( (goal) => {
       <section className="feed">
         <hr/>
         <Bio 
-          bio={bio}
+          bio={"[YOUR BIO]: describe the person you want to be"}
+          level={10}
+          requestInsight={requestInsight}
+          currentUserGoals={currentUserGoals}
+          userInsight={state.currentUserInsight}
         />
         <hr/>
         <QuestionList 
@@ -47,7 +56,7 @@ let questionsArr = state.goals.map( (goal) => {
         />
         <hr />
         <div>
-      <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>
+      <Wall userGoals={currentUserGoals} userId = {state.currentUser}/>
       </div>
       </section>
       )} 
