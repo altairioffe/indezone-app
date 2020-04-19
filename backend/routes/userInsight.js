@@ -21,8 +21,8 @@ requestedGoalsArray.forEach(goalObj => {
   goalsArray.push(formattedParam)
 })
 // DEBUGGING :
-console.log("after backend hit")
-console.log("FORMATED goalsArray ARRAY: ", goalsArray)
+//console.log("after backend hit")
+//console.log("FORMATED goalsArray ARRAY: ", goalsArray)
 let goalParams= {};
 goalParams.contentItems = goalsArray
 
@@ -41,7 +41,7 @@ let params = {
 // Execute API call using formatted user goal parameters, return paragraph response
 getInsights(params)
   .then(insight => {
-    //console.log("Response From backend POST ROUTE: ", insight)
+    console.log("Response From backend POST ROUTE: ", insight)
     res.send(insight)
   })
   .catch(err => console.log("ERROR: ", err))
