@@ -46,7 +46,7 @@ import useVisualMode from "../../hooks/useVisualMode";
 
     {mode === USERBIO && (
       <UserBio 
-        bio={"(Form for bio: Describe the person you want to be; i.e. I am friendly, confident, etc.)"}
+        bio={"[YOUR BIO]: describe the person you want to be"}
         onClick={()=>  {
           if (level > 9) {
           loadInsight()
