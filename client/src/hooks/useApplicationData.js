@@ -8,8 +8,8 @@ export default function useApplicationData(){
        goals:[],
        biodatas:[],
        users:[],
-       currentUserGoals:[],
-       currentUser: 8,
+      //  currentUserGoals:[],
+       currentUser: null,
        currentUserInsight: ""
    });
 
@@ -29,12 +29,12 @@ export default function useApplicationData(){
      .catch(err => err.message);
    },[]); 
 
-  useEffect(() =>{
-    setState((state) => ({
-      ...state,
-      currentUserGoals: getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
-    }))
-  },[state.currentUser, state.userGoals]);
+  // useEffect(() =>{
+  //   setState((state) => ({
+  //     ...state,
+  //     currentUserGoals: getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
+  //   }))
+  // },[state.currentUser, state.userGoals]);
 
   const ansQuestion = (ans) => {
 
@@ -59,11 +59,11 @@ export default function useApplicationData(){
       })
   }
 
-  const requestInsight = () => {
+  const requestInsight = (currentUserGoals) => {
    return Promise.resolve(
      axios
        .post("/api/userInsight", {
-         body: state.currentUserGoals
+         body: currentUserGoals
        })
        .then(response => {
         setInsight(response.data)
