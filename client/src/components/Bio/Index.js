@@ -30,6 +30,20 @@ let sampleGoals = [
     const { mode, transition, back } = useVisualMode(USERBIO);
 
 
+    const loadInsight = () => {
+      console.log("CLICKED!")
+      if (level > 9) {
+        props.requestInsight()
+        .then(()=> {
+          console.log("TRANSITIONING INSIGHTS: ", props.currentUserInsight)
+          transition(INSIGHTS)
+        }) 
+        
+      } else {
+        transition(DENIED)
+      }
+
+    }
     //Work in progress
     // function getUserInsights(userGoalsArray) {
     //   return new Promise(resolve => { 
@@ -57,9 +71,9 @@ let sampleGoals = [
       <UserBio 
         bio={"(Form for bio: Describe the person you want to be; i.e. I am friendly, confident, etc.)"}
         onClick={()=>  {
-          console.log("CLICKED!")
-          props.requestInsight() }}
-          
+          transition(LOADING)
+          loadInsight()
+        }}
           //  .then((response) => {
           //    console.log("RESPONSE BEFORE TRANSITION: ", response)
           //    transition(INSIGHTS)
@@ -89,7 +103,7 @@ let sampleGoals = [
 
     {mode === INSIGHTS && (
       <Insights 
-        insights={"HERE ARE SOME INSIGHTS"}
+        insights={props.userInsight}
         onCancel={back}
       />
     )}

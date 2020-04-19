@@ -35,6 +35,7 @@ export default function Application() {
         <Bio 
           bio={bio}
           requestInsight={requestInsight}
+          userInsight={state.currentUserInsight}
         />
         <hr/>
         <QuestionList 

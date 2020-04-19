@@ -75,7 +75,7 @@ export default function useApplicationData(){
       // setInsight(response)
       //console.log("TYPE OF :", typeof response)
       //let words = "RESPONSE"
-        setInsight("HELLO")
+        setInsight(response.data)
        })
        .catch(err => console.log(err))
      )
