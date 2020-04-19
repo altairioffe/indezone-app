@@ -34,6 +34,7 @@ let questionsArr = state.goals.map( (goal) => {
         logoutUser={ loggedOutUser }
         user={ state.currentUser }
       />
+      {state.currentUser && (
       <section className="feed">
         <hr/>
         <Bio 
@@ -49,6 +50,7 @@ let questionsArr = state.goals.map( (goal) => {
       <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>
       </div>
       </section>
+      )} 
      </main>
   );
 }

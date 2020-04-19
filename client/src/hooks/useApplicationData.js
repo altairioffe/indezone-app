@@ -4,13 +4,12 @@ import {getCurrentUserGoals} from '../helpers/goalHelper';
 
 export default function useApplicationData(){
    const [state,setState] = useState({
-       currentUser:null,
        userGoals:[],
        goals:[],
        biodatas:[],
        users:[],
        currentUserGoals:[],
-       currentUser:6
+       currentUser:null
    });
 
  useEffect(() => {
