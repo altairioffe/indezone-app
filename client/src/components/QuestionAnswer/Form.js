@@ -5,34 +5,7 @@ import TextField from '@material-ui/core/TextField';
 
 export default function Form(props){
   
-  // below we update state
-  const [ans, setAns] = useState() 
-  
-  //  cancel the form so form goes away
-  const reset = () => {
-    setAns(null);
-  } 
-  const cancel = () => {
-    reset();
-    // props.onCancel();
-  }
-  
-  const getAns = () => {
-    console.log("getAns", ans)
-    return ans;
-  }
-  
-  const submitSave = (ans) => {
-    if(ans.trim().length === 0) {
-      return; //validation
-    }
-    console.log(props.goalId, props.userId)
-    props.giveAnswer(ans, props.goalId, props.currentUserId)
-      .then( (res) => {
-        console.log("Something is happening", res)
-        return;
-      })
-  }
+  const [ans, setAns] = useState();
 
   return (
     <main >
