@@ -57,15 +57,15 @@ module.exports = {
     },
     {
       id:8,
-      question: 'The big projects I have to keep in mind that I want to take on, even if I can\'t act toward them today, are...',
-      suggestion: 'Think BIG, you can do it!',
+      question: 'The big projects that I want to take on, even if I can\'t act toward them today, are...',
+      suggestion: 'Think BIG! What might help you along the way?',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     },
     {
       id:9,
-      question: 'I would know that today was a great success if at the end of the day I did, or felt this...',
-      suggestion: 'What did previous successful days look like?',
+      question: 'What does a great day look like to you?',
+      suggestion: 'Spending time outside, a spontaneous adventure... describe what it means to you',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     },
@@ -93,7 +93,7 @@ module.exports = {
     {
       id:13,
       question: 'How would you want someone to describe you after first meeting you?',
-      suggestion: 'What kind of impression to do you want to make?',
+      suggestion: 'What kind of impression to do you want to make? How can you make it?',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     },
