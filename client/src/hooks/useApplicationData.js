@@ -37,18 +37,17 @@ export default function useApplicationData() {
     }
   }, [state.currentUser, state.userGoals]);
 
-  const ansQuestion = (ans) => {
+  const ansQuestion = (answer, goal_id, user_id) => {
 
-    let answer = {
-      user_id: 8,
-      goal_id: 1,
-      answer: ans
+    let data = {
+      user_id,
+      goal_id,
+      answer
     }
 
     return axios
-      .post(`/api/userGoals`, answer)
-      .then(() => {
-        console.log("useApplicationData")
+      .post(`/api/userGoals`, data)
+      .then( () => {
         setState({
           ...state
         });
@@ -60,8 +59,39 @@ export default function useApplicationData() {
       })
   }
 
-  return {
+  const loggedInUser = (user_id) => {
+        setState({
+          ...state,
+          currentUser:user_id
+        });
+        return state.currentUser;
+  }
+
+    const loggedOutUser = () => {
+        setState({
+          ...state,
+          currentUser:null
+        });
+        return state.currentUser;
+  }
+
+/*   const requestInsight = (currentUserGoals) => {
+   return Promise.resolve(
+     axios
+       .post("/api/userInsight", {
+         body: currentUserGoals
+       })
+       .then(response => {
+        setInsight(response.data)
+       })
+       .catch(err => console.log(err))
+     )
+   } */
+   return {
+    loggedInUser,
+    loggedOutUser,
     ansQuestion,
+    // requestInsight,
     state
   };
 }
