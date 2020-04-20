@@ -18,8 +18,8 @@ export default function Application() {
   console.log("------ state ------\n", state)
 
 const questions = [...state.goals]
-const shuffledQuestions = questions.sort(() => 0.5 - Math.random());
-const selectedQuestions = shuffledQuestions.slice(0, 3);
+let shuffledQuestions = questions.sort(() => 0.5 - Math.random());
+let selectedQuestions = shuffledQuestions.slice(0, 3); //second is level
 
 let questionsArr = selectedQuestions.map( (goal) => {
   return {
