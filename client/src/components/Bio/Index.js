@@ -48,8 +48,8 @@ import useVisualMode from "../../hooks/useVisualMode";
         bio={props.bio}
         onClick={()=>  {
           if (level > 9) {
-          loadInsight()
           transition(LOADING)
+          loadInsight()
         } else {
           transition(DENIED)
         }
@@ -82,7 +82,7 @@ import useVisualMode from "../../hooks/useVisualMode";
     {mode === INSIGHTS && (
       <Insights 
         insights={props.userInsight}
-        onCancel={back}
+        onCancel={()=>{transition(USERBIO)}}
       />
     )}
     
