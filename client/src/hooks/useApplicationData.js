@@ -9,7 +9,7 @@ export default function useApplicationData() {
     biodatas: [],
     users: [],
     currentUserGoals: [],
-    currentUser: 8
+    currentUser: null
   });
 
   useEffect(() => {
