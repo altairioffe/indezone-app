@@ -18,7 +18,6 @@ export default function UserBio(props){
       </div>
       <hr className="seperator"/>
       <section className="prompt__actions card_right">
-          <h4 className="">{props.username}</h4>
           <h4 className="">Level: {props.level}</h4>
       </section>
     </aside>

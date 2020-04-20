@@ -37,7 +37,6 @@ import useVisualMode from "../../hooks/useVisualMode";
     <main>
     <section>
       <Profile 
-      username={"Linda"}
       level={level}
       />
     </section>
