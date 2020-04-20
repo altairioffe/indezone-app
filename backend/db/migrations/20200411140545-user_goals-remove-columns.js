@@ -5,11 +5,11 @@ module.exports = {
     return Promise.all([
       queryInterface.removeColumn(
         'user_goals',
-        'createdAt'
+        'created_at'
       ),
       queryInterface.removeColumn(
         'user_goals',
-        'updatedAt'
+        'updated_at'
       ),
       queryInterface.addColumn(
         'user_goals',
