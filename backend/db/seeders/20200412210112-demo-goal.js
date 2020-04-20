@@ -8,21 +8,21 @@ module.exports = {
 
     return queryInterface.bulkInsert('goals', [{
       id:1,
-      question: 'What is your main goal for today today?',
+      question: 'What is your main goal for today?',
       suggestion: 'Describe why this goal matters to you',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     },
     {
       id:2,
-      question: 'If one word could describe ther person I want to be today...',
+      question: 'If one word could describe the person I want to be today...',
       suggestion: 'Pick a word, and go in detail about why that matters to you',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     },
     {
       id:3,
-      question: 'Who can you reach out to today for mentorship? With what?',
+      question: 'Who can I reach out to today for mentorship? With what?',
       suggestion: 'Stand on the shoulders of giants (or just friends/colleagues). How can you leverage them to achieve more?',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
