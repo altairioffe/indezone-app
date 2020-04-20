@@ -10,7 +10,8 @@ export default function useApplicationData() {
     users: [],
     currentUserGoals: [],
     currentUser: null,
-    answer: ""
+    answer: "",
+    currentUserInsight: ""
 
   });
 
@@ -120,7 +121,9 @@ const loggedOutUser = () => {
 
 
 
-/*   const requestInsight = (currentUserGoals) => {
+  const setInsight = currentUserInsight => setState({ ...state, currentUserInsight });
+  
+  const requestInsight = (currentUserGoals) => {
    return Promise.resolve(
      axios
        .post("/api/userInsight", {
@@ -131,14 +134,15 @@ const loggedOutUser = () => {
        })
        .catch(err => console.log(err))
      )
-   } */  
+   }  
 return {
     ansQuestion,
     state,
     loggedInUser,
     loggedOutUser,
     setAnswer,
-    addUserGoal
+    addUserGoal,
+    requestInsight
 
   };
 }

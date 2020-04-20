@@ -14,6 +14,7 @@ export default function Application() {
     loggedOutUser,
     ansQuestion,
     state,
+    requestInsight,
     addUserGoal,
     setAnswer
   } = useApplicationData();
@@ -48,7 +49,11 @@ let questionsArr = selectedQuestions.map( (goal) => {
       <section className="feed">
         <hr/>
         <Bio 
-          bio={bio}
+          bio={"[YOUR BIO]: describe the person you want to be"}
+          level={10}
+          requestInsight={requestInsight}
+          currentUserGoals={state.currentUserGoals}
+          userInsight={state.currentUserInsight}
         />
         <hr/>
         <QuestionList 
