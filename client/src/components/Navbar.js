@@ -8,7 +8,7 @@ export default function Navbar(props) {
   const [loginState, setLoginState] = useState(0);
   const [loginEmail, setLoginEmail] = useState(null);
   const [loginPassword, setLoginPassword] = useState(null);
-
+  const [user, setUser] = useState(props.user);
   /* 
     State 0: Initial Login
       Login, Register, Email Field 
@@ -27,18 +27,35 @@ export default function Navbar(props) {
 
   // Validate password or email and adjust state accordingly
   const login = (formInput) => {
-      // const currentLoginState = loginState  
-      ([...props.users]).find((user) => {
-        console.log(formInput, user.email, user);
-        if(loginState === 0){
-          return user.email === inputLoginEmail(formInput).trim() ? true : false;
-        } else {
-          return user.email === inputLoginPassword(formInput).trim() ? true : false;
-        }
+    if(loginState === 0){
+      const validate = ([...props.users]).find((user) => {
+        return user.email === formInput.trim() 
       })
-        ? setLoginState(loginState + 1) : console.log("error");
-    
-  };
+
+      if(validate){
+        setUser(validate);
+        setLoginState(loginState + 1);
+        return;       
+      } else return
+    }
+    else {
+      if(user.password === formInput.trim()){
+        console.log(user)
+        props.logUser(user.id);
+        setUser(user);
+        return setLoginState(loginState + 1);
+      }
+      else {
+        return setLoginState(loginState);
+      }
+    }
+  }
+  
+  const logout = () => {
+    setUser(null);
+    setLoginState(0);
+    props.logoutUser();
+  }
 
   return (
     <header>
@@ -54,7 +71,7 @@ export default function Navbar(props) {
       </div>
             
       <Slide direction="left" in={ loginState === 2} timeout={300}>
-        <h2>Welcome {"loggedinUser"}</h2>
+        <h2>Welcome {user && user.handle ? user.handle.slice(1) : "error"}</h2>
       </Slide>
       <Slide direction="left" in={loginState === 0} timeout={300}>
         <TextField
@@ -106,7 +123,10 @@ export default function Navbar(props) {
       </Slide>
       <Slide direction="left" in={loginState === 0 || loginState === 1} timeout={300}>
         <Button
-          onClick={() => console.log(login(loginEmail))}
+          onClick={() => { loginState === 0 ? 
+            login(loginEmail) : login(loginPassword)
+          }
+        }
           variant="outlined"
           color="primary"
           size="large"
@@ -116,7 +136,7 @@ export default function Navbar(props) {
       </Slide>
       <Slide direction="left" in={loginState === 2} timeout={300}>
         <Button
-          onClick={() => setLoginState(0)}
+          onClick={() => logout()}
           variant="outlined"
           color="primary"
           size="large"

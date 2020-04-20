@@ -1,27 +1,50 @@
 import React from 'react';
 import Wall from './Wall';
 import Bio from "./Bio/Index";
+import LogoutPrompt from "./LogoutPrompt";
 import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
-import "./Application.scss";
+import "./LogoutPrompt.scss";
 import useApplicationData from "../hooks/useApplicationData";
 
 export default function Application() {
     
   const {
+    loggedInUser,
+    loggedOutUser,
     ansQuestion,
     state,
     addUserGoal,
     setAnswer
   } = useApplicationData();
-    
-  const questionsArr = state.goals.map((goal) => goal.question);
+  console.log("------ state ------\n", state)
+
+//const questionsArr = state.goals.map((goal) => goal.question);
   const bio = state.biodatas.filter((biodata) => biodata.user_id === state.currentUser);
+
+const questions = [...state.goals]
+let shuffledQuestions = questions.sort(() => 0.5 - Math.random());
+let selectedQuestions = shuffledQuestions.slice(0, 3); //second is level
+
+let questionsArr = selectedQuestions.map( (goal) => {
+  return {
+    id:goal.id,
+    question:goal.question,
+    suggestion:goal.suggestion
+  }
+}) 
+  
+  //const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
+
   return (
     <main className="layout">
       <Navbar 
         users={ state.users }
+        logUser={ loggedInUser }
+        logoutUser={ loggedOutUser }
+        user={ state.currentUser }
       />
+      {state.currentUser && (
       <section className="feed">
         <hr/>
         <Bio 
@@ -34,12 +57,20 @@ export default function Application() {
           setAnswer = {setAnswer}
           addUserGoal = {addUserGoal}
           goals = {state.goals}
+          currentUserId={state.currentUser}
         />
         <hr />
         <div>
       <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>
       </div>
       </section>
+      )} 
+      { state.currentUser === null && ( 
+        <div>
+          <LogoutPrompt />
+        </div> 
+      )}
+
      </main>
   );
 }

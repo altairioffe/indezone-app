@@ -35,6 +35,10 @@ export default function SimpleExpansionPanel(props) {
             setAnswer = {props.setAnswer}
             goal_id = {props.goal_id}
             addUserGoal = {props.addUserGoal}
+            giveAnswer={props.giveAnswer}
+            suggestion={props.suggestion}
+            currentUserId={props.currentUserId}
+            goalId={props.goalId}
           />
         </Typography>
       </ExpansionPanelDetails>

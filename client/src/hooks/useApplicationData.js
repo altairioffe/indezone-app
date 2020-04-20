@@ -9,7 +9,7 @@ export default function useApplicationData() {
     biodatas: [],
     users: [],
     currentUserGoals: [],
-    currentUser: 6,
+    currentUser: null,
     answer: ""
 
   });
@@ -33,13 +33,13 @@ export default function useApplicationData() {
 
   // Set current user goals 
   useEffect(() => {
-    
+    if (state.currentUser != null && state.userGoals != null) {
     setState((state) => ({
       ...state,
       currentUserGoals: getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
     }))
     console.log('currenyUserGoals', state.currentUserGoals);
- 
+  }
   }, [state.currentUser, state.userGoals]);
 
 
@@ -79,19 +79,18 @@ export default function useApplicationData() {
 
   };
 
+  const ansQuestion = (answer, goal_id, user_id) => {
 
-  const ansQuestion = (ans) => {
-
-    let answer = {
-      user_id: 8,
-      goal_id: 1,
-      answer: ans
+    let data = {
+      user_id,
+      goal_id,
+      answer
     }
 
     return axios
-      .post(`/api/userGoals`, answer)
-      .then(() => {
-        console.log("useApplicationData")
+      .post(`/api/userGoals`, data)
+      .then( () => {
+
         setState({
           ...state
         });
@@ -103,9 +102,41 @@ export default function useApplicationData() {
       })
   }
 
-  return {
+  const loggedInUser = (user_id) => {
+    setState({
+      ...state,
+      currentUser:user_id
+    });
+    return state.currentUser;
+}
+
+const loggedOutUser = () => {
+    setState({
+      ...state,
+      currentUser:null
+    });
+    return state.currentUser;
+}
+
+
+
+/*   const requestInsight = (currentUserGoals) => {
+   return Promise.resolve(
+     axios
+       .post("/api/userInsight", {
+         body: currentUserGoals
+       })
+       .then(response => {
+        setInsight(response.data)
+       })
+       .catch(err => console.log(err))
+     )
+   } */  
+return {
     ansQuestion,
     state,
+    loggedInUser,
+    loggedOutUser,
     setAnswer,
     addUserGoal
 

@@ -15,10 +15,12 @@ export default function QuestionFeed(props) {
             <AnswerQuestionPanel 
               key={i}
               question={goal.question}
+              suggestion={goal.suggestion}
               giveAnswer={props.giveAnswer}
               setAnswer = {props.setAnswer}
               goal_id = {goal.id}
               addUserGoal = {props.addUserGoal}
+              currentUserId={props.currentUserId}
               
             />
           </Slide>
@@ -35,3 +37,10 @@ export default function QuestionFeed(props) {
     </section>
   )
 }
+
+{/* 
+question={question.question}
+              suggestion={question.suggestion}
+              giveAnswer={props.giveAnswer}
+              currentUserId={props.currentUserId}
+              goalId={question.id} */}
