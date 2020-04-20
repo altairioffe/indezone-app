@@ -1,6 +1,6 @@
 import "./QuestionAnswer/styles.scss";
 
-import React from "react";
+import React, { useState } from "react"
 
 import AnswerQuestionPanel from "./QuestionAnswer/AnswerQuestionPanel"
 
@@ -9,8 +9,11 @@ import Slide from '@material-ui/core/Slide';
 export default function QuestionFeed(props) {
   const questionsList = 
     props.goals.map( (goal, i) => {
+      console.log(goal.id)
+      console.log(props.answeredGoals.find( (id) => id === goal.id))
       return(
         <div>
+      { !props.answeredGoals.find( (id) => id === goal.id) && ( 
           <Slide direction="up" in={false} >
             <AnswerQuestionPanel 
               key={i}
@@ -21,9 +24,9 @@ export default function QuestionFeed(props) {
               goal_id = {goal.id}
               addUserGoal = {props.addUserGoal}
               currentUserId={props.currentUserId}
-              
             />
           </Slide>
+      )}
           <br />
         </div>
       )

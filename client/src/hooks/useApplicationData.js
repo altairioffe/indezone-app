@@ -12,7 +12,6 @@ export default function useApplicationData() {
     currentUser: null,
     answer: "",
     currentUserInsight: ""
-
   });
 
   useEffect(() => {
@@ -93,9 +92,10 @@ export default function useApplicationData() {
       .then( () => {
 
         setState({
-          ...state
+          ...state,
+          userGoals:[{...data}, ...state.userGoals]
         });
-        return;
+        return goal_id;
       })
       .catch(() => {
         console.log('ERROR')
