@@ -4,7 +4,7 @@ export default function Insights(props) {
 
   return(
     <article>
-      <h1>SOME INSIGHTS: </h1>
+      <h4> Here is an analysis of your entries: </h4>
       <p>{props.insights}</p>
       <button 
        className=""

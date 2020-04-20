@@ -32,10 +32,13 @@ export default function SimpleExpansionPanel(props) {
       <ExpansionPanelDetails >
         <Typography> 
           <Form 
+            setAnswer = {props.setAnswer}
+            goal_id = {props.goal_id}
+            addUserGoal = {props.addUserGoal}
             giveAnswer={props.giveAnswer}
             suggestion={props.suggestion}
-            goalId={props.goalId}
             currentUserId={props.currentUserId}
+            goalId={props.goalId}
           />
         </Typography>
       </ExpansionPanelDetails>
