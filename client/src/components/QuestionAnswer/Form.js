@@ -26,7 +26,8 @@ export default function Form(props){
     if(ans.trim().length === 0) {
       return; //validation
     }
-    props.giveAnswer(ans)
+    console.log(props.goalId, props.userId)
+    props.giveAnswer(ans, props.goalId, props.currentUserId)
       .then( (res) => {
         console.log("Something is happening", res)
         return;
@@ -38,8 +39,8 @@ export default function Form(props){
       <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
         <TextField
           id="filled-textarea"
-          label="Write your Answer Here"
-          placeholder="You can do it!!!"
+          label={props.suggestion}
+          placeholder={props.suggestion}
           multiline
           fullWidth
           variant="filled"
