@@ -9,7 +9,10 @@ export default function useApplicationData() {
     biodatas: [],
     users: [],
     currentUserGoals: [],
-    currentUser: null
+    currentUser: null,
+    answer: "",
+    currentUserInsight: ""
+
   });
 
   useEffect(() => {
@@ -28,14 +31,54 @@ export default function useApplicationData() {
       .catch(err => err.message);
   }, []);
 
+
+  // Set current user goals 
   useEffect(() => {
     if (state.currentUser != null && state.userGoals != null) {
-      setState((state) => ({
-        ...state,
-        currentUserGoals: getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
-      }))
-    }
+    setState((state) => ({
+      ...state,
+      currentUserGoals: getCurrentUserGoals(state.userGoals, state.goals, state.currentUser)
+    }))
+    console.log('currenyUserGoals', state.currentUserGoals);
+  }
   }, [state.currentUser, state.userGoals]);
+
+
+  // set Answer
+  const setAnswer = function (ans) {
+    setState((state) => ({
+      ...state,
+      answer: ans
+    })
+    );
+    console.log("answer in state", state.answer);
+  };
+
+
+  // Adding new goal 
+  const addUserGoal = function (goal) {
+    goal.user_id = state.currentUser;
+    goal.answer = state.answer;
+    const goalId = goal.id;
+    axios
+      .post(`/api/userGoals`, goal)
+      .then((result) => {
+        const newUserGoals = [
+          ...state.userGoals,
+          result.data
+        ];
+
+     
+        setState((state) => ({
+          ...state,
+          userGoals: newUserGoals
+          
+        }));
+      }
+      )
+      .catch((err) => console.log("error"))
+
+  };
 
   const ansQuestion = (answer, goal_id, user_id) => {
 
@@ -48,6 +91,7 @@ export default function useApplicationData() {
     return axios
       .post(`/api/userGoals`, data)
       .then( () => {
+
         setState({
           ...state
         });
@@ -60,22 +104,26 @@ export default function useApplicationData() {
   }
 
   const loggedInUser = (user_id) => {
-        setState({
-          ...state,
-          currentUser:user_id
-        });
-        return state.currentUser;
-  }
+    setState({
+      ...state,
+      currentUser:user_id
+    });
+    return state.currentUser;
+}
 
-    const loggedOutUser = () => {
-        setState({
-          ...state,
-          currentUser:null
-        });
-        return state.currentUser;
-  }
+const loggedOutUser = () => {
+    setState({
+      ...state,
+      currentUser:null
+    });
+    return state.currentUser;
+}
 
-/*   const requestInsight = (currentUserGoals) => {
+
+
+  const setInsight = currentUserInsight => setState({ ...state, currentUserInsight });
+  
+  const requestInsight = (currentUserGoals) => {
    return Promise.resolve(
      axios
        .post("/api/userInsight", {
@@ -86,12 +134,15 @@ export default function useApplicationData() {
        })
        .catch(err => console.log(err))
      )
-   } */
-   return {
+   }  
+return {
+    ansQuestion,
+    state,
     loggedInUser,
     loggedOutUser,
-    ansQuestion,
-    // requestInsight,
-    state
+    setAnswer,
+    addUserGoal,
+    requestInsight
+
   };
 }
