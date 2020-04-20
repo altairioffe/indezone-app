@@ -2,22 +2,13 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return Promise.all([
-    queryInterface.removeColumn(
+    
+    return queryInterface.removeColumn(
       'user_goals',
       'answer'
-    ),
-   
-    queryInterface.addColumn(
-      'user_goals',
-      'answer',
-      {
-        type: Sequelize.TEXT
-        
-      }
     )
-    
-  ]);
+      
+
   },
 
   down: (queryInterface, Sequelize) => {

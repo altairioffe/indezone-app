@@ -2,12 +2,14 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    
-      return queryInterface.removeColumn(
-        'user_goals',
-        'created_at'
-      );
-    
+    return queryInterface.addColumn(
+      'biodata',
+      'text',
+      {
+        type: Sequelize.TEXT
+        
+      }
+    );
   },
 
   down: (queryInterface, Sequelize) => {
