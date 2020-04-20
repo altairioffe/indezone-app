@@ -8,24 +8,11 @@ export default function Form(props){
   // below we update state
   const [ans, setAns] = useState() 
   
-  //  cancel the form so form goes away
-  const reset = () => {
-    setAns(null);
-  } 
-  const cancel = () => {
-    reset();
-    // props.onCancel();
-  }
-  
-  const getAns = () => {
-    console.log("getAns", ans)
-    return ans;
-  }
-  
   const submitSave = (ans) => {
     if(ans.trim().length === 0) {
       return; //validation
     }
+    setAns(ans);
     console.log(props.goalId, props.userId)
     props.giveAnswer(ans, props.goalId, props.currentUserId)
       .then( (res) => {
@@ -44,7 +31,7 @@ export default function Form(props){
           multiline
           fullWidth
           variant="filled"
-          onChange={(e) => props.setAnswer(e.target.value)}
+          onChange={(e) => props.submitSave(e.target.value)}
         />
       <Button
         variant="outlined"

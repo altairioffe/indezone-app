@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import QuestionList from "./QuestionList";
 import "./LogoutPrompt.scss";
 import useApplicationData from "../hooks/useApplicationData";
+import {answeredGoals} from "../helpers/filterbyToday"
 
 export default function Application() {
     
@@ -26,7 +27,6 @@ export default function Application() {
 const questions = [...state.goals]
 let shuffledQuestions = questions.sort(() => 0.5 - Math.random());
 let selectedQuestions = shuffledQuestions.slice(0, 3); //second is level
-
 let questionsArr = selectedQuestions.map( (goal) => {
   return {
     id:goal.id,
@@ -35,6 +35,7 @@ let questionsArr = selectedQuestions.map( (goal) => {
   }
 }) 
   
+console.log(answeredGoals(state.userGoals))
   //const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
 
   return (
