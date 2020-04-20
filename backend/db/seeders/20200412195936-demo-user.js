@@ -43,7 +43,7 @@ module.exports = {
       handle: '@kim',
       email: 'kim@gmail.com',
       password:'kim',
-      points: 250,
+      points: 1,
       journalNo: 1004,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()

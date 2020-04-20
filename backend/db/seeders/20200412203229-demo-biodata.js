@@ -17,7 +17,7 @@ module.exports = {
     {
       id:2,
       name: 'Ann',
-      text: 'Software Engineer',
+      text: '',
       user_id: 7,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
