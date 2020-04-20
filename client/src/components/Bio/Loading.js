@@ -5,7 +5,7 @@ export default function Status(props) {
     <main className="">
       <img
         className=""
-        src="images/status.png"
+        src="images/loading-resize.gif"
         alt="Loading"
       />
       <h1 className="">{props.message}</h1>
