@@ -5,21 +5,7 @@ import TextField from '@material-ui/core/TextField';
 
 export default function Form(props){
   
-  // below we update state
-  const [ans, setAns] = useState() 
-  
-  const submitSave = (ans) => {
-    if(ans.trim().length === 0) {
-      return; //validation
-    }
-    setAns(ans);
-    console.log(props.goalId, props.userId)
-    props.giveAnswer(ans, props.goalId, props.currentUserId)
-      .then( (res) => {
-        console.log("Something is happening", res)
-        return;
-      })
-  }
+  const [ans, setAns] = useState();
 
   return (
     <main >
@@ -31,7 +17,7 @@ export default function Form(props){
           multiline
           fullWidth
           variant="filled"
-          onChange={(e) => props.submitSave(e.target.value)}
+          onChange={(e) => props.setAnswer(e.target.value)}
         />
       <Button
         variant="outlined"

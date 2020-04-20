@@ -64,6 +64,7 @@ console.log(answeredGoals(state.userGoals))
           addUserGoal = {addUserGoal}
           goals = {state.goals}
           currentUserId={state.currentUser}
+          answeredGoals={answeredGoals(state.userGoals)}
         />
         <hr />
         <div>
