@@ -40,7 +40,7 @@ console.log(answeredGoals(state.userGoals))
   //const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
 
   return (
-    <main className="layout">
+    <Container className="layout">
       
     <Navbar 
       users={ state.users }
@@ -82,6 +82,6 @@ console.log(answeredGoals(state.userGoals))
         </div> 
       )}
 
-     </main>
+     </Container>
   );
 }
