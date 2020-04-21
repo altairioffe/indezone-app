@@ -53,7 +53,7 @@ console.log(answeredGoals(state.userGoals))
 
       {state.currentUser && (
       <section className="feed">
-        <Divider />
+        <br />
         <Bio 
           bio={"[YOUR BIO]: describe the person you want to be"}
           
@@ -72,7 +72,7 @@ console.log(answeredGoals(state.userGoals))
           currentUserId={state.currentUser}
           answeredGoals={answeredGoals(state.userGoals)}
         />
-        <Divider />
+        <hr />
         <div>
       <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>
       </div>
