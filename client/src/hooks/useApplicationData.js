@@ -103,6 +103,7 @@ export default function useApplicationData() {
       })
   }
 
+  // set user state
   const loggedInUser = (user_id) => {
     setState({
       ...state,
@@ -111,6 +112,7 @@ export default function useApplicationData() {
     return state.currentUser;
 }
 
+// reset user state 
 const loggedOutUser = () => {
     setState({
       ...state,

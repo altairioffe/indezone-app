@@ -11,6 +11,9 @@
    3. axios
    4. saas
    5. Nodemon
+   6. sequelize
+   7. sequelize-cli
+   8. pg
 
 ## Design tools
 
