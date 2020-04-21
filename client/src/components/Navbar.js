@@ -1,20 +1,21 @@
-import "./QuestionAnswer/styles.scss";
+import "./ComponentStyles/Navbar.scss";
 
 import React, { useState } from "react";
-import { Button, TextField, Slide, Grid, Container } from "@material-ui/core";
+import { Button, TextField, Grow, Box, Container, Slide } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 
 export default function Navbar(props) {
   // Define Styles
   const useStyles = makeStyles({
   root: {
-    background: 'linear-gradient(45deg, skyblue  5%, #50ABE4 90%)',
+    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(0, 240, 230, .3)',
     color: 'white',
     height: 48,
     padding: '0 30px',
+    margin: "0 10px",
   },
 });
   // Here are the states to keep track of login process
@@ -65,15 +66,15 @@ export default function Navbar(props) {
   const classes = useStyles();
   return (
     
-    <Grid spaceing={10}>
-      <Container>
+    <Box alignItems="center">
+      <Container alignItems="center">
         <img src="images/indezone.png" alt="INDEZONE" />
       </Container>
-            <Slide
-        direction="left"
+      <Slide
         in={loginState === 0 || loginState === 1}
-        timeout={300}
+        timeout={500}
         unmountOnExit
+        direction="right"
       >
         <Button
           onClick={() => {
@@ -87,21 +88,20 @@ export default function Navbar(props) {
           Login
         </Button>
       </Slide>
-      <Slide
-        direction="left"
+      <Grow       
         in={loginState === 2}
-        timeout={300}
+        timeout={500}
         unmountOnExit
       >
         <span>
           Welcome {user && user.handle ? user.handle.slice(1) : "error"}
         </span>
-      </Slide>
-      <Slide
-        direction="left"
+      </Grow>
+      <Grow
+        
         in={loginState === 0}
         unmountOnExit
-        timeout={300}
+        timeout={500}
       >
         <TextField
           id="outlined-basic"
@@ -114,12 +114,11 @@ export default function Navbar(props) {
           type="email"
           onChange={(e) => setLoginEmail(e.target.value)}
         />
-      </Slide>
+      </Grow>
 
-      <Slide
-        direction="left"
+      <Grow     
         in={loginState === 1}
-        timeout={300}
+        timeout={500}
         unmountOnExit
       >
         <TextField
@@ -133,12 +132,11 @@ export default function Navbar(props) {
           type="password"
           onChange={(e) => setLoginPassword(e.target.value)}
         />
-      </Slide>
+      </Grow>
 
-      <Slide
-        direction="left"
+      <Grow       
         in={loginState === 1}
-        timeout={300}
+        timeout={500}
         unmountOnExit
       >
         <Button
@@ -150,11 +148,11 @@ export default function Navbar(props) {
         >
           Back
         </Button>
-      </Slide>
+      </Grow>
       <Slide
         direction="left"
         in={loginState === 0}
-        timeout={300}
+        timeout={500}
         unmountOnExit
       >
         <Button
@@ -168,10 +166,9 @@ export default function Navbar(props) {
         </Button>
       </Slide>
  
-      <Slide
-        direction="left"
+      <Grow       
         in={loginState === 2}
-        timeout={300}
+        timeout={500}
         unmountOnExit
       >
         <Button
@@ -183,8 +180,8 @@ export default function Navbar(props) {
         >
           Logout
         </Button>
-      </Slide>
-    </Grid>
+      </Grow>
+    </Box>
   
   );
 }

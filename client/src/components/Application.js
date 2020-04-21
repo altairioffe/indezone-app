@@ -41,14 +41,14 @@ console.log(answeredGoals(state.userGoals))
 
   return (
     <main className="layout">
-      <Container>
-      <Navbar 
-        users={ state.users }
-        logUser={ loggedInUser }
-        logoutUser={ loggedOutUser }
-        user={ state.currentUser }
-      />
-      </Container>
+      
+    <Navbar 
+      users={ state.users }
+      logUser={ loggedInUser }
+      logoutUser={ loggedOutUser }
+      user={ state.currentUser }
+    />
+    
 
       {state.currentUser && (
       <section className="feed">
