@@ -37,7 +37,7 @@ import useVisualMode from "../../hooks/useVisualMode";
     <main>
     <section>
       <Profile 
-      level={level}
+      level={props.level}
       />
     </section>
 
