@@ -17,7 +17,7 @@ module.exports = {
     {
       id:2,
       name: 'Ann',
-      text: 'I am calm and confident. I am strong leader and I work hard to support my team, friends, and family',
+      text: 'I am calm and confident. I am a strong leader and I work hard to support my team, friends, and family',
       user_id: 7,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
