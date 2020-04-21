@@ -2,32 +2,13 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return Promise.all([
-      queryInterface.removeColumn(
+   
+    
+      return queryInterface.removeColumn(
         'user_goals',
-        'createdAt'
-      ),
-      queryInterface.removeColumn(
-        'user_goals',
-        'updatedAt'
-      ),
-      queryInterface.addColumn(
-        'user_goals',
-        'createdAt',
-        {
-          type: Sequelize.DATE,
-          allowNull: false
-        }
-      ),
-      queryInterface.addColumn(
-        'user_goals',
-        'updatedAt',
-        {
-          type: Sequelize.DATE,
-          allowNull: false
-        }
-      )
-    ]);
+        'updated_at'
+      );
+    
   },
 
   down: (queryInterface, Sequelize) => {

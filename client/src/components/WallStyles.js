@@ -4,5 +4,3 @@ export const  styles = {
   lineColor:"#00008B",
   lineStyle:{ background: '#004d99', width: 5 }
 };
-
- 

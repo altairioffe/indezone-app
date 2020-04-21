@@ -2,7 +2,7 @@
 
 1. npm install --save-dev sequelize-cli
 2. npx sequelize-cli init
-3. modify config.json
+3. configure config.js
 4. npx sequelize-cli db:create
 5. model creation
 
