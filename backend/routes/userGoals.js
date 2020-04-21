@@ -15,7 +15,8 @@ router.get("/", (req, res) => {
 //Get specific user goal
 router.get("/:id", (req, res) => {
   db.user_goal.findOne({
-    where:{user_id:req.params.id}}).then(userGoals => {
+    where: { user_id: req.params.id }
+  }).then(userGoals => {
     res.json(userGoals);
   })
     .catch(err => {
@@ -26,9 +27,8 @@ router.get("/:id", (req, res) => {
 // Post specific goal
 router.post("/", (req, res) => {
   db.user_goal.create({
-    
-    user_id: req.body.user_id,
     goal_id: req.body.goal_id,
+    user_id: req.body.user_id,
     answer: req.body.answer,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
@@ -44,11 +44,11 @@ router.post("/", (req, res) => {
 // Delete specific goal
 router.delete("/", (req, res) => {
   db.user_goal.destroy({
-    where:{
-      createdAt:req.body.createdAt,
+    where: {
+      createdAt: req.body.createdAt,
       user_id: req.body.user_id
     }
-   
+
   })
     .then(userGoal => {
       res.json(userGoal);
