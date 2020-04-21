@@ -12,7 +12,6 @@ export default function useApplicationData() {
     currentUser: null,
     answer: "",
     currentUserInsight: ""
-
   });
 
   useEffect(() => {
@@ -93,9 +92,10 @@ export default function useApplicationData() {
       .then( () => {
 
         setState({
-          ...state
+          ...state,
+          userGoals:[{...data}, ...state.userGoals]
         });
-        return;
+        return goal_id;
       })
       .catch(() => {
         console.log('ERROR')
@@ -103,6 +103,7 @@ export default function useApplicationData() {
       })
   }
 
+  // set user state
   const loggedInUser = (user_id) => {
     setState({
       ...state,
@@ -111,6 +112,7 @@ export default function useApplicationData() {
     return state.currentUser;
 }
 
+// reset user state 
 const loggedOutUser = () => {
     setState({
       ...state,
