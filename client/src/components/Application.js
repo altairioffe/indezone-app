@@ -7,6 +7,7 @@ import QuestionList from "./QuestionList";
 import "./LogoutPrompt.scss";
 import useApplicationData from "../hooks/useApplicationData";
 import {answeredGoals} from "../helpers/filterbyToday"
+import { Button, TextField, Slide, Grid, Container } from "@material-ui/core";
 
 export default function Application() {
     
@@ -40,12 +41,15 @@ console.log(answeredGoals(state.userGoals))
 
   return (
     <main className="layout">
+      <Container>
       <Navbar 
         users={ state.users }
         logUser={ loggedInUser }
         logoutUser={ loggedOutUser }
         user={ state.currentUser }
       />
+      </Container>
+
       {state.currentUser && (
       <section className="feed">
         <hr/>
