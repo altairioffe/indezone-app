@@ -9,7 +9,7 @@ module.exports = {
     return queryInterface.bulkInsert('biodata', [{
       id:1,
       name: 'John',
-      text: 'I am creative and adventurous.',
+      text: 'I am creative and open-minded. I love adventures and trying new things.',
       user_id: 6,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
@@ -17,7 +17,7 @@ module.exports = {
     {
       id:2,
       name: 'Ann',
-      text: 'I am calm and confident. I am a strong leader and I work hard to support my team, friends, and family',
+      text: 'I am calm, confident, and physically active. I am a strong leader and I work hard to support my team, friends, and family',
       user_id: 7,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
