@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       answer: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       created_at: {
         type: Sequelize.DATE
