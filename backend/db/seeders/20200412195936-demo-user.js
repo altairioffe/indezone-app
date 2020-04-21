@@ -11,7 +11,7 @@ module.exports = {
       handle: '@john',
       email: 'john@gmail.com',
       password:'john',
-      points: 100,
+      points: 1,
       journalNo: 1001,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
@@ -21,7 +21,7 @@ module.exports = {
       handle: '@ann',
       email: 'ann@gmail.com',
       password:'ann',
-      points: 200,
+      points: 10,
       journalNo: 1002,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
@@ -31,8 +31,8 @@ module.exports = {
       id:8,
       handle: '@george',
       email: 'george@gmail.com',
-      password:'john',
-      points: 100,
+      password:'george',
+      points: 1,
       journalNo: 1003,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
@@ -43,7 +43,7 @@ module.exports = {
       handle: '@kim',
       email: 'kim@gmail.com',
       password:'kim',
-      points: 250,
+      points: 1,
       journalNo: 1004,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
