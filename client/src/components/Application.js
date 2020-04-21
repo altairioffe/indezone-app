@@ -7,7 +7,7 @@ import QuestionList from "./QuestionList";
 import "./LogoutPrompt.scss";
 import useApplicationData from "../hooks/useApplicationData";
 import {answeredGoals} from "../helpers/filterbyToday"
-import { Button, TextField, Slide, Grid, Container } from "@material-ui/core";
+import { Button, TextField, Slide, Divider, Container } from "@material-ui/core";
 
 export default function Application() {
     
@@ -52,7 +52,7 @@ console.log(answeredGoals(state.userGoals))
 
       {state.currentUser && (
       <section className="feed">
-        <hr/>
+        <Divider />
         <Bio 
           bio={"[YOUR BIO]: describe the person you want to be"}
           level={10}
@@ -60,7 +60,7 @@ console.log(answeredGoals(state.userGoals))
           currentUserGoals={state.currentUserGoals}
           userInsight={state.currentUserInsight}
         />
-        <hr/>
+        <Divider />
         <QuestionList 
           giveAnswer={ansQuestion}
           questions={questionsArr}
@@ -70,7 +70,7 @@ console.log(answeredGoals(state.userGoals))
           currentUserId={state.currentUser}
           answeredGoals={answeredGoals(state.userGoals)}
         />
-        <hr />
+        <Divider />
         <div>
       <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>
       </div>

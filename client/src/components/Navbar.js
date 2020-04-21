@@ -5,11 +5,11 @@ import { Button, TextField, Grow, Box, Container, Slide } from "@material-ui/cor
 import { makeStyles } from '@material-ui/core/styles';
 
 export default function Navbar(props) {
-  // Define Styles
-  const useStyles = makeStyles({
+// Define Styles
+const useStyles = makeStyles({
   root: {
     background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
-    border: 0,
+    border: 'none !important',
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(0, 240, 230, .3)',
     color: 'white',
@@ -94,7 +94,7 @@ export default function Navbar(props) {
         unmountOnExit
       >
         <span>
-          Welcome {user && user.handle ? user.handle.slice(1) : "error"}
+          Welcome <strong>{user && user.handle ? user.handle.slice(1) : "error"}</strong>
         </span>
       </Grow>
       <Grow

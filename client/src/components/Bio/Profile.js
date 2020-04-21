@@ -12,10 +12,6 @@ export default function UserBio(props){
 
 
   return (
-    <aside className="" id="">
-      <section className="prompt__actions card_right">
-          <h4 className="">Level: {props.level}</h4>
-      </section>
-    </aside>
+    <h4 className="">Level: <strong style={{color:"red"}}>{props.level}</strong></h4>
   );
 }

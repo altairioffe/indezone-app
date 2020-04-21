@@ -2,38 +2,6 @@
 @import "../../styles/mixins.scss";
 @import "../../styles/animations.scss";
 
-$prompt-height: 1rem;
-
-#logout-prompt-pic-container{
-  width:50%;
-  height:100%;
-}
-
-#logout-prompt-pic{
-  height: 100%;
-  max-height: 35vh;
-  border-radius: 50%;
-  float: left;
-  margin: 1em;
-  border: 10px double $white;
-}
-
-#logout-prompt{
-  padding: 1.2rem 1.5rem;
-  text-align: justify;
-  flex-flow: row wrap;
-  color: #fff;
-  background-color: $indezone-navy;
-  display: inline;
-  border: 10px double $white;
-}
-
-.seperator{
-  margin: 1rem 0;
-  border: solid 1px;
-  color: $indezone-yellow;
-}
-
 .MuiContainer-root, .MuiBox-root-3{
   text-align: center;
   margin-top:1em;
