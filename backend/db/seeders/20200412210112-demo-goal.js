@@ -106,7 +106,7 @@ module.exports = {
     },
     {
       id:15,
-      question: 'If I was my own high performannc coach, I would tell myself this statement about today...',
+      question: 'If I was my own high performance coach, I would tell myself this statement about today...',
       suggestion: 'Put yourself in a personal coach\'s shoes',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
