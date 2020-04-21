@@ -3,11 +3,12 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     
-      return queryInterface.removeColumn(
-        'user_goals',
-        'created_at'
-      );
-    
+    return queryInterface.removeColumn(
+      'user_goals',
+      'answer'
+    )
+      
+
   },
 
   down: (queryInterface, Sequelize) => {
