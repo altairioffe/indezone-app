@@ -62,7 +62,7 @@ console.log(answeredGoals(state.userGoals))
           currentUserGoals={state.currentUserGoals}
           userInsight={state.currentUserInsight}
         />
-        <Divider />
+        <br />
         <QuestionList 
           giveAnswer={ansQuestion}
           questions={questionsArr}
