@@ -30,14 +30,15 @@ export default function Form(props){
           multiline
           fullWidth
           variant="filled"
-          onChange={(e) => props.setAnswer(e.target.value)}
+          onChange={(e) => setAns(e.target.value)}
         />
       <Button
         // className={classes.root}
         variant="outlined"
         color="primary"
         size="large"
-        onClick={() => props.addUserGoal({goal_id:props.goal_id})}
+        // onClick={() => props.addUserGoal({goal_id:props.goal_id})}
+        onClick={() => props.giveAnswer(ans, props.goal_id, props.currentUserId)}
       >
       Answer
       </Button>
