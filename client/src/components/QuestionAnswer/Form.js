@@ -33,7 +33,7 @@ export default function Form(props){
           onChange={(e) => props.setAnswer(e.target.value)}
         />
       <Button
-        className={classes.root}
+        // className={classes.root}
         variant="outlined"
         color="primary"
         size="large"
