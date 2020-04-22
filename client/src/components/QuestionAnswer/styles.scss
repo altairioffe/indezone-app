@@ -4,6 +4,10 @@
 
 $prompt-height: 1rem;
 
+#logo{
+ text-align:center;
+}
+
 .prompt {
   &__add {
     min-height: $prompt-height;
