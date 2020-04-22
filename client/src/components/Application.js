@@ -32,7 +32,7 @@ const getBio = (biodatas, currentUser) => {
 
 const getPoints = (users, currentUser) => {
   let user = users.filter((user) => user.id === currentUser);
-  console.log("points: ", bio)
+  console.log("points: ", user[0].points)
   return user[0].points
 }
 
@@ -65,7 +65,7 @@ console.log(answeredGoals(state.userGoals))
         <Bio 
           bio={getBio(state.biodatas, state.currentUser)}
           
-          level={10}
+          level={getPoints(state.users, state.currentUser)}
           requestInsight={requestInsight}
           currentUserGoals={state.currentUserGoals}
           userInsight={state.currentUserInsight}
