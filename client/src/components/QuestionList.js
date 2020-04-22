@@ -6,9 +6,10 @@ import AnswerQuestionPanel from "./QuestionAnswer/AnswerQuestionPanel"
 
 import Slide from '@material-ui/core/Slide';
 
+
 export default function QuestionFeed(props) {
   const questionsList = 
-    props.goals.map( (goal, i) => {
+    props.questions.map( (goal, i) => {
       console.log(goal.id)
       console.log(props.answeredGoals.find( (id) => id === goal.id))
       return(
