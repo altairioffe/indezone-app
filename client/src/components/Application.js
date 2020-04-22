@@ -17,9 +17,8 @@ export default function Application() {
     state,
     requestInsight,
     addUserGoal,
-    setAnswer,
-    getUserLevel
-  } = useApplicationData();
+    setAnswer
+    } = useApplicationData();
   console.log("------ state ------\n", state)
 
 //const questionsArr = state.goals.map((goal) => goal.question);
@@ -31,11 +30,6 @@ const getBio = (biodatas, currentUser) => {
   return bio[0].text
 }
 
-const getLevel = (users, currentUser) => {
-  let user = users.filter((user) => user.id === currentUser);
- // console.log("points: ", user[0].points)
-  return user[0].points
-}
 
 const questions = [...state.goals]
 //let userLevel = getLevel(state.users, state.currentUser)
@@ -67,7 +61,7 @@ console.log(answeredGoals(state.userGoals))
         <Bio 
           bio={getBio(state.biodatas, state.currentUser)}
           
-          level={getLevel(state.users, state.currentUser)}
+          level={state.currentUserLevel}
           requestInsight={requestInsight}
           currentUserGoals={state.currentUserGoals}
           userInsight={state.currentUserInsight}
