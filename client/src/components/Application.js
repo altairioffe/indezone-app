@@ -23,8 +23,11 @@ export default function Application() {
 
 //const questionsArr = state.goals.map((goal) => goal.question);
 
-  const bio = state.biodatas.filter((biodata) => biodata.user_id === state.currentUser)[0];
-
+const getBio = (biodatas, currentUser) => {
+  let bio = biodatas.filter((biodata) => biodata.user_id === currentUser);
+  console.log("BIO: ", bio)
+  return bio[0].text
+}
 const questions = [...state.goals]
 let shuffledQuestions = questions.sort(() => 0.5 - Math.random());
 let selectedQuestions = shuffledQuestions.slice(0, 3); //second is level
@@ -52,7 +55,7 @@ console.log(answeredGoals(state.userGoals))
         <hr/>
        
         <Bio 
-          bio={"[YOUR BIO]: describe the person you want to be"}
+          bio={getBio(state.biodatas, state.currentUser)}
           
           level={10}
           requestInsight={requestInsight}
