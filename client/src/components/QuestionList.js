@@ -22,7 +22,9 @@ export default function QuestionFeed(props) {
   
   console.log('questions for user',props.questions)
   console.log('questions answered today', props.answeredGoals)
-  const questionsFilteredList = props.questions
+  const questionsFilteredList = props.questions.slice(0, props.answeredGoals)
+    .filter( (question) => props.answeredGoals
+      .find( (id) => id === question.id) ? false : true)
     .map( (goal, i) => {
       return(
         <div>
