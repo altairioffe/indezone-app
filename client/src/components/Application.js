@@ -22,6 +22,8 @@ export default function Application() {
     } = useApplicationData();
   console.log("------ state ------\n", state)
 
+
+
 //const questionsArr = state.goals.map((goal) => goal.question);
 
 
@@ -35,7 +37,7 @@ const getBio = (biodatas, currentUser) => {
 const questions = [...state.goals]
 //let userLevel = getLevel(state.users, state.currentUser)
 let shuffledQuestions = questions.sort(() => 0.5 - Math.random());
-let selectedQuestions = shuffledQuestions.slice(0, 4); //second is level
+let selectedQuestions = shuffledQuestions.slice(0, 1); //second is level
 let questionsArr = selectedQuestions.map( (goal) => {
   return {
     id:goal.id,
@@ -44,7 +46,6 @@ let questionsArr = selectedQuestions.map( (goal) => {
   }
 }) 
   
-console.log(answeredGoals(state.userGoals))
   //const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
 
   return (

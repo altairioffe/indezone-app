@@ -17,10 +17,11 @@ export default function QuestionFeed(props) {
     }
   }));
   const classes = useStyles();
-
-  const questionsList = 
-    props.goals.map( (goal, i) => {
-      console.log(goal.id)
+  
+  console.log(props.questions)
+  const questionsFilteredList = props.questions.filter( (question) => {
+    return props.answeredGoals.find( (id) => id === question.id) ? false : true;
+  }).map( (goal, i) => {
       console.log(props.answeredGoals.find( (id) => id === goal.id))
       return(
         <div>
@@ -45,8 +46,16 @@ export default function QuestionFeed(props) {
     <section>
       <h1 className={classes.root}>Daily Question Feed <small>Write Entries Here</small></h1>
       <br/>
-      {questionsList}
+      {questionsFilteredList}
       <br/>
     </section>
   )
 }
+
+/* let questionsArr = selectedQuestions.map( (goal) => {
+  return {
+    id:goal.id,
+    question:goal.question,
+    suggestion:goal.suggestion
+  }
+})  */
