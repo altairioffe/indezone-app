@@ -23,11 +23,19 @@ export default function Application() {
 
 //const questionsArr = state.goals.map((goal) => goal.question);
 
+
 const getBio = (biodatas, currentUser) => {
   let bio = biodatas.filter((biodata) => biodata.user_id === currentUser);
   console.log("BIO: ", bio)
   return bio[0].text
 }
+
+const getPoints = (users, currentUser) => {
+  let user = users.filter((user) => user.id === currentUser);
+  console.log("points: ", bio)
+  return user[0].points
+}
+
 const questions = [...state.goals]
 let shuffledQuestions = questions.sort(() => 0.5 - Math.random());
 let selectedQuestions = shuffledQuestions.slice(0, 3); //second is level
