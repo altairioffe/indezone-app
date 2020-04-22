@@ -32,11 +32,12 @@ const getBio = (biodatas, currentUser) => {
 
 const getLevel = (users, currentUser) => {
   let user = users.filter((user) => user.id === currentUser);
-  console.log("points: ", user[0].points)
+ // console.log("points: ", user[0].points)
   return user[0].points
 }
 
 const questions = [...state.goals]
+//let userLevel = getLevel(state.users, state.currentUser)
 let shuffledQuestions = questions.sort(() => 0.5 - Math.random());
 let selectedQuestions = shuffledQuestions.slice(0, 3); //second is level
 let questionsArr = selectedQuestions.map( (goal) => {

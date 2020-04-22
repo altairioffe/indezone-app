@@ -11,7 +11,8 @@ export default function useApplicationData() {
     currentUserGoals: [],
     currentUser: null,
     answer: "",
-    currentUserInsight: ""
+    currentUserInsight: "",
+    currentUserLevel
   });
 
   useEffect(() => {
@@ -123,7 +124,7 @@ const loggedOutUser = () => {
 
 
 
-  const setInsight = currentUserInsight => setState({ ...state, currentUserInsight });
+const setInsight = currentUserInsight => setState({ ...state, currentUserInsight });
   
   const requestInsight = (currentUserGoals) => {
    return Promise.resolve(
@@ -137,6 +138,13 @@ const loggedOutUser = () => {
        .catch(err => console.log(err))
      )
    }  
+
+const setUserLevel = currentUserLevel => setState({ ...state, currentUserLevel});
+const getLevel = (users, currentUser) => {
+  let user = users.filter((user) => user.id === currentUser);
+   setUserLevel(user[0].points)
+  }
+
 return {
     ansQuestion,
     state,
@@ -144,7 +152,7 @@ return {
     loggedOutUser,
     setAnswer,
     addUserGoal,
-    requestInsight
-
+    requestInsight,
+    getLevel
   };
 }
