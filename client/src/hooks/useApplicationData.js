@@ -79,41 +79,55 @@ export default function useApplicationData() {
 
   };
 
-  const ansQuestion = (answer, goal_id, user_id) => {
 
-    let data = {
-      user_id,
-      goal_id,
-      answer
-    }
+  // Create new user 
+  const createUser = function (email,password,biodata) {
+    const user = {};
+    user.email = email;
+    user.password = password;
+    user.biodata = biodata;
+    user.handle = "@"+user.email.substring(0,3);
+    
+    axios
+      .post(`/api/users`, user)
+      .then((result) => {
+        const newUsers = [
+          ...state.users,
+          result.data
+        ];
 
-    return axios
-      .post(`/api/userGoals`, data)
-      .then( () => {
-
-        setState({
+     
+        setState((state) => ({
           ...state,
-          userGoals:[{...data}, ...state.userGoals]
-        });
-        return goal_id;
-      })
-      .catch(() => {
-        console.log('ERROR')
-        return 'error'
-      })
-  }
+          users: newUsers,
+          currentUser: (newUsers.filter(user => user.email === email))[0].id
+          
+        }));
+      }
+      )
+      .catch((err) => console.log("error"))
 
+  };
+
+
+ 
   // set user state
-  const loggedInUser = (user_id) => {
+  const logInUser = (email, password) => {
+    console.log('in logged in user');
+    const user = state.users.filter((user) => user.email === email && user.password === password)[0];
+    if(user){
     setState({
       ...state,
-      currentUser:user_id
+      currentUser:user.id
     });
-    return state.currentUser;
+  }
+  console.log("currentUser",state.currentUser);
+  return user;
+   // return state.currentUser;
 }
 
 // reset user state 
-const loggedOutUser = () => {
+const logoutUser = () => {
     setState({
       ...state,
       currentUser:null
@@ -138,10 +152,9 @@ const loggedOutUser = () => {
      )
    }  
 return {
-    ansQuestion,
     state,
-    loggedInUser,
-    loggedOutUser,
+    logInUser,
+    logoutUser,
     setAnswer,
     addUserGoal,
     requestInsight
