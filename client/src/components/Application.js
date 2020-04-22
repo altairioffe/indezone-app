@@ -59,7 +59,7 @@ console.log(answeredGoals(state.userGoals))
         <hr/>
        
         <Bio 
-          bio={"[YOUR BIO]: describe the person you want to be"}
+          bio={bio.text}
           
           level={level}
           requestInsight={requestInsight}
