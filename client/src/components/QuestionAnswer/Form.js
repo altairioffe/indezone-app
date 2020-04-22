@@ -25,7 +25,7 @@ export default function Form(props){
       <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
         <TextField
           id="filled-textarea"
-          label={props.suggestion}
+          label={"Write your Entry Here"}
           placeholder={props.suggestion}
           multiline
           fullWidth

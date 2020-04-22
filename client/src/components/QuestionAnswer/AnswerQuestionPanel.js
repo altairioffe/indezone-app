@@ -41,7 +41,7 @@ export default function SimpleExpansionPanel(props) {
         <Typography className={classes.heading} fontSize="h2.fontSize">{props.question} </Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails >
-        <Typography> 
+        <Typography className={classes.root}> 
           <Form 
             className={classes.heading, classes.root}
             setAnswer = {props.setAnswer}
