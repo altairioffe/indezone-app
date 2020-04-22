@@ -1,7 +1,7 @@
 import "./QuestionAnswer/styles.scss";
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState } from "react";
-import { Button, TextField, Slide, AppBar, Tabs, Tab, TabPanel, Container, Toolbar, IconButton, Typography } from "@material-ui/core";
+import { Button, TextField, Slide, AppBar, Tabs, Tab, TabPanel, Container, Toolbar, IconButton, Typography, useRadioGroup } from "@material-ui/core";
 import { Dialog, DialogTitle, DialogContent,DialogContentText, DialogActions } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -82,8 +82,11 @@ export default function Navbar(props) {
   const [open, setOpen] = useState(false);
   const [action,setAction] = useState("");
   const [email,setEmail] = useState("");
+  const [biodata,setBiodata] = useState("");
   const [password,setPassword] = useState("");
-  
+  const [userStatus, setUserStatus] = useState("Login");
+  const [register, setRegister] = useState("Register");
+  const [loggedIn, setLoggedIn] = useState(false);
   const handleClickOpen = (actionWord) => {
     setOpen(true);
     setAction(actionWord);
@@ -93,10 +96,32 @@ export default function Navbar(props) {
     setOpen(false);
   };
 
+// Handle submit 
+const handleSubmit = function(){
+   console.log("props=",props);
+   if(action === "login"){
+    if(props.logInUser(email,password)){
+     setLoggedIn(true);
+     handleClose();
+    }
+  }else{
+    if(props.createUser(email,password,biodata)){
+    }
+  }
+};
 
 // Handle Login Action
 const handleLogin = function(){
    console.log("Login");
+};
+
+// Handle logut 
+const handleLogout = function(){
+  console.log("props=",props);
+  props.logoutUser();
+  setLoggedIn(false);
+  handleClose();
+   
 };
 
 
@@ -116,13 +141,21 @@ const handleRegister = function(){
     <Typography variant="h6" className={classes.title}>
     Indezone Journaling
     </Typography>
+    {!loggedIn && (<div>
     <Button color="inherit" onClick={(event) => 
       handleClickOpen("Register")}
-    >Register</Button>
-    <Button color="inherit" onClick={(event) => handleClickOpen("Login")}>Login</Button>
+    >REGISTER</Button>
+    <Button color="inherit" onClick={(event) => handleClickOpen("Login") }>LOGIN</Button>
+   </div>
+    )}
+    {loggedIn && (
+   <Button color="inherit"  onClick={(event) => handleClickOpen("Logout")}>LOGOUT</Button>
+    )}
 </Toolbar>
 </AppBar>
-<Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+{!loggedIn && (
+<Dialog open={open} onClose={handleClose
+} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">{action}</DialogTitle>
         <DialogContent>
          {/*  <DialogContentText>
@@ -136,6 +169,7 @@ const handleRegister = function(){
             label="Email Address"
             type="email"
             fullWidth
+            onChange = {(e) => setEmail(e.target.value)}
           />
           <TextField
             
@@ -144,17 +178,47 @@ const handleRegister = function(){
             label="Password"
             type="password"
             fullWidth
+            onChange = {(e) => setPassword(e.target.value)}
           />
+          {action === "Register" && (
+          <TextField
+            
+            margin="dense"
+            id="name"
+            label="Biodata(optional)"
+            type="text"
+            fullWidth
+            onChange = {(e) => setBiodata(e.target.value)}
+          />
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={(event) => handleSubmit(event)} color="primary">
            Submit
           </Button>
         </DialogActions>
       </Dialog>
+
+        )}
+
+{loggedIn && (
+<Dialog open={open} onClose={handleClose
+} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">{action}</DialogTitle>
+        <DialogContent>
+        Do you want to logout ?
+        </DialogContent>
+        <DialogActions>
+         
+          <Button onClick={(event) => handleLogout()} color="primary">
+           OK
+          </Button>
+        </DialogActions>
+      </Dialog>
+       )}
       <Container id="logo" maxWidth="sm md lg">
       <img height="40%px" width="70%" align="center" src="images/indezone-journal-hero.png" alt="INDEZONE" />
       </Container>
