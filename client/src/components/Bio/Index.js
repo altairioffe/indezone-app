@@ -17,7 +17,7 @@ import useVisualMode from "../../hooks/useVisualMode";
     const DENIED = "DENIED";
     const ERROR = "ERROR";
   
-    const level = 10
+    const level = props.level
     const { mode, transition, back } = useVisualMode(USERBIO);
 
 

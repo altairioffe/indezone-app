@@ -19,14 +19,21 @@ export default function Application() {
     requestInsight,
     addUserGoal,
     setAnswer
-  } = useApplicationData();
+    } = useApplicationData();
   console.log("------ state ------\n", state)
 
 //const questionsArr = state.goals.map((goal) => goal.question);
 
-  const bio = state.biodatas.filter((biodata) => biodata.user_id === state.currentUser)[0];
+
+const getBio = (biodatas, currentUser) => {
+  let bio = biodatas.filter((biodata) => biodata.user_id === currentUser);
+  console.log("BIO: ", bio)
+  return bio[0].text
+}
+
 
 const questions = [...state.goals]
+//let userLevel = getLevel(state.users, state.currentUser)
 let shuffledQuestions = questions.sort(() => 0.5 - Math.random());
 let selectedQuestions = shuffledQuestions.slice(0, 4); //second is level
 let questionsArr = selectedQuestions.map( (goal) => {
@@ -55,9 +62,9 @@ console.log(answeredGoals(state.userGoals))
       <section className="feed">
         <br />
         <Bio 
-          bio={"[YOUR BIO]: describe the person you want to be"}
+          bio={getBio(state.biodatas, state.currentUser)}
           
-          level={10}
+          level={state.currentUserLevel}
           requestInsight={requestInsight}
           currentUserGoals={state.currentUserGoals}
           userInsight={state.currentUserInsight}
