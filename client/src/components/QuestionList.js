@@ -49,7 +49,8 @@ export default function QuestionFeed(props) {
     <section>
       <h1 className={classes.root}>Daily Question Feed <small>Write Entries Here</small></h1>
       <br/>
-      {!questionsFilteredList.length === 0 ? questionsFilteredList : (
+      {questionsFilteredList}
+      {!questionsFilteredList.length === 0 && (
     <Card className={classes.root} variant="contained-primary">
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
