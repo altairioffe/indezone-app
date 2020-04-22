@@ -17,7 +17,8 @@ export default function Application() {
     state,
     requestInsight,
     addUserGoal,
-    setAnswer
+    setAnswer,
+    getUserLevel
   } = useApplicationData();
   console.log("------ state ------\n", state)
 

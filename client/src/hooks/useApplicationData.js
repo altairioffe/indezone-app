@@ -12,7 +12,7 @@ export default function useApplicationData() {
     currentUser: null,
     answer: "",
     currentUserInsight: "",
-    currentUserLevel
+    currentUserLevel: 1
   });
 
   useEffect(() => {
@@ -42,6 +42,26 @@ export default function useApplicationData() {
     console.log('currenyUserGoals', state.currentUserGoals);
   }
   }, [state.currentUser, state.userGoals]);
+
+
+
+  const getUserLevel = (users, currentUser) => {
+    let user = users.filter((user) => user.id === currentUser);
+    return user[0].points
+  }
+
+  useEffect(() => {
+    if (state.currentUser != null) {
+
+      //const setUserLevel = currentUserLevel => setState({ ...state, currentUserLevel});
+
+      setState((state) => ({
+        ...state,
+      currentUserLevel: getUserLevel(state.users, state.currentUser)
+      }))
+      console.log("CURRENT USERLEVEL: ", state.currentUserLevel)
+      }
+    }, [state.currentUser, state.currentUserLevel])
 
 
   // set Answer
@@ -139,11 +159,7 @@ const setInsight = currentUserInsight => setState({ ...state, currentUserInsight
      )
    }  
 
-const setUserLevel = currentUserLevel => setState({ ...state, currentUserLevel});
-const getLevel = (users, currentUser) => {
-  let user = users.filter((user) => user.id === currentUser);
-   setUserLevel(user[0].points)
-  }
+
 
 return {
     ansQuestion,
@@ -153,6 +169,6 @@ return {
     setAnswer,
     addUserGoal,
     requestInsight,
-    getLevel
+    getUserLevel
   };
 }
