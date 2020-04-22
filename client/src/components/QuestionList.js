@@ -1,12 +1,23 @@
 import "./QuestionAnswer/styles.scss";
 
 import React, { useState } from "react"
-
+import { makeStyles } from '@material-ui/core/styles';
 import AnswerQuestionPanel from "./QuestionAnswer/AnswerQuestionPanel"
 
 import Slide from '@material-ui/core/Slide';
 
 export default function QuestionFeed(props) {
+   const useStyles = makeStyles((theme) => ({
+    root: {
+      textAlign:'left',
+      fontSize: '1.5em', 
+      "& small": {
+        color:"skyblue"
+      }
+    }
+  }));
+  const classes = useStyles();
+
   const questionsList = 
     props.goals.map( (goal, i) => {
       console.log(goal.id)
@@ -32,10 +43,10 @@ export default function QuestionFeed(props) {
     })
   return  (
     <section>
-      <h1>Question feed</h1>
-      <hr/>
+      <h1 className={classes.root}>Daily Question Feed <small>Write Entries Here</small></h1>
+      <br/>
       {questionsList}
-      <hr/>
+      <br/>
     </section>
   )
 }
