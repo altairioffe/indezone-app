@@ -72,7 +72,6 @@ console.log(answeredGoals(state.userGoals))
           currentUserId={state.currentUser}
           answeredGoals={answeredGoals(state.userGoals)}
         />
-        <hr />
         <div>
       <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>
       </div>

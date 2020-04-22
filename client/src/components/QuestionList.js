@@ -27,7 +27,6 @@ export default function QuestionFeed(props) {
             />
           </Slide>
       )}
-          <br />
         </div>
       )
     })
@@ -40,10 +39,3 @@ export default function QuestionFeed(props) {
     </section>
   )
 }
-
-{/* 
-question={question.question}
-              suggestion={question.suggestion}
-              giveAnswer={props.giveAnswer}
-              currentUserId={props.currentUserId}
-              goalId={question.id} */}

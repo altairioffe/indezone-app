@@ -7,31 +7,43 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Form from "./Form"
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-}));
+const rnd = () => { //generates random number for color wheel
+  return Math.floor(Math.random() * (365 - 0 + 1) + 0);
+};
+
 
 export default function SimpleExpansionPanel(props) {
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+      backgroundColor: `hsl(${rnd()}deg, 60%, 70%)`,
+      '& div': {
+        backgroundColor: 'inherit'
+      }
+    },
+    heading: {
+      fontSize: theme.typography.pxToRem(15),
+      fontWeight: theme.typography.fontWeightBold,
+      textAlign:'left',
+      backgroundColor:'inherit',
+      color:'white'
+    },
+  }));
   const classes = useStyles();
 
   return (
-    <ExpansionPanel smUp="hide">
+    <ExpansionPanel smUp="hide" className={classes.root}>
       <ExpansionPanelSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography className={classes.heading}>{props.question}</Typography>
+        <Typography className={classes.heading} fontSize="h2.fontSize">{props.question} </Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails >
         <Typography> 
           <Form 
+            className={classes.heading, classes.root}
             setAnswer = {props.setAnswer}
             goal_id = {props.goal_id}
             addUserGoal = {props.addUserGoal}
