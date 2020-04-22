@@ -11,8 +11,8 @@ import {answeredGoals} from "../helpers/filterbyToday"
 export default function Application() {
     
   const {
-    loggedInUser,
-    loggedOutUser,
+    logInUser,
+    logoutUser,
     ansQuestion,
     state,
     requestInsight,
@@ -50,8 +50,8 @@ console.log(answeredGoals(state.userGoals))
     <main className="layout">
       <Navbar 
         users={ state.users }
-        logUser={ loggedInUser }
-        logoutUser={ loggedOutUser }
+        logInUser={ logInUser }
+        logoutUser={ logoutUser }
         user={ state.currentUser }
       />
       {state.currentUser && (
