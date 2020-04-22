@@ -16,7 +16,7 @@ export default function logoutPrompt(props){
   return (
     <main  id="login-prompt">
       
-      <img src={"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"} id="logout-prompt-pic" />
+      {/*<img src={"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"} id="logout-prompt-pic" /> */}
       
         <section className="login-prompt-pic-container">
             <h3 class="text--regular">{logoutPrompt}</h3>

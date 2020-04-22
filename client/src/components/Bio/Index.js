@@ -30,7 +30,6 @@ import useVisualMode from "../../hooks/useVisualMode";
         .catch(error => transition(ERROR))
 
     }
-
     
     return(
 
