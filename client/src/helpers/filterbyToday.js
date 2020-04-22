@@ -17,9 +17,11 @@ const filterByToday = (userGoals) => {
 };
 
 // returns array of goals that are answered
-export const answeredGoals = (userGoals) => {
+export const answeredGoals = (userGoals, currentUser) => {
 
-  return filterByToday(userGoals).map( (userGoal) => {
+  return filterByToday(userGoals)
+    .filter( (userGoal) => currentUser === userGoal.user_id ? true : false)  
+    .map( (userGoal) => {
     return userGoal.goal_id;
   })
 }

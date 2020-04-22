@@ -7,6 +7,7 @@ import QuestionList from "./QuestionList";
 import "./LogoutPrompt.scss";
 import useApplicationData from "../hooks/useApplicationData";
 import {answeredGoals} from "../helpers/filterbyToday"
+import { Button, TextField, Slide, Divider, Container } from "@material-ui/core";
 
 export default function Application() {
     
@@ -20,6 +21,8 @@ export default function Application() {
     setAnswer
     } = useApplicationData();
   console.log("------ state ------\n", state)
+
+
 
 //const questionsArr = state.goals.map((goal) => goal.question);
 
@@ -43,21 +46,22 @@ let questionsArr = selectedQuestions.map( (goal) => {
   }
 }) 
   
-console.log(answeredGoals(state.userGoals))
   //const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
 
   return (
-    <main className="layout">
-      <Navbar 
-        users={ state.users }
-        logUser={ loggedInUser }
-        logoutUser={ loggedOutUser }
-        user={ state.currentUser }
-      />
+    <Container className="layout">
+      
+    <Navbar 
+      users={ state.users }
+      logUser={ loggedInUser }
+      logoutUser={ loggedOutUser }
+      user={ state.currentUser }
+    />
+    
+
       {state.currentUser && (
       <section className="feed">
-        <hr/>
-       
+        <br />
         <Bio 
           bio={getBio(state.biodatas, state.currentUser)}
           
@@ -66,7 +70,7 @@ console.log(answeredGoals(state.userGoals))
           currentUserGoals={state.currentUserGoals}
           userInsight={state.currentUserInsight}
         />
-        <hr/>
+        <br />
         <QuestionList 
           giveAnswer={ansQuestion}
           questions={questionsArr}
@@ -74,9 +78,8 @@ console.log(answeredGoals(state.userGoals))
           addUserGoal = {addUserGoal}
           goals = {state.goals}
           currentUserId={state.currentUser}
-          answeredGoals={answeredGoals(state.userGoals)}
+          answeredGoals={answeredGoals(state.userGoals, state.currentUser)}
         />
-        <hr />
         <div>
       <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>
       </div>
@@ -88,6 +91,6 @@ console.log(answeredGoals(state.userGoals))
         </div> 
       )}
 
-     </main>
+     </Container>
   );
 }

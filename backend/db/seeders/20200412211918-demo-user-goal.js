@@ -6,7 +6,8 @@ module.exports = {
       Add altering commands here.
       Return a promise to correctly handle asynchronicity. */
 
-    return queryInterface.bulkInsert('user_goals', [{
+    return queryInterface.bulkInsert('user_goals', [
+      {
       id:1,
       
       goal_id:1,
