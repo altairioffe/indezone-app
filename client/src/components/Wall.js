@@ -7,7 +7,7 @@ export default function Wall(props) {
   const userGoals = props.userGoals;
   const userGoalsView = userGoals.map(userGoal => {
     return (
-      <WallItem key={userGoal.id} createdAt={userGoal.createdAt} question={userGoal.question} answer={userGoal.answer} />
+      <WallItem id={userGoal.id} key={userGoal.id} createdAt={userGoal.createdAt} question={userGoal.question} answer={userGoal.answer} handleDelete={props.handleDelete}/>
     );
   }
   );
