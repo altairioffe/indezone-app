@@ -7,6 +7,7 @@ import QuestionList from "./QuestionList";
 import "./LogoutPrompt.scss";
 import useApplicationData from "../hooks/useApplicationData";
 import {answeredGoals} from "../helpers/filterbyToday"
+import {Container} from '@material-ui/core';
 
 export default function Application() {
     
@@ -17,9 +18,12 @@ export default function Application() {
     state,
     requestInsight,
     addUserGoal,
-    setAnswer
+    setAnswer,
+    createUser,
+    handleDelete
   } = useApplicationData();
   console.log("------ state ------\n", state)
+  console.log("create user",createUser);
 
 //const questionsArr = state.goals.map((goal) => goal.question);
 
@@ -53,13 +57,14 @@ console.log(answeredGoals(state.userGoals))
         logInUser={ logInUser }
         logoutUser={ logoutUser }
         user={ state.currentUser }
+        createUser = {createUser}
       />
       {state.currentUser && (
       <section className="feed">
         <hr/>
        
         <Bio 
-          bio={bio.text}
+          bio={bio?bio.text:""}
           
           level={level}
           requestInsight={requestInsight}
@@ -75,17 +80,20 @@ console.log(answeredGoals(state.userGoals))
           goals = {state.goals}
           currentUserId={state.currentUser}
           answeredGoals={answeredGoals(state.userGoals)}
+          createUser = {createUser}
         />
         <hr />
         <div>
-      <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>
+      <Wall userGoals={state.currentUserGoals} userId = {state.currentUser} handleDelete={handleDelete}/>
       </div>
       </section>
       )} 
       { state.currentUser === null && ( 
-        <div>
-          <LogoutPrompt />
-        </div> 
+      <Container className="intro-container">
+          <h3 className="intro">Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together </h3>
+          <hr className="seperator"/>
+            <h4 className="text--regular intro-start">Please Log in to Start or Continue your Journey</h4>
+      </Container>
       )}
 
      </main>
