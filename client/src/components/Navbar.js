@@ -21,60 +21,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar(props) {
   const classes = useStyles();
-  // Here are the states to keep track of login process
-  //const [loginState, setLoginState] = useState(0);
-  //const [loginEmail, setLoginEmail] = useState(null);
-  //const [loginPassword, setLoginPassword] = useState(null);
-  //const [user, setUser] = useState(props.user);
-  /* 
-    State 0: Initial Login
-      Login, Register, Email Field 
-    State 1: Enter Password for Login
-      Login, Back, Password Field
-    State 2: Welcome Logged in User
-      Logout, Welcome User
-  */
-
-  /*const inputLoginEmail = (email) => {
-    return email;
-  };
-  const inputLoginPassword = (password) => {
-    return password;
-  };*/
-
-  // Validate password or email and adjust state accordingly
-  /*const login = (formInput) => {
-    if(loginState === 0){
-      const validate = ([...props.users]).find((user) => {
-        return user.email === formInput.trim() 
-      })
-
-      if(validate){
-        setUser(validate);
-        setLoginState(loginState + 1);
-        return;       
-      } else return
-    }
-    else {
-      if(user.password === formInput.trim()){
-        console.log(user)
-        props.logUser(user.id);
-        setUser(user);
-        return setLoginState(loginState + 1);
-      }
-      else {
-        return setLoginState(loginState);
-      }
-    }
-  }*/
-  
- /*  const logout = () => {
-    setUser(null);
-    setLoginState(0);
-    props.logoutUser();
-  } */
-
-  
   const style = {
 
     background : "#03A9F4"
@@ -99,16 +45,19 @@ export default function Navbar(props) {
 // Handle submit 
 const handleSubmit = function(){
    console.log("props=",props);
-   if(action === "login"){
+   console.log("Action:", action);
+   if(action === "Login"){
     if(props.logInUser(email,password)){
      setLoggedIn(true);
      handleClose();
     }
   }else{
-    if(props.createUser(email,password,biodata)){
-    }
+    console.log("IN else");
+   props.createUser(email,password,biodata);
+      setLoggedIn(true);
+      handleClose();
   }
-};
+}
 
 // Handle Login Action
 const handleLogin = function(){
@@ -149,7 +98,10 @@ const handleRegister = function(){
    </div>
     )}
     {loggedIn && (
+    <div>
+<h4 disabled={true}>Welcome {email}</h4>
    <Button color="inherit"  onClick={(event) => handleClickOpen("Logout")}>LOGOUT</Button>
+   </div>
     )}
 </Toolbar>
 </AppBar>
@@ -219,84 +171,13 @@ const handleRegister = function(){
         </DialogActions>
       </Dialog>
        )}
+      {!loggedIn && (
       <Container id="logo" maxWidth="sm md lg">
       <img height="40%px" width="70%" align="center" src="images/indezone-journal-hero.png" alt="INDEZONE" />
       </Container>
+      )}
 
-     {/*  <Slide direction="left" in={ loginState === 2} timeout={300}>
-        <h2>Welcome {user && user.handle ? user.handle.slice(1) : "error"}</h2>
-      </Slide>
-      <Slide direction="left" in={loginState === 0} timeout={300}>
-        <TextField
-          id="outlined-basic"
-          name="emailInput"
-          label="Enter Email"
-          variant="outlined"
-          color="primary"
-          autoFocus="true"
-          placeholder="example@email.com"
-          type="email"
-          onChange={(e) => setLoginEmail(e.target.value)}
-        />
-      </Slide>
-
-      <Slide direction="left" in={loginState === 1} timeout={300}>
-        <TextField
-          id="outlined-basic"
-          name="passwordInput"
-          label="Enter Password"
-          variant="outlined"
-          color="primary"
-          autoFocus="true"
-          placeholder=""
-          type="password"
-          onChange={(e) => setLoginPassword(e.target.value)}
-        />
-      </Slide>
-      {/* <Button variant="fob">logout</Button> }
-      <Slide direction="left" in={loginState === 1} timeout={300}>
-        <Button
-          onClick={() => setLoginState(loginState - 1)}
-          variant="outlined"
-          color="primary"
-          size="large"
-        >
-          Back
-        </Button>
-      </Slide>
-      <Slide direction="left" in={loginState === 0} timeout={300}>
-        <Button
-          onClick={"cancel"}
-          variant="outlined"
-          color="primary"
-          size="large"
-        >
-          Register
-        </Button>
-      </Slide>
-      <Slide direction="left" in={loginState === 0 || loginState === 1} timeout={300}>
-        <Button
-          onClick={() => { loginState === 0 ? 
-            login(loginEmail) : login(loginPassword)
-          }
-        }
-          variant="outlined"
-          color="primary"
-          size="large"
-        >
-          Login
-        </Button>
-      </Slide>
-      <Slide direction="left" in={loginState === 2} timeout={300}>
-        <Button
-          onClick={() => logout()}
-          variant="outlined"
-          color="primary"
-          size="large"
-        >
-          Logout
-        </Button>
-      </Slide> */}
     </header>
   );
-}
+
+};
