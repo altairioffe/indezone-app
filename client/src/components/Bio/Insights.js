@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from "@material-ui/core"
 import { makeStyles } from '@material-ui/core/styles';
+import ColoredInsight from './ColoredInsight'
 
 export default function Insights(props) {
   // Define Styles
@@ -19,10 +20,14 @@ export default function Insights(props) {
   });
   const classes = useStyles();
 
+  const insights = props.insights.split('.').map( (insight) => (
+    <ColoredInsight insight={insight}></ColoredInsight>
+  ))
+
   return(
     <article>
       <h2> Here is an analysis of your entries: </h2>
-      <p style={{fontWeight:"bold"}}>{props.insights}</p>
+      <p style={{fontWeight:"bold"}}>{insights}</p>
       <Button
        className={classes.root}
        onClick={props.onCancel}
