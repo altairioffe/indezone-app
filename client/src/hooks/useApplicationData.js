@@ -79,14 +79,47 @@ export default function useApplicationData() {
 
   };
 
+  //handleDelete
+  // set user state
+  const handleDelete = (id) => {
+  console.log("id=",id);
+  let userGoal = {};
+  userGoal.id=id;
+    axios
+      .delete(`/api/userGoals`, {data:userGoal})
+      .then((result) => {
+        
+        const newUserGoals = state.userGoals.filter(goal => goal.id !== id);
+             
+        setState((state) => ({
+          ...state,
+          userGoals: newUserGoals
+          
+        }));
+      }
+      )
+      .catch((err) => console.log("error"))
+}
+
+
+
 
   // Create new user 
   const createUser = function (email,password,biodata) {
+    console.log("create user");
     const user = {};
     user.email = email;
     user.password = password;
-    user.biodata = biodata;
+   // user.biodata = biodata;
     user.handle = "@"+user.email.substring(0,3);
+    user.points = 0;
+    user.journalNo = 200;
+    
+    const biodataObj={};
+    biodataObj.name=biodata;
+    biodataObj.text=biodata;
+    biodataObj.user_id=null;
+    console.log("user=",user);
     
     axios
       .post(`/api/users`, user)
@@ -96,17 +129,51 @@ export default function useApplicationData() {
           result.data
         ];
 
-     
+        biodataObj.user_id = result.data.id;
         setState((state) => ({
           ...state,
           users: newUsers,
-          currentUser: (newUsers.filter(user => user.email === email))[0].id
+          currentUser: result.data.id
           
         }));
+
+        console.log("biodataObj=",biodataObj);
+        if(biodata !=null){
+        axios
+        .post(`/api/biodatas`, biodataObj)
+        .then((result) => {
+          const newBiodatas = [
+            ...state.biodatas,
+            result.data
+          ];
+  
+        
+          setState((state) => ({
+            ...state,
+            biodatas: newBiodatas,
+           
+            
+          }));
+  
+  
+          
+         
+          
+        }
+        )
+        .catch((err) => console.log("error")
+          
+        )
+
+      }
+        
       }
       )
-      .catch((err) => console.log("error"))
+      .catch((err) => console.log("error")
+        
+      )
 
+      
   };
 
 
@@ -157,7 +224,9 @@ return {
     logoutUser,
     setAnswer,
     addUserGoal,
-    requestInsight
+    requestInsight,
+    createUser,
+    handleDelete
 
   };
 }
