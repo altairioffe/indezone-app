@@ -6,6 +6,8 @@ import Error from './Error';
 import Insights from './Insights';
 import Status from './Loading';
 import useVisualMode from "../../hooks/useVisualMode";
+import {Container} from '@material-ui/core';
+import "../../styles/Bio.scss";
 
 
   export default function Bio(props) {
@@ -34,6 +36,7 @@ import useVisualMode from "../../hooks/useVisualMode";
     return(
 
     <main>
+      <Container className="bioContainer">
     <section>
       <Profile 
       level={props.level}
@@ -86,7 +89,7 @@ import useVisualMode from "../../hooks/useVisualMode";
     )}
     
     </section>
-
+    </Container>
     </main>
     )
   }
