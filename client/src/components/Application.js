@@ -8,6 +8,7 @@ import "./LogoutPrompt.scss";
 import useApplicationData from "../hooks/useApplicationData";
 import {answeredGoals} from "../helpers/filterbyToday"
 import {Container} from '@material-ui/core';
+import "./Application.scss";
 
 export default function Application() {
     
@@ -24,6 +25,7 @@ export default function Application() {
   } = useApplicationData();
   console.log("------ state ------\n", state)
   console.log("create user",createUser);
+ 
 
 //const questionsArr = state.goals.map((goal) => goal.question);
 
@@ -36,16 +38,21 @@ export default function Application() {
      console.log("level:",level);
   }
 
-const questions = [...state.goals]
-let shuffledQuestions = questions.sort(() => 0.5 - Math.random());
-let selectedQuestions = shuffledQuestions.slice(0, 3); //second is level
-let questionsArr = selectedQuestions.map( (goal) => {
+  console.log("level=",level);
+  let filteredGoals = state.goals.slice(0,level);
+  console.log("length:", filteredGoals.length);
+  const questionsArr = filteredGoals.map((goal) => goal.question);
+  console.log("questionsArr=",questionsArr.length);
+//const questions = [...state.goals]
+//let shuffledQuestions = questions.sort(() => 0.5 - Math.random());
+//let selectedQuestions = shuffledQuestions.slice(0, 3); //second is level
+/* let questionsArr = selectedQuestions.map( (goal) => {
   return {
     id:goal.id,
     question:goal.question,
     suggestion:goal.suggestion
   }
-}) 
+})  */
   
 console.log(answeredGoals(state.userGoals))
   //const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
@@ -61,7 +68,7 @@ console.log(answeredGoals(state.userGoals))
       />
       {state.currentUser && (
       <section className="feed">
-        <hr/>
+        {/* <hr/> */}
        
         <Bio 
           bio={bio?bio.text:""}
@@ -71,7 +78,9 @@ console.log(answeredGoals(state.userGoals))
           currentUserGoals={state.currentUserGoals}
           userInsight={state.currentUserInsight}
         />
-        <hr/>
+       
+        {/* <hr/> */}
+        
         <QuestionList 
           giveAnswer={ansQuestion}
           questions={questionsArr}
@@ -79,23 +88,25 @@ console.log(answeredGoals(state.userGoals))
           addUserGoal = {addUserGoal}
           goals = {state.goals}
           currentUserId={state.currentUser}
-          answeredGoals={answeredGoals(state.userGoals)}
+          filteredGoals={filteredGoals}
           createUser = {createUser}
         />
-        <hr />
-        <div>
+        {/*<hr />*/}
+        
       <Wall userGoals={state.currentUserGoals} userId = {state.currentUser} handleDelete={handleDelete}/>
-      </div>
+     
       </section>
       )} 
       { state.currentUser === null && ( 
-      <Container className="intro-container">
+        <section>
+      <Container>
           <h3 className="intro">Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together </h3>
           <hr className="seperator"/>
             <h4 className="text--regular intro-start">Please Log in to Start or Continue your Journey</h4>
       </Container>
+      </section>
       )}
-
+      
      </main>
   );
 }
