@@ -6,6 +6,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Form from "./Form"
+import '../../styles/questionAnswer.scss';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +22,7 @@ export default function SimpleExpansionPanel(props) {
   const classes = useStyles();
 
   return (
-    <ExpansionPanel smUp="hide">
+    <ExpansionPanel smUp="hide" className="expansion">
       <ExpansionPanelSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"

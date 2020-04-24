@@ -112,7 +112,7 @@ export default function useApplicationData() {
     user.password = password;
    // user.biodata = biodata;
     user.handle = "@"+user.email.substring(0,3);
-    user.points = 0;
+    user.points = 1;
     user.journalNo = 200;
     
     const biodataObj={};

@@ -3,6 +3,7 @@ import WallItem from './WallItem';
 import { Timeline, TimelineEvent } from 'react-event-timeline'
 import  {styles}  from './WallStyles';
 import '../styles/Wall.scss';
+import { Container } from '@material-ui/core';
 export default function Wall(props) {
   const userGoals = props.userGoals;
   const userGoalsView = userGoals.map(userGoal => {
@@ -13,10 +14,11 @@ export default function Wall(props) {
   );
 
   return (
-    <div class ="timeline">
+    <Container className ="timeline">
+      <h2 className="title">Previous Goals</h2>
       <Timeline lineStyle={styles.lineStyle}>
         {userGoalsView}
       </Timeline>
-    </div>
+    </Container>
   );
 }

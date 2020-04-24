@@ -8,6 +8,13 @@ $prompt-height: 1rem;
  text-align:center;
 }
 
+
+.questions{
+  //background-color: #99ffff;
+  padding:20px;
+  //border: 2px solid #03A9F4;
+}
+
 .prompt {
   &__add {
     min-height: $prompt-height;
@@ -161,4 +168,8 @@ $prompt-height: 1rem;
     color: $danger-color;
     margin-bottom: 1rem;
   }
+}
+
+.title{
+  text-align: center;
 }
