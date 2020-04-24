@@ -5,15 +5,16 @@ import React, { useState } from "react"
 import AnswerQuestionPanel from "./QuestionAnswer/AnswerQuestionPanel"
 
 import Slide from '@material-ui/core/Slide';
+import { Container } from "@material-ui/core";
 
 export default function QuestionFeed(props) {
   const questionsList = 
-    props.goals.map( (goal, i) => {
+    props.filteredGoals.map( (goal, i) => {
       console.log(goal.id)
-      console.log(props.answeredGoals.find( (id) => id === goal.id))
+//      console.log(props.answeredGoals.find( (id) => id === goal.id))
       return(
         <div>
-      { !props.answeredGoals.find( (id) => id === goal.id) && ( 
+    
           <Slide direction="up" in={false} >
             <AnswerQuestionPanel 
               key={i}
@@ -26,17 +27,19 @@ export default function QuestionFeed(props) {
               currentUserId={props.currentUserId}
             />
           </Slide>
-      )}
+  
           <br />
         </div>
       )
     })
   return  (
     <section>
-      <h1>Question feed</h1>
+      <Container className="questions">
+      <h2 className="title">Question feed</h2>
       <hr/>
       {questionsList}
       <hr/>
+      </Container>
     </section>
   )
 }
