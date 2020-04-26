@@ -22,6 +22,7 @@ const personalityInsights = new PersonalityInsightsV3({
 
 // Convert raw response data in Paragraph-form summary
 const getTextSummary = personalityProfile => {
+  console.log('profile=',personalityProfile);
   let textSummary = v3EnglishTextSummaries.getSummary(personalityProfile);
   if (typeof (textSummary) !== 'string') {
     console.log("Could not get summary.");
@@ -37,6 +38,7 @@ const getInsights = inputData => {
     if (error) {
        console.log('Error:', error);
     } else {
+      //console.log("result=",response.result);
        resolve(getTextSummary(response.result))
       }
     })

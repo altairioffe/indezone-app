@@ -43,13 +43,10 @@ router.post("/", (req, res) => {
 
 // Delete specific goal
 router.delete("/", (req, res) => {
- console.log('req.body',req.body);  
+  console.log('req.body', req.body);
   db.user_goal.destroy({
     where: {
-      id:req.body.id
-     // createdAt: req.body.createdAt,
-      //user_id: req.body.user_id,
-     // goal_id: req.body.goal_id
+      id: req.body.id
     }
 
   })
