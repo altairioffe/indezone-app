@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Collapse from '@material-ui/core/Collapse';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -30,14 +30,15 @@ export default function Form(props){
           multiline
           fullWidth
           variant="filled"
-          onChange={(e) => props.setAnswer(e.target.value)}
+          onChange={(e) => setAns(e.target.value)}
         />
       <Button
         // className={classes.root}
         variant="outlined"
         color="primary"
         size="large"
-        onClick={() => props.addUserGoal({goal_id:props.goal_id})}
+        // onClick={() => props.addUserGoal({goal_id:props.goal_id})}
+        onClick={() => props.giveAnswer(ans, props.goal_id, props.currentUserId)}
       >
       Answer
       </Button>

@@ -44,8 +44,6 @@ let questionsArr = selectedQuestions.map( (goal) => {
   }
 }) 
   
-  //const bio = "Everybody has the power to remodel their behaviour, habits, and attitudes, but not everybody knows how. Our app will make it simple and rewarding for anybody to get the benefits of reflective journaling. Our app will bring people together through personal goals, challenges, and insights, so that we can realize our potential together."
-
   return (
     <Container className="layout">
       
@@ -77,6 +75,8 @@ let questionsArr = selectedQuestions.map( (goal) => {
           goals = {state.goals}
           currentUserId={state.currentUser}
           answeredGoals={answeredGoals(state.userGoals, state.currentUser)}
+          // recently updated answer has no id only in database is it assigned a id
+          currentAns={state.userGoals[0].id ? false : state.userGoals[0].goal_id}
         />
         <div>
       <Wall userGoals={state.currentUserGoals} userId = {state.currentUser}/>

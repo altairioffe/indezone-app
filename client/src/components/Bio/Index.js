@@ -82,6 +82,7 @@ import useVisualMode from "../../hooks/useVisualMode";
     {mode === INSIGHTS && (
       <Insights 
         insights={props.userInsight}
+        // insights={props.userInsight}
         onCancel={()=>{transition(USERBIO)}}
       />
     )}
