@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Form from "./Form"
 
 const rnd = () => { //generates random number for color wheel
-  return 175;
+  return Math.floor(Math.random() * (365 - 0 + 1) + 0);
 };
 
 
@@ -16,7 +16,7 @@ export default function SimpleExpansionPanel(props) {
   const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
-      backgroundColor: `rgb(64,196,255)`,
+      backgroundColor: `hsl(${rnd()}deg, 60%, 70%)`,
       '& div': {
         backgroundColor: 'inherit'
       }

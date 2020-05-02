@@ -22,6 +22,8 @@ export default function Status(props) {
   <span className={classes.root}>
     <img src="images/redpill.png" alt="INDEZONE" />
     {props.insight}
+    <img src="images/redpill.png" alt="INDEZONE" />
+    <br/>
   </span>
   
 
