@@ -32,18 +32,18 @@ export default function SimpleExpansionPanel(props) {
   const classes = useStyles();
 
   return (
-    <ExpansionPanel smUp="hide" >
+    <ExpansionPanel smUp="hide" className={classes.root}>
       <ExpansionPanelSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography  fontSize="h2.fontSize">{props.question} </Typography>
+        <Typography className={classes.heading}  fontSize="h2.fontSize">{props.question} </Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails >
-        <Typography > 
+        <Typography className={classes.root}> 
           <Form 
-
+            className={classes.heading, classes.root} 
             setAnswer = {props.setAnswer}
             goal_id = {props.goal_id}
             addUserGoal = {props.addUserGoal}
